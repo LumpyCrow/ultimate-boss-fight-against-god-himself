@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://b51l2tpegal8f"]
+
+[ext_resource type="Script" path="res://cannonball.gd" id="1_wlxa8"]
+[ext_resource type="Texture2D" uid="uid://b753kqtp7bqlp" path="res://textures/cannonball2.png" id="2_8pr7h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_38slx"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8pxsw"]
+radius = 6.0
+
+[node name="cannonball" type="CharacterBody2D" groups=["cannonball"]]
+collision_layer = 10
+collision_mask = 2
+script = ExtResource("1_wlxa8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_38slx")
+
+[node name="killzone" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+shape = SubResource("CircleShape2D_8pxsw")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.02
+
+[node name="Cannonball2" type="Sprite2D" parent="."]
+texture = ExtResource("2_8pr7h")
+
+[connection signal="body_entered" from="killzone" to="." method="_on_killzone_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

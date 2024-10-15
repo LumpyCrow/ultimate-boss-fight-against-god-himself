@@ -1,0 +1,212 @@
+[gd_scene load_steps=23 format=3 uid="uid://be3xkbl84anxw"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_m8axc"]
+[ext_resource type="Texture2D" uid="uid://q8xnyf8lai5v" path="res://textures/duck/right.png" id="2_17gb2"]
+[ext_resource type="Texture2D" uid="uid://0co383qji8wk" path="res://textures/duck/thingy.png" id="2_sqy1f"]
+[ext_resource type="Texture2D" uid="uid://6e6cwa5l7uqi" path="res://textures/duck/flyleft.png" id="3_a2124"]
+[ext_resource type="Texture2D" uid="uid://rd54yxrt5ucc" path="res://textures/duck/cannon.png" id="3_dgd70"]
+[ext_resource type="Texture2D" uid="uid://77r875bgs0wg" path="res://textures/duck/walkright.png" id="3_li58c"]
+[ext_resource type="Texture2D" uid="uid://dv4w6u38yj8me" path="res://textures/duck/walkleft.png" id="4_pc8ne"]
+[ext_resource type="Texture2D" uid="uid://c62oradgij1te" path="res://textures/duck/flyright.png" id="5_ak63i"]
+[ext_resource type="Texture2D" uid="uid://ohrgunn1m46u" path="res://textures/duck/left.png" id="7_l0edp"]
+[ext_resource type="AudioStream" uid="uid://0ubkfyjmbmn6" path="res://audio/pl_step1.wav" id="10_5ofp1"]
+[ext_resource type="AudioStream" uid="uid://ckikokffl2ygm" path="res://audio/2.ogg" id="11_3u47g"]
+[ext_resource type="Texture2D" uid="uid://44pjl5hs1rd2" path="res://textures/crosshair.png" id="11_6a0ne"]
+[ext_resource type="AudioStream" uid="uid://bk1jfg5dx10qd" path="res://audio/glauncher.wav" id="11_8og24"]
+[ext_resource type="AudioStream" uid="uid://by58n75u3e2e7" path="res://audio/single-quack-from-a-duck-14494.mp3" id="12_0unir"]
+[ext_resource type="Texture2D" uid="uid://bc8jhagy5elts" path="res://textures/health/health5.png" id="13_1472h"]
+[ext_resource type="AudioStream" uid="uid://dw2qv7g3hyhl2" path="res://audio/smallmedkit1.wav" id="16_t0pkm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5r0w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qpfyo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_a2124")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pc8ne")
+}],
+"loop": true,
+"name": &"Flyingleft",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ak63i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_li58c")
+}],
+"loop": true,
+"name": &"Flyingright",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_pc8ne")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_l0edp")
+}],
+"loop": true,
+"name": &"Walkingleft",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_li58c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_17gb2")
+}],
+"loop": true,
+"name": &"Walkingright",
+"speed": 15.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fp6ku"]
+size = Vector2(22, 22)
+
+[sub_resource type="Animation" id="Animation_m5ida"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/Health:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-120, -160)]
+}
+
+[sub_resource type="Animation" id="Animation_q4f7y"]
+resource_name = "damage"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/Health:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-120, -150), Vector2(-120, -170), Vector2(-120, -130), Vector2(-120, -160), Vector2(-120, -140), Vector2(-120, -150)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8c0ib"]
+_data = {
+"RESET": SubResource("Animation_m5ida"),
+"damage": SubResource("Animation_q4f7y")
+}
+
+[node name="player" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 5
+script = ExtResource("1_m8axc")
+
+[node name="HUD" type="Node2D" parent="."]
+
+[node name="Health" type="Sprite2D" parent="HUD"]
+visible = false
+position = Vector2(-120, -160)
+scale = Vector2(2, 2)
+texture = ExtResource("13_1472h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_v5r0w")
+
+[node name="cannonbase" type="Sprite2D" parent="."]
+position = Vector2(-0.5, -13)
+scale = Vector2(1.05, 1.5)
+texture = ExtResource("2_sqy1f")
+
+[node name="animator" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_qpfyo")
+animation = &"Walkingright"
+autoplay = "default"
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_17gb2")
+
+[node name="pivot" type="Node2D" parent="."]
+position = Vector2(5.36442e-07, -13)
+
+[node name="cannon" type="Sprite2D" parent="pivot"]
+position = Vector2(-0.47619, 0)
+scale = Vector2(1.095, 1.095)
+texture = ExtResource("3_dgd70")
+
+[node name="firezone" type="Node2D" parent="pivot/cannon"]
+position = Vector2(0.434876, -10.3501)
+
+[node name="Crosshair" type="Sprite2D" parent="pivot"]
+position = Vector2(0, -50)
+texture = ExtResource("11_6a0ne")
+
+[node name="Crosshair2" type="Sprite2D" parent="pivot"]
+position = Vector2(0, -100)
+scale = Vector2(2, 2)
+texture = ExtResource("11_6a0ne")
+
+[node name="damagezone" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damagezone"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_fp6ku")
+
+[node name="splitsecond" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="invincibilitytime" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="cannoncooldown" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="walkingsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_5ofp1")
+pitch_scale = 1.31
+
+[node name="cannonsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_8og24")
+volume_db = -8.915
+pitch_scale = 1.5
+
+[node name="hitsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_3u47g")
+
+[node name="hitsound2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_0unir")
+volume_db = 24.0
+pitch_scale = 1.19
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8c0ib")
+}
+
+[node name="medkitsound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_t0pkm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="body_entered" from="damagezone" to="." method="_on_damagezone_body_entered"]
+[connection signal="timeout" from="splitsecond" to="." method="_on_splitsecond_timeout"]
+[connection signal="timeout" from="invincibilitytime" to="." method="_on_invincibilitytime_timeout"]
+[connection signal="timeout" from="cannoncooldown" to="." method="_on_cannoncooldown_timeout"]
