@@ -25,12 +25,22 @@ func _physics_process(delta: float) -> void:
 		#for the pivot so that it's movement is smooth
 	
 	# Add the gravity.
+
+	# if the down button is pressed, the player will fall faster
+	#if not is_on_floor() and velocity.y < 400 and Input.is_action_pressed("Down"):
+		#velocity += get_gravity() * delta
 	if not is_on_floor() and velocity.y < 150:
 		velocity += get_gravity() * delta
+	else:
+		if Input.is_action_pressed("Down"):
+			if not is_on_floor() and velocity.y < 400:
+				velocity += get_gravity() * delta
+	
+		
 		
 	# Handle jump. (+animation)
 	if Input.is_action_pressed("ui_accept") or touchscreenfly == true:
-		if velocity.y > -300:
+		if velocity.y > -400:
 			velocity.y = velocity.y + JUMP_VELOCITY
 		if invincible == false:
 			$animator.visible = true
@@ -53,12 +63,12 @@ func _physics_process(delta: float) -> void:
 	#else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
-	if Input.is_action_pressed("Left") and velocity.x > -300 or touchscreenleft == true and velocity.x > -300:
+	if Input.is_action_pressed("Left") and velocity.x > -400 or touchscreenleft == true and velocity.x > -400:
 		velocity.x = velocity.x - SPEED
 	else:
 		if velocity.x < 0:
 			velocity.x = velocity.x + SPEED
-	if Input.is_action_pressed("Right") and velocity.x < 300 or touchscreenright == true and velocity.x < 300:
+	if Input.is_action_pressed("Right") and velocity.x < 400 or touchscreenright == true and velocity.x < 400:
 		velocity.x = velocity.x + SPEED
 	else:
 		if velocity.x > 0:
