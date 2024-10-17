@@ -9,11 +9,20 @@ size = Vector2(1189, 20)
 
 [node name="Level_1" type="Node2D"]
 
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(572, 494)
+shape = SubResource("RectangleShape2D_df8lg")
+debug_color = Color(0.576762, 0.543041, 0.304933, 0.42)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(572, 494)
+position = Vector2(-10, -88)
+rotation = -1.57079
 shape = SubResource("RectangleShape2D_df8lg")
+debug_color = Color(0.576762, 0.543041, 0.304933, 0.42)
 
 [node name="player" parent="." instance=ExtResource("1_mprt8")]
 position = Vector2(361, 242)
