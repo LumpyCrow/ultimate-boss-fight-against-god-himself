@@ -1,0 +1,220 @@
+[gd_scene load_steps=14 format=3 uid="uid://bwpqipcc8aq2a"]
+
+[ext_resource type="Script" path="res://start_screen.gd" id="1_41j1r"]
+[ext_resource type="Texture2D" uid="uid://cpsgd2ft4niql" path="res://textures/backroundj.png" id="2_x753r"]
+[ext_resource type="Texture2D" uid="uid://6e6cwa5l7uqi" path="res://textures/duck/flyleft.png" id="3_kuen6"]
+[ext_resource type="Texture2D" uid="uid://c62oradgij1te" path="res://textures/duck/flyright.png" id="4_ovg2i"]
+[ext_resource type="Texture2D" uid="uid://ohrgunn1m46u" path="res://textures/duck/left.png" id="5_cxovh"]
+[ext_resource type="Texture2D" uid="uid://q8xnyf8lai5v" path="res://textures/duck/right.png" id="6_1jtns"]
+[ext_resource type="Texture2D" uid="uid://cbryhkapremv5" path="res://textures/cloud.png" id="7_o53ti"]
+
+[sub_resource type="Animation" id="Animation_c82am"]
+resource_name = "Background"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3.03333, 4.03333, 4.96667, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(316, 243), Vector2(368, 270), Vector2(347, 285), Vector2(287, 293), Vector2(319, 312), Vector2(329, 287), Vector2(316, 243)]
+}
+
+[sub_resource type="Animation" id="Animation_exeoe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(316, 243)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ylwsm"]
+_data = {
+"Background": SubResource("Animation_c82am"),
+"RESET": SubResource("Animation_exeoe")
+}
+
+[sub_resource type="Animation" id="Animation_ifc80"]
+resource_name = "Ducks"
+length = 23.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Duck sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.8, 5.98359, 6.73333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_kuen6"), ExtResource("5_cxovh"), ExtResource("6_1jtns"), ExtResource("5_cxovh")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Duck sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.8, 5, 6.7, 9.1, 12.1667, 15.5, 16.8333, 23),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(740, -13), Vector2(333, 360), Vector2(333, 360), Vector2(332, 363), Vector2(-13, 360), Vector2(-14, -13), Vector2(397, 360), Vector2(397, 360), Vector2(736, 357)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Duck sprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_rvk2r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Duck sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_kuen6")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Duck sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(740, -13)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Duck sprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0f4bj"]
+_data = {
+"Ducks": SubResource("Animation_ifc80"),
+"RESET": SubResource("Animation_rvk2r")
+}
+
+[node name="Start Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_41j1r")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="background sprite" type="Sprite2D" parent="."]
+position = Vector2(316, 243)
+scale = Vector2(1.25278, 1.31458)
+texture = ExtResource("2_x753r")
+
+[node name="Duck sprite" type="Sprite2D" parent="."]
+position = Vector2(740, -13)
+texture = ExtResource("3_kuen6")
+
+[node name="Background" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ylwsm")
+}
+speed_scale = 0.4
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(320, -39)
+texture = ExtResource("4_ovg2i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0f4bj")
+}
+
+[node name="platform" type="Sprite2D" parent="."]
+position = Vector2(32, 377)
+texture = ExtResource("7_o53ti")
+
+[node name="platform" type="Sprite2D" parent="platform"]
+position = Vector2(65, 2)
+texture = ExtResource("7_o53ti")
+
+[node name="platform" type="Sprite2D" parent="platform/platform"]
+position = Vector2(58, 0)
+texture = ExtResource("7_o53ti")
+
+[node name="platform" type="Sprite2D" parent="platform/platform/platform"]
+position = Vector2(60, 1)
+texture = ExtResource("7_o53ti")
+
+[node name="platform" type="Sprite2D" parent="platform/platform/platform/platform"]
+position = Vector2(60, 1)
+texture = ExtResource("7_o53ti")
+
+[node name="platform" type="Sprite2D" parent="platform/platform/platform/platform/platform"]
+position = Vector2(63, 0)
+texture = ExtResource("7_o53ti")
+
+[node name="platform" type="Sprite2D" parent="platform/platform/platform/platform/platform/platform"]
+position = Vector2(63, -1)
+texture = ExtResource("7_o53ti")
+
+[node name="platform" type="Sprite2D" parent="platform/platform/platform/platform/platform/platform/platform"]
+position = Vector2(63, -1)
+texture = ExtResource("7_o53ti")
+
+[node name="platform" type="Sprite2D" parent="platform/platform/platform/platform/platform/platform/platform/platform"]
+position = Vector2(63, -1)
+texture = ExtResource("7_o53ti")
+
+[node name="platform" type="Sprite2D" parent="platform/platform/platform/platform/platform/platform/platform/platform/platform"]
+position = Vector2(63, -1)
+texture = ExtResource("7_o53ti")
+
+[node name="platform" type="Sprite2D" parent="platform/platform/platform/platform/platform/platform/platform/platform/platform/platform"]
+position = Vector2(63, -1)
+texture = ExtResource("7_o53ti")
+
+[node name="platform" type="Sprite2D" parent="platform/platform/platform/platform/platform/platform/platform/platform/platform/platform/platform"]
+position = Vector2(63, -1)
+texture = ExtResource("7_o53ti")

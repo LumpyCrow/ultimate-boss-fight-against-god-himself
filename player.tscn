@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://44pjl5hs1rd2" path="res://textures/crosshair.png" id="11_6a0ne"]
 [ext_resource type="AudioStream" uid="uid://bk1jfg5dx10qd" path="res://audio/glauncher.wav" id="11_8og24"]
 [ext_resource type="AudioStream" uid="uid://by58n75u3e2e7" path="res://audio/single-quack-from-a-duck-14494.mp3" id="12_0unir"]
-[ext_resource type="Texture2D" uid="uid://bc8jhagy5elts" path="res://textures/health/health5.png" id="13_1472h"]
+[ext_resource type="Texture2D" uid="uid://bvok05hwus3p4" path="res://textures/health/health5.png" id="13_1472h"]
 [ext_resource type="AudioStream" uid="uid://dw2qv7g3hyhl2" path="res://audio/smallmedkit1.wav" id="16_t0pkm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v5r0w"]
@@ -86,7 +86,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-120, -160)]
+"values": [Vector2(-240, -150)]
 }
 
 [sub_resource type="Animation" id="Animation_q4f7y"]
@@ -102,7 +102,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-120, -150), Vector2(-120, -170), Vector2(-120, -130), Vector2(-120, -160), Vector2(-120, -140), Vector2(-120, -150)]
+"values": [Vector2(-240, -150), Vector2(-240, -170), Vector2(-240, -130), Vector2(-240, -160), Vector2(-240, -140), Vector2(-240, -150)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8c0ib"]
@@ -119,8 +119,7 @@ script = ExtResource("1_m8axc")
 [node name="HUD" type="Node2D" parent="."]
 
 [node name="Health" type="Sprite2D" parent="HUD"]
-visible = false
-position = Vector2(-120, -160)
+position = Vector2(-240, -150)
 scale = Vector2(2, 2)
 texture = ExtResource("13_1472h")
 
