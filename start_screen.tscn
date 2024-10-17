@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bwpqipcc8aq2a"]
+[gd_scene load_steps=17 format=3 uid="uid://bwpqipcc8aq2a"]
 
 [ext_resource type="Script" path="res://start_screen.gd" id="1_41j1r"]
 [ext_resource type="Texture2D" uid="uid://cpsgd2ft4niql" path="res://textures/backroundj.png" id="2_x753r"]
@@ -6,7 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c62oradgij1te" path="res://textures/duck/flyright.png" id="4_ovg2i"]
 [ext_resource type="Texture2D" uid="uid://ohrgunn1m46u" path="res://textures/duck/left.png" id="5_cxovh"]
 [ext_resource type="Texture2D" uid="uid://q8xnyf8lai5v" path="res://textures/duck/right.png" id="6_1jtns"]
+[ext_resource type="Texture2D" uid="uid://dv4w6u38yj8me" path="res://textures/duck/walkleft.png" id="7_7igu4"]
 [ext_resource type="Texture2D" uid="uid://cbryhkapremv5" path="res://textures/cloud.png" id="7_o53ti"]
+[ext_resource type="Texture2D" uid="uid://77r875bgs0wg" path="res://textures/duck/walkright.png" id="8_nm07x"]
+[ext_resource type="Texture2D" uid="uid://crtwmq7kvbh8v" path="res://textures/remade smaller better doo.png" id="10_c7iiu"]
 
 [sub_resource type="Animation" id="Animation_c82am"]
 resource_name = "Background"
@@ -48,7 +51,8 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_ifc80"]
 resource_name = "Ducks"
-length = 23.0
+length = 27.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -56,10 +60,10 @@ tracks/0/path = NodePath("Duck sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 4.8, 5.98359, 6.73333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 4.8, 5.98359, 6.66667, 6.7, 12.1333, 15.4667, 16.1333, 16.7, 16.8333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("3_kuen6"), ExtResource("5_cxovh"), ExtResource("6_1jtns"), ExtResource("5_cxovh")]
+"values": [ExtResource("3_kuen6"), ExtResource("5_cxovh"), ExtResource("6_1jtns"), ExtResource("5_cxovh"), ExtResource("7_7igu4"), ExtResource("4_ovg2i"), ExtResource("6_1jtns"), ExtResource("5_cxovh"), ExtResource("6_1jtns"), ExtResource("8_nm07x")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -140,15 +144,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_41j1r")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
 [node name="background sprite" type="Sprite2D" parent="."]
 position = Vector2(316, 243)
 scale = Vector2(1.25278, 1.31458)
 texture = ExtResource("2_x753r")
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 394.0
+offset_right = 400.0
+offset_bottom = 425.0
+text = "Start Game"
 
 [node name="Duck sprite" type="Sprite2D" parent="."]
 position = Vector2(740, -13)
@@ -158,6 +165,7 @@ texture = ExtResource("3_kuen6")
 libraries = {
 "": SubResource("AnimationLibrary_ylwsm")
 }
+autoplay = "Background"
 speed_scale = 0.4
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
@@ -170,6 +178,7 @@ texture = ExtResource("4_ovg2i")
 libraries = {
 "": SubResource("AnimationLibrary_0f4bj")
 }
+autoplay = "Ducks"
 
 [node name="platform" type="Sprite2D" parent="."]
 position = Vector2(32, 377)
@@ -218,3 +227,21 @@ texture = ExtResource("7_o53ti")
 [node name="platform" type="Sprite2D" parent="platform/platform/platform/platform/platform/platform/platform/platform/platform/platform/platform"]
 position = Vector2(63, -1)
 texture = ExtResource("7_o53ti")
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 682.0
+offset_right = 720.0
+offset_bottom = 38.0
+icon = ExtResource("10_c7iiu")
+
+[node name="Button" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 216.0
+offset_top = 422.0
+offset_right = 224.0
+offset_bottom = 483.0
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

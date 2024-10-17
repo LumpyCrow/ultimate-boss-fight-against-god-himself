@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://be3xkbl84anxw" path="res://player.tscn" id="1_mprt8"]
 [ext_resource type="PackedScene" uid="uid://bymqj7xojj2bx" path="res://gui.tscn" id="2_cxxve"]
-[ext_resource type="TileSet" uid="uid://meu4ra5dfr7p" path="res://textures/tileset/new_tile_set.tres" id="3_wmjt7"]
+[ext_resource type="TileSet" uid="uid://7u6gk75hlqtq" path="res://textures/tileset/new_tile_set.tres" id="3_wmjt7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_df8lg"]
 size = Vector2(1189, 20)
