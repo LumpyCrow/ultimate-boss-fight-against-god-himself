@@ -35,6 +35,9 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("Down"):
 			if not is_on_floor() and velocity.y < 400:
 				velocity += get_gravity() * delta
+		if not Input.is_action_pressed("Down"):
+			if not is_on_floor() and velocity.y > 150:
+				velocity -= get_gravity() * delta
 	
 		
 		

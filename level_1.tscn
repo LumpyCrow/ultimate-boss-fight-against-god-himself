@@ -5,21 +5,21 @@
 [ext_resource type="TileSet" uid="uid://meu4ra5dfr7p" path="res://textures/tileset/new_tile_set.tres" id="3_wmjt7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_df8lg"]
-size = Vector2(1189, 20)
+size = Vector2(1189, 228)
 
 [node name="Level_1" type="Node2D"]
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(572, 494)
+position = Vector2(572, 390)
 shape = SubResource("RectangleShape2D_df8lg")
 debug_color = Color(0.576762, 0.543041, 0.304933, 0.42)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-10, -88)
+position = Vector2(-114, -91)
 rotation = -1.57079
 shape = SubResource("RectangleShape2D_df8lg")
 debug_color = Color(0.576762, 0.543041, 0.304933, 0.42)

@@ -1,3 +1,130 @@
-[gd_scene format=3 uid="uid://p74ir71ry238"]
+[gd_scene load_steps=11 format=3 uid="uid://p74ir71ry238"]
+
+[ext_resource type="Script" path="res://level_2_boss_arena.gd" id="1_lblhy"]
+[ext_resource type="PackedScene" uid="uid://be3xkbl84anxw" path="res://player.tscn" id="1_qjm0x"]
+[ext_resource type="Texture2D" uid="uid://dvvabax26e86l" path="res://textures/staircase.png" id="2_3prbl"]
+[ext_resource type="Texture2D" uid="uid://c33n53obfr128" path="res://textures/worldmappixel.png" id="2_6o165"]
+[ext_resource type="AudioStream" uid="uid://c1xac0wvleyy7" path="res://audio/music/Iwan Gabovitch - Dark Ambience Loop.ogg" id="4_dij4j"]
+[ext_resource type="AudioStream" uid="uid://bo1nlvblnxmi2" path="res://audio/music/A Conversation with Saul (Rough Demo.mp3" id="6_moy8p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ka8wa"]
+size = Vector2(5511, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3a0ux"]
+size = Vector2(20, 5050)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3trxk"]
+size = Vector2(523, 102)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tsogp"]
+size = Vector2(1285.5, 28)
 
 [node name="level_2_boss_arena" type="Node2D"]
+script = ExtResource("1_lblhy")
+
+[node name="Worldmappixel" type="Sprite2D" parent="."]
+position = Vector2(8057, -5504)
+scale = Vector2(10, 10)
+texture = ExtResource("2_6o165")
+
+[node name="Worldmappixel2" type="Sprite2D" parent="."]
+position = Vector2(10568, -5516)
+scale = Vector2(10, 10)
+texture = ExtResource("2_6o165")
+
+[node name="Worldmappixel3" type="Sprite2D" parent="."]
+position = Vector2(10574, -4251)
+scale = Vector2(10, 10)
+texture = ExtResource("2_6o165")
+
+[node name="Worldmappixel4" type="Sprite2D" parent="."]
+position = Vector2(8063, -4239)
+scale = Vector2(10, 10)
+texture = ExtResource("2_6o165")
+
+[node name="Worldmappixel5" type="Sprite2D" parent="."]
+position = Vector2(8069, -3142)
+scale = Vector2(10, 10)
+texture = ExtResource("2_6o165")
+
+[node name="Worldmappixel6" type="Sprite2D" parent="."]
+position = Vector2(10568, -3154)
+scale = Vector2(10, 10)
+texture = ExtResource("2_6o165")
+
+[node name="player" parent="." instance=ExtResource("1_qjm0x")]
+position = Vector2(-460, 341)
+
+[node name="Staircase" type="Sprite2D" parent="."]
+position = Vector2(971, 144)
+scale = Vector2(2, 2)
+texture = ExtResource("2_3prbl")
+
+[node name="Staircase2" type="Sprite2D" parent="Staircase"]
+position = Vector2(482, -241)
+texture = ExtResource("2_3prbl")
+
+[node name="Staircase3" type="Sprite2D" parent="Staircase"]
+position = Vector2(964, -482)
+texture = ExtResource("2_3prbl")
+
+[node name="Staircase4" type="Sprite2D" parent="Staircase"]
+position = Vector2(1446, -723)
+texture = ExtResource("2_3prbl")
+
+[node name="Staircase5" type="Sprite2D" parent="Staircase"]
+position = Vector2(1928, -964)
+texture = ExtResource("2_3prbl")
+
+[node name="Staircase6" type="Sprite2D" parent="Staircase"]
+position = Vector2(2409, -1205)
+texture = ExtResource("2_3prbl")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-973, -144)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+scale = Vector2(2, 2)
+polygon = PackedVector2Array(3635.5, -1186, 1792.39, -264.196, 726, 269, 738, 269, 3630, -1179)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(10273, -6000)
+shape = SubResource("RectangleShape2D_ka8wa")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(10017.5, -2363)
+shape = SubResource("RectangleShape2D_ka8wa")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(12793, -4296)
+shape = SubResource("RectangleShape2D_3a0ux")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(7774, -5019)
+shape = SubResource("RectangleShape2D_3a0ux")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(7521.5, -2545)
+shape = SubResource("RectangleShape2D_3trxk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(834.75, 552)
+shape = SubResource("RectangleShape2D_tsogp")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(402, 377)
+shape = SubResource("RectangleShape2D_tsogp")
+
+[node name="suspense" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(6277, -2666)
+stream = ExtResource("4_dij4j")
+pitch_scale = 0.7
+autoplay = true
+max_distance = 6200.0
+panning_strength = 0.0
+
+[node name="AConversationWithSaul(roughDemo" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-1059, 320)
+stream = ExtResource("6_moy8p")
+pitch_scale = 0.7
+panning_strength = 0.0

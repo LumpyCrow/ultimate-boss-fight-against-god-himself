@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c1xac0wvleyy7"
+path="res://.godot/imported/Iwan Gabovitch - Dark Ambience Loop.ogg-fe65e14c1e8f62d5107ee32844eea959.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/music/Iwan Gabovitch - Dark Ambience Loop.ogg"
+dest_files=["res://.godot/imported/Iwan Gabovitch - Dark Ambience Loop.ogg-fe65e14c1e8f62d5107ee32844eea959.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
