@@ -1,17 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://p74ir71ry238"]
+[gd_scene load_steps=14 format=3 uid="uid://p74ir71ry238"]
 
 [ext_resource type="Script" path="res://level_2_boss_arena.gd" id="1_lblhy"]
 [ext_resource type="PackedScene" uid="uid://be3xkbl84anxw" path="res://player.tscn" id="1_qjm0x"]
 [ext_resource type="Texture2D" uid="uid://dvvabax26e86l" path="res://textures/staircase.png" id="2_3prbl"]
-[ext_resource type="Texture2D" uid="uid://c33n53obfr128" path="res://textures/worldmappixel.png" id="2_6o165"]
 [ext_resource type="AudioStream" uid="uid://c1xac0wvleyy7" path="res://audio/music/Iwan Gabovitch - Dark Ambience Loop.ogg" id="4_dij4j"]
 [ext_resource type="AudioStream" uid="uid://bo1nlvblnxmi2" path="res://audio/music/A Conversation with Saul (Rough Demo.mp3" id="6_moy8p"]
+[ext_resource type="Texture2D" uid="uid://dco0b8aykmlrx" path="res://textures/bars.png" id="7_wrv0c"]
+[ext_resource type="Texture2D" uid="uid://iwoje7ukcyh5" path="res://textures/controlpad.png" id="8_ssqbg"]
+[ext_resource type="PackedScene" uid="uid://cyxbaveo4t0vj" path="res://cloud.tscn" id="8_ucqig"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ka8wa"]
-size = Vector2(5511, 20)
+size = Vector2(6019.5, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3a0ux"]
-size = Vector2(20, 5050)
+size = Vector2(24, 5137.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3trxk"]
 size = Vector2(523, 102)
@@ -19,41 +21,14 @@ size = Vector2(523, 102)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tsogp"]
 size = Vector2(1285.5, 28)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvn8o"]
+size = Vector2(88.875, 149)
+
 [node name="level_2_boss_arena" type="Node2D"]
 script = ExtResource("1_lblhy")
 
-[node name="Worldmappixel" type="Sprite2D" parent="."]
-position = Vector2(8057, -5504)
-scale = Vector2(10, 10)
-texture = ExtResource("2_6o165")
-
-[node name="Worldmappixel2" type="Sprite2D" parent="."]
-position = Vector2(10568, -5516)
-scale = Vector2(10, 10)
-texture = ExtResource("2_6o165")
-
-[node name="Worldmappixel3" type="Sprite2D" parent="."]
-position = Vector2(10574, -4251)
-scale = Vector2(10, 10)
-texture = ExtResource("2_6o165")
-
-[node name="Worldmappixel4" type="Sprite2D" parent="."]
-position = Vector2(8063, -4239)
-scale = Vector2(10, 10)
-texture = ExtResource("2_6o165")
-
-[node name="Worldmappixel5" type="Sprite2D" parent="."]
-position = Vector2(8069, -3142)
-scale = Vector2(10, 10)
-texture = ExtResource("2_6o165")
-
-[node name="Worldmappixel6" type="Sprite2D" parent="."]
-position = Vector2(10568, -3154)
-scale = Vector2(10, 10)
-texture = ExtResource("2_6o165")
-
 [node name="player" parent="." instance=ExtResource("1_qjm0x")]
-position = Vector2(-460, 341)
+position = Vector2(-670, 378)
 
 [node name="Staircase" type="Sprite2D" parent="."]
 position = Vector2(971, 144)
@@ -68,43 +43,31 @@ texture = ExtResource("2_3prbl")
 position = Vector2(964, -482)
 texture = ExtResource("2_3prbl")
 
-[node name="Staircase4" type="Sprite2D" parent="Staircase"]
-position = Vector2(1446, -723)
-texture = ExtResource("2_3prbl")
-
-[node name="Staircase5" type="Sprite2D" parent="Staircase"]
-position = Vector2(1928, -964)
-texture = ExtResource("2_3prbl")
-
-[node name="Staircase6" type="Sprite2D" parent="Staircase"]
-position = Vector2(2409, -1205)
-texture = ExtResource("2_3prbl")
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-973, -144)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 scale = Vector2(2, 2)
-polygon = PackedVector2Array(3635.5, -1186, 1792.39, -264.196, 726, 269, 738, 269, 3630, -1179)
+polygon = PackedVector2Array(2184.5, -458.5, 1792.39, -264.196, 726, 269, 738, 269, 2192, -437.5)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(10273, -6000)
+position = Vector2(7667, -4878)
 shape = SubResource("RectangleShape2D_ka8wa")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(10017.5, -2363)
+position = Vector2(7379.25, -916)
 shape = SubResource("RectangleShape2D_ka8wa")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(12793, -4296)
+position = Vector2(8872, -3436)
 shape = SubResource("RectangleShape2D_3a0ux")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(7774, -5019)
+position = Vector2(4890, -3626.88)
 shape = SubResource("RectangleShape2D_3a0ux")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(7521.5, -2545)
+position = Vector2(4636, -1109)
 shape = SubResource("RectangleShape2D_3trxk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
@@ -115,16 +78,108 @@ shape = SubResource("RectangleShape2D_tsogp")
 position = Vector2(402, 377)
 shape = SubResource("RectangleShape2D_tsogp")
 
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(239.563, 430.5)
+shape = SubResource("RectangleShape2D_nvn8o")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-430, -150)
+scale = Vector2(2, 2)
+polygon = PackedVector2Array(2652, -785, 1792.39, -264.196, 726, 269, 738, 269, 2438.5, -502)
+
 [node name="suspense" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(6277, -2666)
+position = Vector2(3414, -1154)
 stream = ExtResource("4_dij4j")
 pitch_scale = 0.7
 autoplay = true
-max_distance = 6200.0
 panning_strength = 0.0
 
 [node name="AConversationWithSaul(roughDemo" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-1059, 320)
 stream = ExtResource("6_moy8p")
 pitch_scale = 0.7
+autoplay = true
 panning_strength = 0.0
+
+[node name="Bars" type="Sprite2D" parent="."]
+position = Vector2(-733, 287)
+texture = ExtResource("7_wrv0c")
+
+[node name="Bars2" type="Sprite2D" parent="."]
+position = Vector2(3831, -1228)
+texture = ExtResource("7_wrv0c")
+
+[node name="Controlpad" type="Sprite2D" parent="."]
+position = Vector2(-143, 514)
+scale = Vector2(1.85833, 1)
+texture = ExtResource("8_ssqbg")
+
+[node name="Controlpad2" type="Sprite2D" parent="."]
+position = Vector2(-595, 126)
+scale = Vector2(1.85833, 1)
+texture = ExtResource("8_ssqbg")
+
+[node name="Controlpad3" type="Sprite2D" parent="."]
+position = Vector2(3663, -950)
+scale = Vector2(0.738889, 1)
+texture = ExtResource("8_ssqbg")
+
+[node name="Controlpad4" type="Sprite2D" parent="."]
+position = Vector2(6051, -950)
+scale = Vector2(5.89444, 1)
+texture = ExtResource("8_ssqbg")
+
+[node name="Controlpad5" type="Sprite2D" parent="."]
+position = Vector2(5822, -5133)
+scale = Vector2(6.65556, 1)
+texture = ExtResource("8_ssqbg")
+
+[node name="Controlpad6" type="Sprite2D" parent="."]
+position = Vector2(8032, -2971)
+scale = Vector2(0.406249, 17.5167)
+texture = ExtResource("8_ssqbg")
+
+[node name="Controlpad7" type="Sprite2D" parent="."]
+position = Vector2(3666.13, -3144)
+scale = Vector2(0.73368, 16.175)
+texture = ExtResource("8_ssqbg")
+
+[node name="cloud" parent="." instance=ExtResource("8_ucqig")]
+position = Vector2(4611, -1920)
+scale = Vector2(5, 5)
+
+[node name="cloud2" parent="." instance=ExtResource("8_ucqig")]
+position = Vector2(4332, -2456)
+scale = Vector2(5, 5)
+
+[node name="cloud3" parent="." instance=ExtResource("8_ucqig")]
+position = Vector2(7058, -1708)
+scale = Vector2(5, 5)
+
+[node name="cloud4" parent="." instance=ExtResource("8_ucqig")]
+position = Vector2(6431, -2199)
+scale = Vector2(5, 5)
+
+[node name="cloud5" parent="." instance=ExtResource("8_ucqig")]
+position = Vector2(7284, -2818)
+scale = Vector2(5, 5)
+
+[node name="cloud6" parent="." instance=ExtResource("8_ucqig")]
+position = Vector2(5608, -2946)
+scale = Vector2(5, 5)
+
+[node name="cloud7" parent="." instance=ExtResource("8_ucqig")]
+position = Vector2(4785, -3150)
+scale = Vector2(5, 5)
+
+[node name="cloud8" parent="." instance=ExtResource("8_ucqig")]
+position = Vector2(6514, -3830)
+scale = Vector2(5, 5)
+
+[node name="cloud9" parent="." instance=ExtResource("8_ucqig")]
+position = Vector2(7420, -4298)
+scale = Vector2(5, 5)
+
+[node name="cloud10" parent="." instance=ExtResource("8_ucqig")]
+position = Vector2(4332, -4343)
+scale = Vector2(5, 5)
