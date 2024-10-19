@@ -86,7 +86,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-240, -150)]
+"values": [Vector2(-240, -250)]
 }
 
 [sub_resource type="Animation" id="Animation_q4f7y"]
@@ -102,7 +102,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-240, -150), Vector2(-240, -170), Vector2(-240, -130), Vector2(-240, -160), Vector2(-240, -140), Vector2(-240, -150)]
+"values": [Vector2(-240, -250), Vector2(-240, -270), Vector2(-240, -230), Vector2(-240, -260), Vector2(-240, -240), Vector2(-240, -250)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8c0ib"]
@@ -119,12 +119,13 @@ script = ExtResource("1_m8axc")
 [node name="HUD" type="Node2D" parent="."]
 
 [node name="Health" type="Sprite2D" parent="HUD"]
-position = Vector2(-240, -150)
+position = Vector2(-240, -250)
 scale = Vector2(2, 2)
 texture = ExtResource("13_1472h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
+scale = Vector2(1.05, 1.05)
 shape = SubResource("RectangleShape2D_v5r0w")
 
 [node name="cannonbase" type="Sprite2D" parent="."]
@@ -180,6 +181,7 @@ wait_time = 0.2
 
 [node name="walkingsound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_5ofp1")
+volume_db = -6.933
 pitch_scale = 1.31
 
 [node name="cannonsound" type="AudioStreamPlayer2D" parent="."]

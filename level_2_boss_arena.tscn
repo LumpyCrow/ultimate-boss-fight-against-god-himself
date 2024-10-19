@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://p74ir71ry238"]
+[gd_scene load_steps=16 format=3 uid="uid://p74ir71ry238"]
 
 [ext_resource type="Script" path="res://level_2_boss_arena.gd" id="1_lblhy"]
 [ext_resource type="PackedScene" uid="uid://be3xkbl84anxw" path="res://player.tscn" id="1_qjm0x"]
@@ -6,8 +6,10 @@
 [ext_resource type="AudioStream" uid="uid://c1xac0wvleyy7" path="res://audio/music/Iwan Gabovitch - Dark Ambience Loop.ogg" id="4_dij4j"]
 [ext_resource type="AudioStream" uid="uid://bo1nlvblnxmi2" path="res://audio/music/A Conversation with Saul (Rough Demo.mp3" id="6_moy8p"]
 [ext_resource type="Texture2D" uid="uid://dco0b8aykmlrx" path="res://textures/bars.png" id="7_wrv0c"]
+[ext_resource type="Texture2D" uid="uid://bqkhaxftlk2cf" path="res://textures/tree.png" id="7_xpyu6"]
 [ext_resource type="Texture2D" uid="uid://iwoje7ukcyh5" path="res://textures/controlpad.png" id="8_ssqbg"]
 [ext_resource type="PackedScene" uid="uid://cyxbaveo4t0vj" path="res://cloud.tscn" id="8_ucqig"]
+[ext_resource type="Texture2D" uid="uid://8y1wubwrffbe" path="res://textures/bossbody.png" id="10_hs407"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ka8wa"]
 size = Vector2(6019.5, 20)
@@ -27,8 +29,156 @@ size = Vector2(88.875, 149)
 [node name="level_2_boss_arena" type="Node2D"]
 script = ExtResource("1_lblhy")
 
+[node name="decoration" type="Node" parent="."]
+
+[node name="Tree13" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
+position = Vector2(5450, -1157)
+texture = ExtResource("7_xpyu6")
+
+[node name="Tree14" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
+position = Vector2(7492, -1164)
+texture = ExtResource("7_xpyu6")
+
+[node name="Tree15" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
+position = Vector2(7196, -1115)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_xpyu6")
+
+[node name="Tree16" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
+position = Vector2(7731, -1112)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_xpyu6")
+
+[node name="Tree" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
+position = Vector2(4139, -1155)
+texture = ExtResource("7_xpyu6")
+
+[node name="Tree2" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
+position = Vector2(4254, -1111)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_xpyu6")
+
+[node name="Tree3" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
+position = Vector2(4529, -1153)
+rotation = -0.120428
+texture = ExtResource("7_xpyu6")
+
+[node name="Tree4" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
+position = Vector2(4660, -1155)
+texture = ExtResource("7_xpyu6")
+
+[node name="Tree5" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
+position = Vector2(6318, -1155.71)
+texture = ExtResource("7_xpyu6")
+
+[node name="Tree6" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
+position = Vector2(6433, -1111.71)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_xpyu6")
+
+[node name="Tree7" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
+position = Vector2(6708, -1153.71)
+rotation = -0.120428
+texture = ExtResource("7_xpyu6")
+
+[node name="Tree8" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
+position = Vector2(6839, -1155.71)
+texture = ExtResource("7_xpyu6")
+
+[node name="Tree10" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
+position = Vector2(5110, -1115)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_xpyu6")
+
+[node name="Tree12" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
+position = Vector2(5364, -1117)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_xpyu6")
+
+[node name="Tree17" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
+position = Vector2(4402, -1325)
+scale = Vector2(3, 3)
+texture = ExtResource("7_xpyu6")
+
+[node name="Tree19" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
+position = Vector2(7360, -1323)
+scale = Vector2(3, 3)
+texture = ExtResource("7_xpyu6")
+
+[node name="Tree20" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
+position = Vector2(6582, -1239)
+scale = Vector2(2, 2)
+texture = ExtResource("7_xpyu6")
+
+[node name="Tree22" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
+position = Vector2(5033, -1239)
+scale = Vector2(2, 2)
+texture = ExtResource("7_xpyu6")
+
+[node name="Bars" type="Sprite2D" parent="decoration"]
+position = Vector2(-733, 287)
+texture = ExtResource("7_wrv0c")
+
+[node name="Bars2" type="Sprite2D" parent="decoration"]
+position = Vector2(3831, -1228)
+texture = ExtResource("7_wrv0c")
+
+[node name="Controlpad" type="Sprite2D" parent="decoration"]
+position = Vector2(-143, 514)
+scale = Vector2(1.85833, 1)
+texture = ExtResource("8_ssqbg")
+
+[node name="Controlpad2" type="Sprite2D" parent="decoration"]
+position = Vector2(-595, 126)
+scale = Vector2(1.85833, 1)
+texture = ExtResource("8_ssqbg")
+
+[node name="Controlpad3" type="Sprite2D" parent="decoration"]
+position = Vector2(3663, -950)
+scale = Vector2(0.738889, 1)
+texture = ExtResource("8_ssqbg")
+
+[node name="Controlpad4" type="Sprite2D" parent="decoration"]
+position = Vector2(6051, -950)
+scale = Vector2(5.89444, 1)
+texture = ExtResource("8_ssqbg")
+
+[node name="Controlpad5" type="Sprite2D" parent="decoration"]
+position = Vector2(5822, -5133)
+scale = Vector2(6.65556, 1)
+texture = ExtResource("8_ssqbg")
+
+[node name="Controlpad6" type="Sprite2D" parent="decoration"]
+position = Vector2(8032, -2971)
+scale = Vector2(0.406249, 17.5167)
+texture = ExtResource("8_ssqbg")
+
+[node name="Controlpad7" type="Sprite2D" parent="decoration"]
+position = Vector2(3666.13, -3144)
+scale = Vector2(0.73368, 16.175)
+texture = ExtResource("8_ssqbg")
+
 [node name="player" parent="." instance=ExtResource("1_qjm0x")]
-position = Vector2(-670, 378)
+top_level = true
+position = Vector2(4367, -1095)
 
 [node name="Staircase" type="Sprite2D" parent="."]
 position = Vector2(971, 144)
@@ -101,49 +251,6 @@ pitch_scale = 0.7
 autoplay = true
 panning_strength = 0.0
 
-[node name="Bars" type="Sprite2D" parent="."]
-position = Vector2(-733, 287)
-texture = ExtResource("7_wrv0c")
-
-[node name="Bars2" type="Sprite2D" parent="."]
-position = Vector2(3831, -1228)
-texture = ExtResource("7_wrv0c")
-
-[node name="Controlpad" type="Sprite2D" parent="."]
-position = Vector2(-143, 514)
-scale = Vector2(1.85833, 1)
-texture = ExtResource("8_ssqbg")
-
-[node name="Controlpad2" type="Sprite2D" parent="."]
-position = Vector2(-595, 126)
-scale = Vector2(1.85833, 1)
-texture = ExtResource("8_ssqbg")
-
-[node name="Controlpad3" type="Sprite2D" parent="."]
-position = Vector2(3663, -950)
-scale = Vector2(0.738889, 1)
-texture = ExtResource("8_ssqbg")
-
-[node name="Controlpad4" type="Sprite2D" parent="."]
-position = Vector2(6051, -950)
-scale = Vector2(5.89444, 1)
-texture = ExtResource("8_ssqbg")
-
-[node name="Controlpad5" type="Sprite2D" parent="."]
-position = Vector2(5822, -5133)
-scale = Vector2(6.65556, 1)
-texture = ExtResource("8_ssqbg")
-
-[node name="Controlpad6" type="Sprite2D" parent="."]
-position = Vector2(8032, -2971)
-scale = Vector2(0.406249, 17.5167)
-texture = ExtResource("8_ssqbg")
-
-[node name="Controlpad7" type="Sprite2D" parent="."]
-position = Vector2(3666.13, -3144)
-scale = Vector2(0.73368, 16.175)
-texture = ExtResource("8_ssqbg")
-
 [node name="cloud" parent="." instance=ExtResource("8_ucqig")]
 position = Vector2(4611, -1920)
 scale = Vector2(5, 5)
@@ -183,3 +290,8 @@ scale = Vector2(5, 5)
 [node name="cloud10" parent="." instance=ExtResource("8_ucqig")]
 position = Vector2(4332, -4343)
 scale = Vector2(5, 5)
+
+[node name="Bossbody" type="Sprite2D" parent="."]
+position = Vector2(5949, -1231)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10_hs407")

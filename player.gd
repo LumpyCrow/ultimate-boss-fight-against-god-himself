@@ -21,14 +21,7 @@ var cannonball = preload("res://cannonball.tscn")
 var fireable = true
 
 func _physics_process(delta: float) -> void:
-	
-		#for the pivot so that it's movement is smooth
-	
-	# Add the gravity.
 
-	# if the down button is pressed, the player will fall faster
-	#if not is_on_floor() and velocity.y < 400 and Input.is_action_pressed("Down"):
-		#velocity += get_gravity() * delta
 	if not is_on_floor() and velocity.y < 150:
 		velocity += get_gravity() * delta
 	else:
