@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://c8wvqkkkfr6h6"]
+
+[ext_resource type="Script" path="res://boss.gd" id="1_k2pdl"]
+[ext_resource type="Texture2D" uid="uid://8y1wubwrffbe" path="res://textures/bossbody.png" id="2_71omb"]
+[ext_resource type="Texture2D" uid="uid://ldokvrkegpj6" path="res://textures/boss/toprightarm.png" id="3_d45g2"]
+[ext_resource type="Texture2D" uid="uid://bod73wtog7jem" path="res://textures/boss/bottomrightarm.png" id="4_gxhjo"]
+[ext_resource type="Texture2D" uid="uid://dhamutvov6scc" path="res://textures/boss/topleftarm.png" id="5_3snox"]
+[ext_resource type="Texture2D" uid="uid://bk0sx07d0o0g3" path="res://textures/boss/bottomleftarm.png" id="6_5b3ui"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_anfww"]
+radius = 113.018
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_524jr"]
+radius = 301.841
+
+[node name="boss" type="CharacterBody2D"]
+collision_mask = 0
+script = ExtResource("1_k2pdl")
+
+[node name="Bossbody" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_71omb")
+
+[node name="arms" type="Node2D" parent="."]
+show_behind_parent = true
+
+[node name="toprightarm" type="Node2D" parent="arms"]
+position = Vector2(90, -66)
+
+[node name="Toprightarm" type="Sprite2D" parent="arms/toprightarm"]
+position = Vector2(87, -67)
+texture = ExtResource("3_d45g2")
+
+[node name="bottomrightarm" type="Node2D" parent="arms"]
+position = Vector2(90, 66)
+
+[node name="Bottomrightarm" type="Sprite2D" parent="arms/bottomrightarm"]
+position = Vector2(85, 67)
+texture = ExtResource("4_gxhjo")
+
+[node name="topleftarm" type="Node2D" parent="arms"]
+position = Vector2(-90, -66)
+
+[node name="Topleftarm" type="Sprite2D" parent="arms/topleftarm"]
+position = Vector2(-88, -66)
+texture = ExtResource("5_3snox")
+
+[node name="bottomleftarm" type="Node2D" parent="arms"]
+position = Vector2(-90, 66)
+
+[node name="Bottomleftarm" type="Sprite2D" parent="arms/bottomleftarm"]
+position = Vector2(-88, 67)
+texture = ExtResource("6_5b3ui")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_anfww")
+
+[node name="detection_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+shape = SubResource("CircleShape2D_524jr")
+
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]

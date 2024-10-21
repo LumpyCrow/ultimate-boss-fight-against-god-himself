@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwo43pjwb2o2u"]
+
+[ext_resource type="Texture2D" uid="uid://pmgu5qnvx670" path="res://textures/lazer.png" id="1_kmduw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3na3"]
+size = Vector2(9, 50)
+
+[node name="miniLazer" type="CharacterBody2D"]
+
+[node name="Lazer" type="Sprite2D" parent="."]
+texture = ExtResource("1_kmduw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_j3na3")

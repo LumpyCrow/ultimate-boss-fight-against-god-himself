@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bqkhaxftlk2cf" path="res://textures/tree.png" id="7_xpyu6"]
 [ext_resource type="Texture2D" uid="uid://iwoje7ukcyh5" path="res://textures/controlpad.png" id="8_ssqbg"]
 [ext_resource type="PackedScene" uid="uid://cyxbaveo4t0vj" path="res://cloud.tscn" id="8_ucqig"]
-[ext_resource type="Texture2D" uid="uid://8y1wubwrffbe" path="res://textures/bossbody.png" id="10_hs407"]
+[ext_resource type="PackedScene" uid="uid://c8wvqkkkfr6h6" path="res://boss.tscn" id="10_4coqm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ka8wa"]
 size = Vector2(6019.5, 20)
@@ -291,7 +291,7 @@ scale = Vector2(5, 5)
 position = Vector2(4332, -4343)
 scale = Vector2(5, 5)
 
-[node name="Bossbody" type="Sprite2D" parent="."]
-position = Vector2(5949, -1231)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("10_hs407")
+[node name="boss" parent="." instance=ExtResource("10_4coqm")]
+position = Vector2(4884, -1550)
+collision_layer = 0
+collision_mask = 1
