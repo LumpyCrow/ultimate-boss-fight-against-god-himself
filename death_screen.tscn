@@ -1,0 +1,139 @@
+[gd_scene load_steps=9 format=3 uid="uid://jq0vmo2dyieh"]
+
+[ext_resource type="Texture2D" uid="uid://cpsgd2ft4niql" path="res://textures/backroundj.png" id="1_piqvy"]
+[ext_resource type="Texture2D" uid="uid://q8xnyf8lai5v" path="res://textures/duck/right.png" id="2_8em88"]
+
+[sub_resource type="Animation" id="Animation_l526s"]
+resource_name = "duckspin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("duck:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_btgf2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("duck:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y63pa"]
+_data = {
+"RESET": SubResource("Animation_btgf2"),
+"duckspin": SubResource("Animation_l526s")
+}
+
+[sub_resource type="Animation" id="Animation_tnkjv"]
+resource_name = "backgroundthing"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(376, 1377), Vector2(376, -700)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_i4lft"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(375, 1021)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hij8s"]
+_data = {
+"RESET": SubResource("Animation_i4lft"),
+"backgroundthing": SubResource("Animation_tnkjv")
+}
+
+[node name="Death screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(375, 1021)
+scale = Vector2(2, 6)
+texture = ExtResource("1_piqvy")
+
+[node name="background2" type="Sprite2D" parent="."]
+position = Vector2(403, 2139)
+rotation = -3.14159
+scale = Vector2(2, 6)
+texture = ExtResource("1_piqvy")
+
+[node name="duck" type="Sprite2D" parent="."]
+position = Vector2(355, 362)
+texture = ExtResource("2_8em88")
+
+[node name="duckspin" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y63pa")
+}
+autoplay = "duckspin"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hij8s")
+}
+autoplay = "backgroundthing"
