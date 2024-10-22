@@ -206,6 +206,7 @@ libraries = {
 stream = ExtResource("16_t0pkm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
 
 [connection signal="body_entered" from="damagezone" to="." method="_on_damagezone_body_entered"]
 [connection signal="timeout" from="splitsecond" to="." method="_on_splitsecond_timeout"]

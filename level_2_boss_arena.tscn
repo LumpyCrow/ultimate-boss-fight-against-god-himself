@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://p74ir71ry238"]
+[gd_scene load_steps=16 format=3 uid="uid://b4g4elufxyvlo"]
 
 [ext_resource type="Script" path="res://level_2_boss_arena.gd" id="1_lblhy"]
 [ext_resource type="PackedScene" uid="uid://be3xkbl84anxw" path="res://player.tscn" id="1_qjm0x"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dco0b8aykmlrx" path="res://textures/bars.png" id="7_wrv0c"]
 [ext_resource type="Texture2D" uid="uid://bqkhaxftlk2cf" path="res://textures/tree.png" id="7_xpyu6"]
 [ext_resource type="Texture2D" uid="uid://iwoje7ukcyh5" path="res://textures/controlpad.png" id="8_ssqbg"]
-[ext_resource type="PackedScene" uid="uid://cyxbaveo4t0vj" path="res://cloud.tscn" id="8_ucqig"]
+[ext_resource type="PackedScene" path="res://cloud.tscn" id="8_ucqig"]
 [ext_resource type="Texture2D" uid="uid://8y1wubwrffbe" path="res://textures/bossbody.png" id="10_hs407"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ka8wa"]
