@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8wvqkkkfr6h6"]
+[gd_scene load_steps=11 format=3 uid="uid://c8wvqkkkfr6h6"]
 
 [ext_resource type="Script" path="res://boss.gd" id="1_k2pdl"]
 [ext_resource type="Texture2D" uid="uid://8y1wubwrffbe" path="res://textures/bossbody.png" id="2_71omb"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bod73wtog7jem" path="res://textures/boss/bottomrightarm.png" id="4_gxhjo"]
 [ext_resource type="Texture2D" uid="uid://dhamutvov6scc" path="res://textures/boss/topleftarm.png" id="5_3snox"]
 [ext_resource type="Texture2D" uid="uid://bk0sx07d0o0g3" path="res://textures/boss/bottomleftarm.png" id="6_5b3ui"]
+[ext_resource type="Texture2D" uid="uid://rku7xgwdvgk1" path="res://textures/boss/launcher.png" id="7_ptm81"]
+[ext_resource type="Texture2D" uid="uid://db2yumu6djwkd" path="res://textures/boss/minilazer.png" id="7_rad7n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_anfww"]
 radius = 113.018
@@ -16,10 +18,6 @@ radius = 301.841
 [node name="boss" type="CharacterBody2D"]
 collision_mask = 0
 script = ExtResource("1_k2pdl")
-
-[node name="Bossbody" type="Sprite2D" parent="."]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_71omb")
 
 [node name="arms" type="Node2D" parent="."]
 show_behind_parent = true
@@ -60,4 +58,80 @@ shape = SubResource("CircleShape2D_anfww")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
 shape = SubResource("CircleShape2D_524jr")
 
+[node name="lazergunPivot" type="Node2D" parent="."]
+
+[node name="Minilazer" type="Sprite2D" parent="lazergunPivot"]
+position = Vector2(0, -135)
+texture = ExtResource("7_rad7n")
+
+[node name="Minilazer2" type="Sprite2D" parent="lazergunPivot"]
+position = Vector2(0, 135)
+rotation = 3.14159
+texture = ExtResource("7_rad7n")
+
+[node name="Minilazer3" type="Sprite2D" parent="lazergunPivot"]
+position = Vector2(135, 0)
+rotation = 1.5708
+texture = ExtResource("7_rad7n")
+
+[node name="Minilazer4" type="Sprite2D" parent="lazergunPivot"]
+position = Vector2(-135, 0)
+rotation = -1.5708
+texture = ExtResource("7_rad7n")
+
+[node name="Minilazer5" type="Sprite2D" parent="lazergunPivot"]
+position = Vector2(95, -95)
+rotation = 0.785398
+texture = ExtResource("7_rad7n")
+
+[node name="Minilazer6" type="Sprite2D" parent="lazergunPivot"]
+position = Vector2(-95, -95)
+rotation = -0.785398
+texture = ExtResource("7_rad7n")
+
+[node name="Minilazer7" type="Sprite2D" parent="lazergunPivot"]
+position = Vector2(95, 95)
+rotation = 2.35619
+texture = ExtResource("7_rad7n")
+
+[node name="Minilazer8" type="Sprite2D" parent="lazergunPivot"]
+position = Vector2(-95, 95)
+rotation = 3.92699
+texture = ExtResource("7_rad7n")
+
+[node name="biglazerpivot" type="Node2D" parent="."]
+scale = Vector2(0.6, 0.6)
+
+[node name="Launcher" type="Sprite2D" parent="biglazerpivot"]
+position = Vector2(0, -132)
+texture = ExtResource("7_ptm81")
+
+[node name="Launcher2" type="Sprite2D" parent="biglazerpivot"]
+position = Vector2(132, 0)
+rotation = 1.5708
+texture = ExtResource("7_ptm81")
+
+[node name="Launcher3" type="Sprite2D" parent="biglazerpivot"]
+position = Vector2(-132, 0)
+rotation = -1.5708
+texture = ExtResource("7_ptm81")
+
+[node name="Launcher4" type="Sprite2D" parent="biglazerpivot"]
+position = Vector2(0, 132)
+rotation = -3.14159
+texture = ExtResource("7_ptm81")
+
+[node name="Bossbody" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_71omb")
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="minilazerTimer" type="Timer" parent="Timers"]
+
+[node name="minilazerCooldown" type="Timer" parent="Timers"]
+wait_time = 0.2
+autostart = true
+
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="timeout" from="Timers/minilazerCooldown" to="." method="_on_minilazer_cooldown_timeout"]
