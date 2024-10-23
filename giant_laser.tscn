@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1s0xu8cjnlfe"]
+
+[ext_resource type="Texture2D" uid="uid://is1gjovog0f3" path="res://textures/biglazer.png" id="1_hcuje"]
+[ext_resource type="AudioStream" uid="uid://dfjgsnbiakt0" path="res://audio/laserconstant.mp3" id="2_lbu00"]
+
+[node name="giant_laser" type="Node2D"]
+
+[node name="Biglazer" type="Sprite2D" parent="."]
+position = Vector2(0, -1250)
+scale = Vector2(1, 100)
+texture = ExtResource("1_hcuje")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_lbu00")
+pitch_scale = 0.8
+autoplay = true

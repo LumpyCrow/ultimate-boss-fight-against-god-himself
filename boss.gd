@@ -1,21 +1,26 @@
 extends CharacterBody2D
 
 var LittleLazer = load("res://mini_lazer.tscn")
+var BigLazer = load("res://giant_laser.tscn")
 
 const SPEED = 20.0
 const SPEED2 = 100
 var player = null
 var player_chase = 0
 var minilazerready = true
+var giantLaserReady = false
 
 func _physics_process(delta: float) -> void:
 	print(player_chase)
 	$lazergunPivot.rotation = $lazergunPivot.rotation + 0.05
+	$biglazerpivot.rotation = $biglazerpivot.rotation - 0.02
 	
 	if player_chase == 1:
 		velocity += (player.position - position)/SPEED
 	if player_chase == 2:
 		position += (player.position - position)/40
+		if not $rapidfire.is_playing():
+			$rapidfire.play()
 		if minilazerready == true:
 			var new_LittleLazer = LittleLazer.instantiate()
 			add_sibling(new_LittleLazer)
@@ -80,7 +85,44 @@ func _physics_process(delta: float) -> void:
 			new_LittleLazer8.rotation = $lazergunPivot.rotation + 315
 			new_LittleLazer8.velocity.y = -100
 			minilazerready = false
+	
+	if player_chase == 3:
+		velocity += (player.position - position)/SPEED
+		
+	if player_chase >= 4:
+		velocity.y = 0
+		velocity.x = 0
+		if giantLaserReady == true:
+			var new_BigLazer = BigLazer.instantiate()
+			$biglazerpivot.add_child(new_BigLazer)
+			new_BigLazer.position.y = $biglazerpivot/Launcher.position.y
+			new_BigLazer.position.x = $biglazerpivot/Launcher.position.x
+			giantLaserReady = false
 			
+			var new_BigLazer2 = BigLazer.instantiate()
+			$biglazerpivot.add_child(new_BigLazer2)
+			new_BigLazer2.position.y = $biglazerpivot/Launcher2.position.y
+			new_BigLazer2.position.x = $biglazerpivot/Launcher2.position.x
+			new_BigLazer2.rotation = 1.5708
+			giantLaserReady = false
+			
+			var new_BigLazer3 = BigLazer.instantiate()
+			$biglazerpivot.add_child(new_BigLazer3)
+			new_BigLazer3.position.y = $biglazerpivot/Launcher3.position.y
+			new_BigLazer3.position.x = $biglazerpivot/Launcher3.position.x
+			new_BigLazer3.rotation = 3.14159
+			
+			giantLaserReady = false
+			
+			var new_BigLazer4 = BigLazer.instantiate()
+			$biglazerpivot.add_child(new_BigLazer4)
+			new_BigLazer4.position.y = $biglazerpivot/Launcher4.position.y
+			new_BigLazer4.position.x = $biglazerpivot/Launcher4.position.x
+			new_BigLazer4.rotation = 4.71239
+			
+			giantLaserReady = false
+			
+
 
 	move_and_slide()
 
@@ -93,7 +135,12 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 		$detection_area.queue_free()
 		
 func _on_followtimer_timeout() -> void:
-	player_chase = 2
+	player_chase = player_chase + 1
+	if player_chase == 3:
+		$warmup.play()
 
 func _on_minilazer_cooldown_timeout() -> void:
 	minilazerready = true
+
+func _on_warmup_finished() -> void:
+	giantLaserReady = true
