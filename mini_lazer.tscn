@@ -7,11 +7,14 @@
 size = Vector2(9, 50)
 
 [node name="miniLazer" type="CharacterBody2D"]
+collision_mask = 0
 script = ExtResource("1_pxl7x")
 
 [node name="Lazer" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_kmduw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
+scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_j3na3")
