@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://fwiprpt8nkki"]
+
+[ext_resource type="Texture2D" uid="uid://bni6l30cn71yx" path="res://textures/enemtfollow.png" id="1_113ll"]
+[ext_resource type="Script" path="res://follower.gd" id="1_ved0a"]
+
+[node name="follower" type="CharacterBody2D"]
+script = ExtResource("1_ved0a")
+
+[node name="Enemtfollow" type="Sprite2D" parent="."]
+rotation = 3.14159
+texture = ExtResource("1_113ll")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+rotation = 3.14159
+polygon = PackedVector2Array(-28, 5, 7, -13, 12, -6, 22, -17, 27, -17, 31, -14, 31, -9, 27, -6, 22, -6, 19, -8, 13, -4, 17, 5, 16, 8, 18, 9, 21, 6, 26, 6, 30, 9, 30, 13, 26, 17, 21, 17, 14, 10, 9, 14, -13, 14)

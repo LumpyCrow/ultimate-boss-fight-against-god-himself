@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://be3xkbl84anxw"]
+[gd_scene load_steps=24 format=3 uid="uid://be3xkbl84anxw"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_m8axc"]
 [ext_resource type="Texture2D" uid="uid://q8xnyf8lai5v" path="res://textures/duck/right.png" id="2_17gb2"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://by58n75u3e2e7" path="res://audio/single-quack-from-a-duck-14494.mp3" id="12_0unir"]
 [ext_resource type="Texture2D" uid="uid://bvok05hwus3p4" path="res://textures/health/health5.png" id="13_1472h"]
 [ext_resource type="AudioStream" uid="uid://dw2qv7g3hyhl2" path="res://audio/smallmedkit1.wav" id="16_t0pkm"]
+[ext_resource type="Texture2D" uid="uid://iwoje7ukcyh5" path="res://textures/controlpad.png" id="17_2wnhh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v5r0w"]
 
@@ -206,7 +207,12 @@ libraries = {
 stream = ExtResource("16_t0pkm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-limit_left = 0
+position = Vector2(0, 160)
+
+[node name="Controlpad" type="Sprite2D" parent="."]
+position = Vector2(0, 519.75)
+scale = Vector2(1, 1.50208)
+texture = ExtResource("17_2wnhh")
 
 [connection signal="body_entered" from="damagezone" to="." method="_on_damagezone_body_entered"]
 [connection signal="timeout" from="splitsecond" to="." method="_on_splitsecond_timeout"]

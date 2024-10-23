@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1s0xu8cjnlfe"]
+[gd_scene load_steps=4 format=3 uid="uid://b1s0xu8cjnlfe"]
 
 [ext_resource type="Texture2D" uid="uid://is1gjovog0f3" path="res://textures/biglazer.png" id="1_hcuje"]
+[ext_resource type="Script" path="res://giant_laser.gd" id="1_pta6d"]
 [ext_resource type="AudioStream" uid="uid://dfjgsnbiakt0" path="res://audio/laserconstant.mp3" id="2_lbu00"]
 
 [node name="giant_laser" type="Node2D"]
+script = ExtResource("1_pta6d")
 
 [node name="Biglazer" type="Sprite2D" parent="."]
 position = Vector2(0, -1250)
@@ -12,5 +14,11 @@ texture = ExtResource("1_hcuje")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_lbu00")
-pitch_scale = 0.8
+pitch_scale = 0.75
 autoplay = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
