@@ -89,7 +89,7 @@ func _physics_process(delta: float) -> void:
 	if player_chase == 3:
 		velocity += (player.position - position)/SPEED
 		
-	if player_chase >= 4:
+	if player_chase == 4:
 		velocity.y = 0
 		velocity.x = 0
 		if giantLaserReady == true:
@@ -122,7 +122,8 @@ func _physics_process(delta: float) -> void:
 			
 			giantLaserReady = false
 			
-
+	if player_chase >= 5:
+		velocity += (player.position - position)/SPEED
 
 	move_and_slide()
 

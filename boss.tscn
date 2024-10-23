@@ -135,7 +135,7 @@ wait_time = 0.2
 autostart = true
 
 [node name="Followtimer" type="Timer" parent="Timers"]
-wait_time = 5.0
+wait_time = 10.0
 
 [node name="rapidfire" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_u6cgh")
@@ -143,6 +143,7 @@ stream = ExtResource("9_u6cgh")
 [node name="warmup" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_4trog")
 volume_db = 8.914
+pitch_scale = 0.25
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="timeout" from="Timers/minilazerCooldown" to="." method="_on_minilazer_cooldown_timeout"]
