@@ -24,6 +24,10 @@ window/size/window_height_override=720
 window/stretch/mode="viewport"
 <<<<<<<Updatedupstreamwindow/size/viewport_width=720
 
+[global_group]
+
+player=""
+
 [input]
 
 Left={

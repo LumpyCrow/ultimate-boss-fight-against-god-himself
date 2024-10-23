@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bwpqipcc8aq2a"]
+[gd_scene load_steps=21 format=3 uid="uid://bwpqipcc8aq2a"]
 
 [ext_resource type="Script" path="res://start_screen.gd" id="1_41j1r"]
 [ext_resource type="Texture2D" uid="uid://cpsgd2ft4niql" path="res://textures/backroundj.png" id="2_x753r"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://cbryhkapremv5" path="res://textures/cloud.png" id="7_o53ti"]
 [ext_resource type="Texture2D" uid="uid://77r875bgs0wg" path="res://textures/duck/walkright.png" id="8_nm07x"]
 [ext_resource type="Texture2D" uid="uid://crtwmq7kvbh8v" path="res://textures/remade smaller better doo.png" id="10_c7iiu"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4p1cf"]
+load_path = "res://.godot/imported/start button.png-c5c1118fbf699f093031482ed30800bd.ctex"
 
 [sub_resource type="Animation" id="Animation_c82am"]
 resource_name = "Background"
@@ -135,11 +138,53 @@ _data = {
 "RESET": SubResource("Animation_rvk2r")
 }
 
+[sub_resource type="Animation" id="Animation_t63tj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(297, 386)]
+}
+
+[sub_resource type="Animation" id="Animation_e1ri5"]
+resource_name = "button"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.33333, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(297, 386), Vector2(296, 400), Vector2(297, 386)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_27k5g"]
+_data = {
+"RESET": SubResource("Animation_t63tj"),
+"button": SubResource("Animation_e1ri5")
+}
+
 [node name="Start Screen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = 1.0
+offset_right = -3.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_41j1r")
@@ -151,11 +196,13 @@ texture = ExtResource("2_x753r")
 
 [node name="Start" type="Button" parent="."]
 layout_mode = 0
-offset_left = 302.0
-offset_top = 394.0
-offset_right = 400.0
-offset_bottom = 425.0
-text = "Start Game"
+offset_left = 297.0
+offset_top = 386.0
+offset_right = 425.0
+offset_bottom = 461.0
+icon = SubResource("CompressedTexture2D_4p1cf")
+flat = true
+expand_icon = true
 
 [node name="Duck sprite" type="Sprite2D" parent="."]
 position = Vector2(740, -13)
@@ -242,6 +289,19 @@ offset_left = 216.0
 offset_top = 422.0
 offset_right = 224.0
 offset_bottom = 483.0
+
+[node name="button-thing" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Start")
+libraries = {
+"": SubResource("AnimationLibrary_27k5g")
+}
+autoplay = "button"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(365, 247)
+zoom = Vector2(1, 1.45)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

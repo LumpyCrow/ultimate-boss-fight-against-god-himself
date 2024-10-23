@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b4g4elufxyvlo"]
+[gd_scene load_steps=17 format=3 uid="uid://b4g4elufxyvlo"]
 
 [ext_resource type="Script" path="res://level_2_boss_arena.gd" id="1_lblhy"]
 [ext_resource type="PackedScene" uid="uid://be3xkbl84anxw" path="res://player.tscn" id="1_qjm0x"]
@@ -9,7 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bqkhaxftlk2cf" path="res://textures/tree.png" id="7_xpyu6"]
 [ext_resource type="Texture2D" uid="uid://iwoje7ukcyh5" path="res://textures/controlpad.png" id="8_ssqbg"]
 [ext_resource type="PackedScene" path="res://cloud.tscn" id="8_ucqig"]
-[ext_resource type="Texture2D" uid="uid://8y1wubwrffbe" path="res://textures/bossbody.png" id="10_hs407"]
+[ext_resource type="PackedScene" path="res://boss.tscn" id="10_4coqm"]
+[ext_resource type="AudioStream" uid="uid://bt72rkqiwrjnc" path="res://audio/music/At_the_Speed_Of_Light.mp3" id="10_ttyu6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ka8wa"]
 size = Vector2(6019.5, 20)
@@ -176,22 +177,62 @@ position = Vector2(3666.13, -3144)
 scale = Vector2(0.73368, 16.175)
 texture = ExtResource("8_ssqbg")
 
-[node name="player" parent="." instance=ExtResource("1_qjm0x")]
-top_level = true
-position = Vector2(4367, -1095)
+[node name="cloud" parent="decoration" instance=ExtResource("8_ucqig")]
+position = Vector2(4611, -1920)
+scale = Vector2(5, 5)
 
-[node name="Staircase" type="Sprite2D" parent="."]
+[node name="cloud2" parent="decoration" instance=ExtResource("8_ucqig")]
+position = Vector2(4332, -2456)
+scale = Vector2(5, 5)
+
+[node name="cloud3" parent="decoration" instance=ExtResource("8_ucqig")]
+position = Vector2(7058, -1708)
+scale = Vector2(5, 5)
+
+[node name="cloud4" parent="decoration" instance=ExtResource("8_ucqig")]
+position = Vector2(6431, -2199)
+scale = Vector2(5, 5)
+
+[node name="cloud5" parent="decoration" instance=ExtResource("8_ucqig")]
+position = Vector2(7284, -2818)
+scale = Vector2(5, 5)
+
+[node name="cloud6" parent="decoration" instance=ExtResource("8_ucqig")]
+position = Vector2(5608, -2946)
+scale = Vector2(5, 5)
+
+[node name="cloud7" parent="decoration" instance=ExtResource("8_ucqig")]
+position = Vector2(4785, -3150)
+scale = Vector2(5, 5)
+
+[node name="cloud8" parent="decoration" instance=ExtResource("8_ucqig")]
+position = Vector2(6514, -3830)
+scale = Vector2(5, 5)
+
+[node name="cloud9" parent="decoration" instance=ExtResource("8_ucqig")]
+position = Vector2(7420, -4298)
+scale = Vector2(5, 5)
+
+[node name="cloud10" parent="decoration" instance=ExtResource("8_ucqig")]
+position = Vector2(4332, -4343)
+scale = Vector2(5, 5)
+
+[node name="Staircase" type="Sprite2D" parent="decoration"]
 position = Vector2(971, 144)
 scale = Vector2(2, 2)
 texture = ExtResource("2_3prbl")
 
-[node name="Staircase2" type="Sprite2D" parent="Staircase"]
+[node name="Staircase2" type="Sprite2D" parent="decoration/Staircase"]
 position = Vector2(482, -241)
 texture = ExtResource("2_3prbl")
 
-[node name="Staircase3" type="Sprite2D" parent="Staircase"]
+[node name="Staircase3" type="Sprite2D" parent="decoration/Staircase"]
 position = Vector2(964, -482)
 texture = ExtResource("2_3prbl")
+
+[node name="player" parent="." instance=ExtResource("1_qjm0x")]
+top_level = true
+position = Vector2(4367, -1095)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-973, -144)
@@ -251,47 +292,10 @@ pitch_scale = 0.7
 autoplay = true
 panning_strength = 0.0
 
-[node name="cloud" parent="." instance=ExtResource("8_ucqig")]
-position = Vector2(4611, -1920)
-scale = Vector2(5, 5)
+[node name="AthTheSpeedOfLight" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ttyu6")
+volume_db = -8.432
+autoplay = true
 
-[node name="cloud2" parent="." instance=ExtResource("8_ucqig")]
-position = Vector2(4332, -2456)
-scale = Vector2(5, 5)
-
-[node name="cloud3" parent="." instance=ExtResource("8_ucqig")]
-position = Vector2(7058, -1708)
-scale = Vector2(5, 5)
-
-[node name="cloud4" parent="." instance=ExtResource("8_ucqig")]
-position = Vector2(6431, -2199)
-scale = Vector2(5, 5)
-
-[node name="cloud5" parent="." instance=ExtResource("8_ucqig")]
-position = Vector2(7284, -2818)
-scale = Vector2(5, 5)
-
-[node name="cloud6" parent="." instance=ExtResource("8_ucqig")]
-position = Vector2(5608, -2946)
-scale = Vector2(5, 5)
-
-[node name="cloud7" parent="." instance=ExtResource("8_ucqig")]
-position = Vector2(4785, -3150)
-scale = Vector2(5, 5)
-
-[node name="cloud8" parent="." instance=ExtResource("8_ucqig")]
-position = Vector2(6514, -3830)
-scale = Vector2(5, 5)
-
-[node name="cloud9" parent="." instance=ExtResource("8_ucqig")]
-position = Vector2(7420, -4298)
-scale = Vector2(5, 5)
-
-[node name="cloud10" parent="." instance=ExtResource("8_ucqig")]
-position = Vector2(4332, -4343)
-scale = Vector2(5, 5)
-
-[node name="Bossbody" type="Sprite2D" parent="."]
-position = Vector2(5949, -1231)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("10_hs407")
+[node name="boss" parent="." instance=ExtResource("10_4coqm")]
+position = Vector2(4884, -1550)

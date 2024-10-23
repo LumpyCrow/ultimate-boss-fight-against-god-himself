@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwn4liylso171"
-path="res://.godot/imported/bossbar.png-c86faa6b38c199067407f6b259b7e3db.ctex"
+uid="uid://dhamutvov6scc"
+path="res://.godot/imported/topleftarm.png-52e4b1e7d45e88129f96a20d8f0a3e62.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/bosshealthsprites/bossbar.png"
-dest_files=["res://.godot/imported/bossbar.png-c86faa6b38c199067407f6b259b7e3db.ctex"]
+source_file="res://textures/boss/topleftarm.png"
+dest_files=["res://.godot/imported/topleftarm.png-52e4b1e7d45e88129f96a20d8f0a3e62.ctex"]
 
 [params]
 
