@@ -103,6 +103,8 @@ func _physics_process(delta: float) -> void:
 		velocity.y = 0
 		velocity.x = 0
 		if giantLaserReady == true:
+			$bassdrop.play()
+			
 			var new_BigLazer = BigLazer.instantiate()
 			$biglazerpivot.add_child(new_BigLazer)
 			new_BigLazer.position.y = $biglazerpivot/Launcher.position.y

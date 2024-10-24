@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://b32itda14r43q" path="res://textures/lilguy.png" id="2_qdbth"]
 
 [node name="follower" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_ved0a")
 
 [node name="Lilguy" type="Sprite2D" parent="."]
