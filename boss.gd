@@ -2,14 +2,17 @@ extends CharacterBody2D
 
 var LittleLazer = load("res://mini_lazer.tscn")
 var BigLazer = load("res://giant_laser.tscn")
+var missle = load("res://follower.tscn")
 @onready var player2 = get_parent().get_node("player")
 
 const SPEED = 40.0
 const SPEED2 = 100
 var player = null
 var player_chase = 0
+
 var minilazerready = true
 var giantLaserReady = false
+var missleready = true
 
 func _physics_process(delta: float) -> void:
 	print(player_chase)
@@ -129,9 +132,40 @@ func _physics_process(delta: float) -> void:
 			
 			giantLaserReady = false
 			
-	if player_chase >= 5:
+	if player_chase == 5:
 		velocity += (player.position - position)/SPEED
-
+	
+	if player_chase >= 6:
+		position += (player.position - position)/40
+		if missleready == true:
+			print("missle created!")
+			var new_missle = missle.instantiate()
+			add_sibling(new_missle)
+			new_missle.position.y = $biglazerpivot/Launcher.global_position.y
+			new_missle.position.x = $biglazerpivot/Launcher.global_position.x
+			missleready = false
+			
+			var new_missle2 = missle.instantiate()
+			add_sibling(new_missle2)
+			new_missle2.position.y = $biglazerpivot/Launcher2.global_position.y
+			new_missle2.position.x = $biglazerpivot/Launcher2.global_position.x
+			new_missle2.rotation = $lazergunPivot.rotation + 90
+			missleready = false
+			
+			var new_missle3 = missle.instantiate()
+			add_sibling(new_missle3)
+			new_missle3.position.y = $biglazerpivot/Launcher3.global_position.y
+			new_missle3.position.x = $biglazerpivot/Launcher3.global_position.x
+			new_missle3.rotation = $lazergunPivot.rotation + 180
+			missleready = false
+			
+			var new_missle4 = missle.instantiate()
+			add_sibling(new_missle4)
+			new_missle4.position.y = $biglazerpivot/Launcher4.global_position.y
+			new_missle4.position.x = $biglazerpivot/Launcher4.global_position.x
+			new_missle4.rotation = $lazergunPivot.rotation + 270
+			missleready = false
+		
 	move_and_slide()
 
 
@@ -152,3 +186,6 @@ func _on_minilazer_cooldown_timeout() -> void:
 
 func _on_warmup_finished() -> void:
 	giantLaserReady = true
+	
+func _on_missle_cooldown_timeout() -> void:
+	missleready = true
