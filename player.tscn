@@ -154,13 +154,9 @@ texture = ExtResource("3_dgd70")
 [node name="firezone" type="Node2D" parent="pivot/cannon"]
 position = Vector2(0.434876, -10.3501)
 
-[node name="Crosshair" type="Sprite2D" parent="pivot"]
-position = Vector2(0, -50)
-texture = ExtResource("11_6a0ne")
-
 [node name="Crosshair2" type="Sprite2D" parent="pivot"]
 position = Vector2(0, -100)
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 texture = ExtResource("11_6a0ne")
 
 [node name="damagezone" type="Area2D" parent="."]

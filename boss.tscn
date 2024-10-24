@@ -1,13 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://c8wvqkkkfr6h6"]
+[gd_scene load_steps=16 format=3 uid="uid://c8wvqkkkfr6h6"]
 
 [ext_resource type="Script" path="res://boss.gd" id="1_k2pdl"]
 [ext_resource type="Texture2D" uid="uid://8y1wubwrffbe" path="res://textures/bossbody.png" id="2_71omb"]
-[ext_resource type="Texture2D" uid="uid://ldokvrkegpj6" path="res://textures/boss/toprightarm.png" id="3_d45g2"]
-[ext_resource type="Texture2D" uid="uid://bod73wtog7jem" path="res://textures/boss/bottomrightarm.png" id="4_gxhjo"]
-[ext_resource type="Texture2D" uid="uid://dhamutvov6scc" path="res://textures/boss/topleftarm.png" id="5_3snox"]
-[ext_resource type="Texture2D" uid="uid://bk0sx07d0o0g3" path="res://textures/boss/bottomleftarm.png" id="6_5b3ui"]
+[ext_resource type="Texture2D" uid="uid://c655yhvej3757" path="res://textures/boss/righttop.png" id="2_cxfwr"]
+[ext_resource type="Texture2D" uid="uid://bu06h4r340ang" path="res://textures/boss/lasershooter.png" id="3_x3kc6"]
+[ext_resource type="Texture2D" uid="uid://bm8loby5whjl4" path="res://textures/boss/rightbottom.png" id="4_qx61j"]
+[ext_resource type="Texture2D" uid="uid://5l34j5gpc3kp" path="res://textures/boss/Sucker.png" id="5_5jt6r"]
+[ext_resource type="Texture2D" uid="uid://c2aq17q7vyeu6" path="res://textures/boss/lefttop.png" id="6_y375v"]
+[ext_resource type="Texture2D" uid="uid://cheele6hs6r1v" path="res://textures/boss/enemyLauncher.png" id="7_jfpdy"]
 [ext_resource type="Texture2D" uid="uid://rku7xgwdvgk1" path="res://textures/boss/launcher.png" id="7_ptm81"]
 [ext_resource type="Texture2D" uid="uid://db2yumu6djwkd" path="res://textures/boss/minilazer.png" id="7_rad7n"]
+[ext_resource type="Texture2D" uid="uid://2qyy56xmsbuy" path="res://textures/boss/leftbottom.png" id="8_vh6lv"]
 [ext_resource type="AudioStream" uid="uid://bcleiu4k4hcnr" path="res://audio/rapid_fire.mp3" id="9_u6cgh"]
 [ext_resource type="AudioStream" uid="uid://ck1kgd21qwhnu" path="res://audio/giant_laser_warmup.mp3" id="10_4trog"]
 
@@ -27,35 +30,72 @@ show_behind_parent = true
 [node name="toprightarm" type="Node2D" parent="arms"]
 position = Vector2(90, -66)
 
-[node name="Toprightarm" type="Sprite2D" parent="arms/toprightarm"]
-position = Vector2(87, -67)
-texture = ExtResource("3_d45g2")
+[node name="Righttop" type="Sprite2D" parent="arms/toprightarm"]
+position = Vector2(82, -68)
+texture = ExtResource("2_cxfwr")
+
+[node name="Handpivot" type="Node2D" parent="arms/toprightarm"]
+position = Vector2(182, -215)
+
+[node name="Lasershooter" type="Sprite2D" parent="arms/toprightarm/Handpivot"]
+position = Vector2(47, 8)
+rotation = 2.0944
+scale = Vector2(2, 2)
+texture = ExtResource("3_x3kc6")
 
 [node name="bottomrightarm" type="Node2D" parent="arms"]
 position = Vector2(90, 66)
 
-[node name="Bottomrightarm" type="Sprite2D" parent="arms/bottomrightarm"]
-position = Vector2(85, 67)
-texture = ExtResource("4_gxhjo")
+[node name="Rightbottom" type="Sprite2D" parent="arms/bottomrightarm"]
+position = Vector2(82, 68)
+texture = ExtResource("4_qx61j")
+
+[node name="HandPivot" type="Node2D" parent="arms/bottomrightarm"]
+position = Vector2(182, 210)
+
+[node name="Sucker" type="Sprite2D" parent="arms/bottomrightarm/HandPivot"]
+position = Vector2(47, 7)
+rotation = 2.0944
+scale = Vector2(2, 2)
+texture = ExtResource("5_5jt6r")
 
 [node name="topleftarm" type="Node2D" parent="arms"]
 position = Vector2(-90, -66)
 
-[node name="Topleftarm" type="Sprite2D" parent="arms/topleftarm"]
-position = Vector2(-88, -66)
-texture = ExtResource("5_3snox")
+[node name="Lefttop" type="Sprite2D" parent="arms/topleftarm"]
+position = Vector2(-86, -68)
+texture = ExtResource("6_y375v")
+
+[node name="HandPivot" type="Node2D" parent="arms/topleftarm"]
+position = Vector2(-177, -203)
+
+[node name="EnemyLauncher" type="Sprite2D" parent="arms/topleftarm/HandPivot"]
+position = Vector2(43, -4)
+rotation = 2.0944
+scale = Vector2(2, 2)
+texture = ExtResource("7_jfpdy")
 
 [node name="bottomleftarm" type="Node2D" parent="arms"]
 position = Vector2(-90, 66)
 
-[node name="Bottomleftarm" type="Sprite2D" parent="arms/bottomleftarm"]
-position = Vector2(-88, 67)
-texture = ExtResource("6_5b3ui")
+[node name="Leftbottom" type="Sprite2D" parent="arms/bottomleftarm"]
+position = Vector2(-83, 68)
+texture = ExtResource("8_vh6lv")
+
+[node name="Handpivot" type="Node2D" parent="arms/bottomleftarm"]
+position = Vector2(-186, 213)
+
+[node name="Lasershooter" type="Sprite2D" parent="arms/bottomleftarm/Handpivot"]
+position = Vector2(47, 7)
+rotation = 2.0944
+scale = Vector2(2, 2)
+texture = ExtResource("3_x3kc6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_anfww")
 
 [node name="detection_area" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
 shape = SubResource("CircleShape2D_524jr")

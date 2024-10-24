@@ -2,8 +2,9 @@ extends CharacterBody2D
 
 var LittleLazer = load("res://mini_lazer.tscn")
 var BigLazer = load("res://giant_laser.tscn")
+@onready var player2 = get_parent().get_node("player")
 
-const SPEED = 20.0
+const SPEED = 40.0
 const SPEED2 = 100
 var player = null
 var player_chase = 0
@@ -14,6 +15,12 @@ func _physics_process(delta: float) -> void:
 	print(player_chase)
 	$lazergunPivot.rotation = $lazergunPivot.rotation + 0.05
 	$biglazerpivot.rotation = $biglazerpivot.rotation - 0.02
+	$Bossbody.rotation = velocity.x *0.0005
+	
+	$arms/topleftarm/HandPivot.look_at(player2.position)
+	$arms/toprightarm/Handpivot.look_at(player2.position)
+	$arms/bottomleftarm/Handpivot.look_at(player2.position)
+	$arms/bottomrightarm/HandPivot.look_at(player2.position)
 	
 	if player_chase == 1:
 		velocity += (player.position - position)/SPEED
