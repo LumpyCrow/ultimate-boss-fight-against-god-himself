@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0wi7gvybt3n2"]
+
+[ext_resource type="Texture2D" uid="uid://8y1wubwrffbe" path="res://textures/bossbody.png" id="1_jme5o"]
+[ext_resource type="Texture2D" uid="uid://c655yhvej3757" path="res://textures/boss/righttop.png" id="2_eg7si"]
+[ext_resource type="Texture2D" uid="uid://bu06h4r340ang" path="res://textures/boss/lasershooter.png" id="3_ky5ph"]
+[ext_resource type="Texture2D" uid="uid://bm8loby5whjl4" path="res://textures/boss/rightbottom.png" id="4_qsjev"]
+[ext_resource type="Texture2D" uid="uid://5l34j5gpc3kp" path="res://textures/boss/Sucker.png" id="5_kmetd"]
+[ext_resource type="Texture2D" uid="uid://c2aq17q7vyeu6" path="res://textures/boss/lefttop.png" id="6_klcn3"]
+[ext_resource type="Texture2D" uid="uid://cheele6hs6r1v" path="res://textures/boss/enemyLauncher.png" id="7_xu81j"]
+[ext_resource type="Texture2D" uid="uid://2qyy56xmsbuy" path="res://textures/boss/leftbottom.png" id="8_y4hwq"]
+
+[node name="fakeBoss" type="Node2D"]
+
+[node name="Bossbody" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_jme5o")
+
+[node name="arms" type="Node2D" parent="."]
+show_behind_parent = true
+
+[node name="toprightarm" type="Node2D" parent="arms"]
+position = Vector2(90, -66)
+
+[node name="Righttop" type="Sprite2D" parent="arms/toprightarm"]
+position = Vector2(82, -68)
+texture = ExtResource("2_eg7si")
+
+[node name="Handpivot" type="Node2D" parent="arms/toprightarm"]
+position = Vector2(182, -215)
+
+[node name="Lasershooter" type="Sprite2D" parent="arms/toprightarm/Handpivot"]
+position = Vector2(47, 8)
+rotation = 2.0944
+scale = Vector2(2, 2)
+texture = ExtResource("3_ky5ph")
+
+[node name="bottomrightarm" type="Node2D" parent="arms"]
+position = Vector2(90, 66)
+
+[node name="Rightbottom" type="Sprite2D" parent="arms/bottomrightarm"]
+position = Vector2(82, 68)
+texture = ExtResource("4_qsjev")
+
+[node name="HandPivot" type="Node2D" parent="arms/bottomrightarm"]
+position = Vector2(182, 210)
+
+[node name="Sucker" type="Sprite2D" parent="arms/bottomrightarm/HandPivot"]
+position = Vector2(47, 7)
+rotation = 2.0944
+scale = Vector2(2, 2)
+texture = ExtResource("5_kmetd")
+
+[node name="topleftarm" type="Node2D" parent="arms"]
+position = Vector2(-90, -66)
+
+[node name="Lefttop" type="Sprite2D" parent="arms/topleftarm"]
+position = Vector2(-86, -68)
+texture = ExtResource("6_klcn3")
+
+[node name="HandPivot" type="Node2D" parent="arms/topleftarm"]
+position = Vector2(-177, -203)
+
+[node name="EnemyLauncher" type="Sprite2D" parent="arms/topleftarm/HandPivot"]
+position = Vector2(43, -4)
+rotation = 2.0944
+scale = Vector2(2, 2)
+texture = ExtResource("7_xu81j")
+
+[node name="bottomleftarm" type="Node2D" parent="arms"]
+position = Vector2(-90, 66)
+
+[node name="Leftbottom" type="Sprite2D" parent="arms/bottomleftarm"]
+position = Vector2(-83, 68)
+texture = ExtResource("8_y4hwq")
+
+[node name="Handpivot" type="Node2D" parent="arms/bottomleftarm"]
+position = Vector2(-186, 213)
+
+[node name="Lasershooter" type="Sprite2D" parent="arms/bottomleftarm/Handpivot"]
+position = Vector2(47, 7)
+rotation = 2.0944
+scale = Vector2(2, 2)
+texture = ExtResource("3_ky5ph")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://p74ir71ry238"]
+[gd_scene load_steps=21 format=3 uid="uid://p74ir71ry238"]
 
 [ext_resource type="Script" path="res://level_2_boss_arena.gd" id="1_lblhy"]
 [ext_resource type="PackedScene" uid="uid://be3xkbl84anxw" path="res://player.tscn" id="1_qjm0x"]
@@ -9,9 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bqkhaxftlk2cf" path="res://textures/tree.png" id="7_xpyu6"]
 [ext_resource type="Texture2D" uid="uid://iwoje7ukcyh5" path="res://textures/controlpad.png" id="8_ssqbg"]
 [ext_resource type="PackedScene" uid="uid://cyxbaveo4t0vj" path="res://cloud.tscn" id="8_ucqig"]
-[ext_resource type="PackedScene" uid="uid://c8wvqkkkfr6h6" path="res://boss.tscn" id="10_4coqm"]
 [ext_resource type="AudioStream" uid="uid://bt72rkqiwrjnc" path="res://audio/music/At_the_Speed_Of_Light.mp3" id="10_ttyu6"]
-[ext_resource type="PackedScene" uid="uid://fwiprpt8nkki" path="res://follower.tscn" id="12_fwqan"]
+[ext_resource type="PackedScene" uid="uid://b0wi7gvybt3n2" path="res://fake_boss.tscn" id="12_ajslr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ka8wa"]
 size = Vector2(6019.5, 20)
@@ -28,6 +27,166 @@ size = Vector2(1285.5, 28)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvn8o"]
 size = Vector2(88.875, 149)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0kh7y"]
+size = Vector2(6, 10)
+
+[sub_resource type="Animation" id="Animation_vct6l"]
+resource_name = "battleBegin"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fakeBoss/arms/toprightarm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.98023e-08, 0.166667, 0.666667, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.785398, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fakeBoss/arms/topleftarm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.98023e-08, 0.166667, 0.666667, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -0.785398, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("fakeBoss:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.98023e-08, 0.166667, 0.666667, 1.16667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(5872, -600), Vector2(5872, -800), Vector2(5872, -1000), Vector2(5872, -1100), Vector2(5872, -1400)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("fakeBoss/arms/bottomleftarm:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.98023e-08, 1.16667, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.959931, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("fakeBoss/arms/bottomrightarm:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.98023e-08, 1.16667, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.959931, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("player:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5855, -1082), Vector2(5855, -1082)]
+}
+
+[sub_resource type="Animation" id="Animation_ll3p0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fakeBoss/arms/toprightarm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fakeBoss/arms/topleftarm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("fakeBoss:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5872, -731)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("fakeBoss/arms/bottomleftarm:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("fakeBoss/arms/bottomrightarm:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("player:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5855, -1082)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uw55s"]
+_data = {
+"RESET": SubResource("Animation_ll3p0"),
+"battleBegin": SubResource("Animation_vct6l")
+}
+
 [node name="level_2_boss_arena" type="Node2D"]
 script = ExtResource("1_lblhy")
 
@@ -40,7 +199,7 @@ texture = ExtResource("7_xpyu6")
 
 [node name="Tree14" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(7492, -1164)
+position = Vector2(7510, -1155)
 texture = ExtResource("7_xpyu6")
 
 [node name="Tree15" type="Sprite2D" parent="decoration"]
@@ -231,9 +390,14 @@ texture = ExtResource("2_3prbl")
 position = Vector2(964, -482)
 texture = ExtResource("2_3prbl")
 
+[node name="Controlpad8" type="Sprite2D" parent="decoration"]
+position = Vector2(6031, -718)
+scale = Vector2(5.89444, 1)
+texture = ExtResource("8_ssqbg")
+
 [node name="player" parent="." instance=ExtResource("1_qjm0x")]
 top_level = true
-position = Vector2(4586, -1996)
+position = Vector2(5855, -1082)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-973, -144)
@@ -298,8 +462,23 @@ stream = ExtResource("10_ttyu6")
 volume_db = -8.432
 autoplay = true
 
-[node name="boss" parent="." instance=ExtResource("10_4coqm")]
-position = Vector2(4884, -1550)
+[node name="battlebegin" type="Area2D" parent="."]
+position = Vector2(5868, -1074)
 
-[node name="follower" parent="." instance=ExtResource("12_fwqan")]
-position = Vector2(4199, -1186)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="battlebegin"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_0kh7y")
+
+[node name="fakeBoss" parent="." instance=ExtResource("12_ajslr")]
+position = Vector2(5872, -731)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uw55s")
+}
+speed_scale = 0.25
+
+[connection signal="body_entered" from="battlebegin" to="." method="_on_battlebegin_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+
+[editable path="fakeBoss"]
