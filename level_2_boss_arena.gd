@@ -7,7 +7,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-	#if not $suspense.is_playing():
-		#$suspense.play()
+	if not $AthTheSpeedOfLight.is_playing():
+		$AthTheSpeedOfLight.play()
 	

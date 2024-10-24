@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://iwoje7ukcyh5" path="res://textures/controlpad.png" id="8_ssqbg"]
 [ext_resource type="PackedScene" uid="uid://cyxbaveo4t0vj" path="res://cloud.tscn" id="8_ucqig"]
 [ext_resource type="PackedScene" uid="uid://c8wvqkkkfr6h6" path="res://boss.tscn" id="10_4coqm"]
-[ext_resource type="AudioStream" uid="uid://bt72rkqiwrjnc" path="res://audio/music/At_the_Speed_Of_Light.mp3" id="10_ttyu6"]
+[ext_resource type="AudioStream" uid="uid://bgx2ivcx05c8n" path="res://audio/music/colective concieness.mp3" id="10_bkcb2"]
 [ext_resource type="PackedScene" uid="uid://fwiprpt8nkki" path="res://follower.tscn" id="12_fwqan"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ka8wa"]
@@ -294,12 +294,11 @@ autoplay = true
 panning_strength = 0.0
 
 [node name="AthTheSpeedOfLight" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_ttyu6")
+stream = ExtResource("10_bkcb2")
 volume_db = -8.432
-autoplay = true
 
 [node name="boss" parent="." instance=ExtResource("10_4coqm")]
-position = Vector2(4884, -1550)
+position = Vector2(5949, -1472)
 
 [node name="follower" parent="." instance=ExtResource("12_fwqan")]
 position = Vector2(4199, -1186)
