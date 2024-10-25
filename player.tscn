@@ -202,6 +202,7 @@ collision_mask = 23
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damagezone"]
 position = Vector2(0, 1)
+scale = Vector2(1.01, 1.01)
 shape = SubResource("RectangleShape2D_fp6ku")
 
 [node name="splitsecond" type="Timer" parent="."]

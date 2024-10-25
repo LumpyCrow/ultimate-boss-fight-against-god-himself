@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://p74ir71ry238"]
+[gd_scene load_steps=24 format=3 uid="uid://p74ir71ry238"]
 
 [ext_resource type="Script" path="res://level_2_boss_arena.gd" id="1_lblhy"]
 [ext_resource type="PackedScene" uid="uid://be3xkbl84anxw" path="res://player.tscn" id="1_qjm0x"]
@@ -13,9 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://csf512jps6fby" path="res://audio/Falling Rock.wav" id="12_2afhx"]
 [ext_resource type="PackedScene" uid="uid://b0wi7gvybt3n2" path="res://fake_boss.tscn" id="12_ajslr"]
 [ext_resource type="AudioStream" uid="uid://de065vk2ysoe7" path="res://audio/concrete-scrape-loop-made-with-Voicemod-technology.mp3" id="13_6pc6d"]
-[ext_resource type="PackedScene" uid="uid://cotkp8bhaal6" path="res://clusterbomb.tscn" id="14_uqgo8"]
 [ext_resource type="AudioStream" uid="uid://ch0qp7pu1kr1a" path="res://audio/godzilla-minus-one-roar.mp3" id="14_vygq2"]
-[ext_resource type="PackedScene" uid="uid://fwiprpt8nkki" path="res://follower.tscn" id="16_mbgxb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ka8wa"]
 size = Vector2(6019.5, 20)
@@ -133,6 +131,18 @@ tracks/7/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("roar:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_vct6l"]
 resource_name = "battleBegin"
@@ -228,10 +238,22 @@ tracks/7/path = NodePath("FallingRock:playing")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(-0.866667, 3.23333),
+"times": PackedFloat32Array(0, 4.96667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("roar:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(3.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uw55s"]
@@ -532,7 +554,7 @@ libraries = {
 [node name="FallingRock" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(5858, -994)
 stream = ExtResource("12_2afhx")
-volume_db = 0.99
+volume_db = 24.0
 pitch_scale = 0.62
 
 [node name="Concrete" type="AudioStreamPlayer2D" parent="."]
@@ -544,12 +566,6 @@ volume_db = 1.53
 position = Vector2(5874, -1276)
 stream = ExtResource("14_vygq2")
 volume_db = 24.0
-
-[node name="clusterbomb" parent="." instance=ExtResource("14_uqgo8")]
-position = Vector2(5688, -1139)
-
-[node name="follower" parent="." instance=ExtResource("16_mbgxb")]
-position = Vector2(5642, -1284)
 
 [connection signal="body_entered" from="battlebegin" to="." method="_on_battlebegin_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

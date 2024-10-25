@@ -160,7 +160,7 @@ func _physics_process(delta: float) -> void:
 		
 func _on_damagezone_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Heals") and health < 5:
-		health = health + 1
+		health = health + 3
 		$medkitsound.play()
 		body.queue_free()
 		

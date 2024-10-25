@@ -3,6 +3,8 @@ extends CharacterBody2D
 var LittleLazer = load("res://mini_lazer.tscn")
 var BigLazer = load("res://giant_laser.tscn")
 var missle = load("res://follower.tscn")
+var Clusterbomb = load("res://clusterbomb.tscn")
+
 @onready var player2 = get_parent().get_node("player")
 
 const SPEED = 40.0
@@ -18,7 +20,6 @@ var clusterbombready = true
 
 func _physics_process(delta: float) -> void:
 	print(player_chase)
-	print(velocity.x)
 	
 	if velocity.x > SPEEDLIMIT:
 		velocity.x = velocity.x - 200
@@ -188,8 +189,34 @@ func _physics_process(delta: float) -> void:
 	if player_chase == 7:
 		velocity += (player.position - position)/SPEED
 		
-	if player_chase >= 8:
+	if player_chase == 8:
 		velocity += (player.position - position)/SPEED
+		if clusterbombready == true:
+			var new_Clusterbomb =  Clusterbomb.instantiate()
+			add_sibling(new_Clusterbomb)
+			new_Clusterbomb.position.y = $biglazerpivot/Launcher.global_position.y
+			new_Clusterbomb.position.x = $biglazerpivot/Launcher.global_position.x
+			
+			var new_Clusterbomb2 = Clusterbomb.instantiate()
+			add_sibling(new_Clusterbomb2)
+			new_Clusterbomb2.position.y = $biglazerpivot/Launcher2.global_position.y
+			new_Clusterbomb2.position.x = $biglazerpivot/Launcher2.global_position.x
+			new_Clusterbomb2.rotation = $lazergunPivot.rotation + 90
+			
+			var new_Clusterbomb3 = Clusterbomb.instantiate()
+			add_sibling(new_Clusterbomb3)
+			new_Clusterbomb3.position.y = $biglazerpivot/Launcher3.global_position.y
+			new_Clusterbomb3.position.x = $biglazerpivot/Launcher3.global_position.x
+			new_Clusterbomb3.rotation = $lazergunPivot.rotation + 180
+			
+			var new_Clusterbomb4 =  Clusterbomb.instantiate()
+			add_sibling(new_Clusterbomb4)
+			new_Clusterbomb4.position.y = $biglazerpivot/Launcher4.global_position.y
+			new_Clusterbomb4.position.x = $biglazerpivot/Launcher4.global_position.x
+			new_Clusterbomb4.rotation = $lazergunPivot.rotation + 270
+			
+			clusterbombready = false
+			
 	move_and_slide()
 
 
@@ -201,7 +228,10 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 		$detection_area.queue_free()
 		
 func _on_followtimer_timeout() -> void:
-	player_chase = player_chase + 1
+	if player_chase < 9:
+		player_chase = player_chase + 1
+	if player_chase == 9:
+		player_chase = 1
 	if player_chase == 3:
 		$warmup.play()
 
@@ -213,3 +243,6 @@ func _on_warmup_finished() -> void:
 	
 func _on_missle_cooldown_timeout() -> void:
 	missleready = true
+
+func _on_bomb_cooldown_timeout() -> void:
+	clusterbombready = true

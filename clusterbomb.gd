@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var explosion = load("res://explosion.tscn")
 var bomb = load("res://bomb.tscn")
-const SPEED = 300.0
+const SPEED = 600.0
 const JUMP_VELOCITY = -400.0
 
 

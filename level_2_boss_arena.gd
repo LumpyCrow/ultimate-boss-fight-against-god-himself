@@ -26,7 +26,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	new_boss.position.x = $fakeBoss.position.x
 	$fakeBoss.queue_free()
 	$battlebegin.queue_free()
-	$roar.play()
 
 
 func _on_roar_finished() -> void:

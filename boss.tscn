@@ -202,6 +202,7 @@ wait_time = 2.0
 autostart = true
 
 [node name="bombCooldown" type="Timer" parent="Timers"]
+autostart = true
 
 [node name="rapidfire" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_u6cgh")
@@ -219,4 +220,5 @@ pitch_scale = 3.0
 [connection signal="timeout" from="Timers/minilazerCooldown" to="." method="_on_minilazer_cooldown_timeout"]
 [connection signal="timeout" from="Timers/Followtimer" to="." method="_on_followtimer_timeout"]
 [connection signal="timeout" from="Timers/missleCooldown" to="." method="_on_missle_cooldown_timeout"]
+[connection signal="timeout" from="Timers/bombCooldown" to="." method="_on_bomb_cooldown_timeout"]
 [connection signal="finished" from="warmup" to="." method="_on_warmup_finished"]
