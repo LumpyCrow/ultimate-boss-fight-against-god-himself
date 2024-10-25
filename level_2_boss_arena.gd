@@ -4,8 +4,7 @@ var boss = load("res://boss.tscn")
 var songplaying = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -17,6 +16,7 @@ func _on_battlebegin_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		$AnimationPlayer.play("battleBegin")
 		songplaying = true
+		$player.camerashaking = true
 	
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
@@ -26,3 +26,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	new_boss.position.x = $fakeBoss.position.x
 	$fakeBoss.queue_free()
 	$battlebegin.queue_free()
+	$roar.play()
+
+
+func _on_roar_finished() -> void:
+	$player.camerashaking = false

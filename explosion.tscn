@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://co12ntmqkavtw"]
+[gd_scene load_steps=9 format=3 uid="uid://co12ntmqkavtw"]
 
 [ext_resource type="Texture2D" uid="uid://chrir2jxp27xs" path="res://textures/explosion/explosion1.png" id="1_0gxcq"]
 [ext_resource type="Script" path="res://explosion.gd" id="1_j01uu"]
@@ -39,17 +39,27 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_mx5u8"]
+radius = 20.025
+
 [node name="explosion" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_j01uu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_osx0h")
 autoplay = "default"
-frame_progress = 0.299574
+frame = 3
+frame_progress = 0.647166
 
 [node name="SingualerExplosion" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_uo6ts")
 volume_db = -8.0
 autoplay = true
+
+[node name="death" type="CharacterBody2D" parent="." groups=["danger"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="death"]
+shape = SubResource("CircleShape2D_mx5u8")
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]

@@ -12,9 +12,10 @@ var touchscreenrotateright = false
 const SPEED = 15
 const JUMP_VELOCITY = -30.0
 var facingright = true
+var camerashaking = false
 
 var invincible = false
-var health = 5
+var health = 10
 var death = preload("res://death.tscn")
 
 var cannonball = preload("res://cannonball.tscn")
@@ -22,11 +23,16 @@ var fireable = true
 
 func _physics_process(delta: float) -> void:
 
+	if camerashaking == true:
+		$Camerashaker.play("cameraShake")
+	else:
+		$Camerashaker.stop()
+
 	if not is_on_floor() and velocity.y < 150:
 		velocity += get_gravity() * delta
 	else:
 		if Input.is_action_pressed("Down"):
-			if not is_on_floor() and velocity.y < 400:
+			if not is_on_floor() and velocity.y < 500:
 				velocity += get_gravity() * delta
 		if not Input.is_action_pressed("Down"):
 			if not is_on_floor() and velocity.y > 150:
@@ -36,7 +42,7 @@ func _physics_process(delta: float) -> void:
 		
 	# Handle jump. (+animation)
 	if Input.is_action_pressed("ui_accept") or touchscreenfly == true:
-		if velocity.y > -400:
+		if velocity.y > -500:
 			velocity.y = velocity.y + JUMP_VELOCITY
 		if invincible == false:
 			$animator.visible = true
@@ -59,12 +65,12 @@ func _physics_process(delta: float) -> void:
 	#else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
-	if Input.is_action_pressed("Left") and velocity.x > -400 or touchscreenleft == true and velocity.x > -400:
+	if Input.is_action_pressed("Left") and velocity.x > -500 or touchscreenleft == true and velocity.x > -500:
 		velocity.x = velocity.x - SPEED
 	else:
 		if velocity.x < 0:
 			velocity.x = velocity.x + SPEED
-	if Input.is_action_pressed("Right") and velocity.x < 400 or touchscreenright == true and velocity.x < 400:
+	if Input.is_action_pressed("Right") and velocity.x < 500 or touchscreenright == true and velocity.x < 500:
 		velocity.x = velocity.x + SPEED
 	else:
 		if velocity.x > 0:
@@ -116,8 +122,18 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	#for the hud. it's self explanitory
-	if health > 5:
+	if health >= 10:
 		$HUD/Health.texture = load("res://textures/health/healthmore.png")
+	if health == 10:
+		$HUD/Health.texture = load("res://textures/health/health10.png")
+	if health == 9:
+		$HUD/Health.texture = load("res://textures/health/health9.png")
+	if health == 8:
+		$HUD/Health.texture = load("res://textures/health/health8.png")
+	if health == 7:
+		$HUD/Health.texture = load("res://textures/health/health7.png")
+	if health == 6:
+		$HUD/Health.texture = load("res://textures/health/health6.png")
 	if health == 5:
 		$HUD/Health.texture = load("res://textures/health/health5.png")
 	if health == 4:

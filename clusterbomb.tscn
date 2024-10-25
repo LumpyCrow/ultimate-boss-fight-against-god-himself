@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://cotkp8bhaal6"]
+
+[ext_resource type="Script" path="res://clusterbomb.gd" id="1_krxor"]
+[ext_resource type="Texture2D" uid="uid://0mpwighichgm" path="res://textures/enemybomb.png" id="2_gant6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ravu5"]
+radius = 31.0
+
+[node name="clusterbomb" type="CharacterBody2D"]
+script = ExtResource("1_krxor")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_gant6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ravu5")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Spawner1" type="Node2D" parent="."]
+position = Vector2(0, -46)
+
+[node name="Spawner2" type="Node2D" parent="."]
+position = Vector2(34, -32)
+rotation = 0.785398
+
+[node name="Spawner3" type="Node2D" parent="."]
+position = Vector2(46, 0)
+rotation = 1.5708
+
+[node name="Spawner4" type="Node2D" parent="."]
+position = Vector2(34, 32)
+rotation = 2.35619
+
+[node name="Spawner5" type="Node2D" parent="."]
+position = Vector2(0, 46)
+rotation = 3.14159
+
+[node name="Spawner6" type="Node2D" parent="."]
+position = Vector2(-34, 32)
+rotation = 3.92699
+
+[node name="Spawner7" type="Node2D" parent="."]
+position = Vector2(-46, 0)
+rotation = 4.71239
+
+[node name="Spawner8" type="Node2D" parent="."]
+position = Vector2(-34, -32)
+rotation = 5.49779
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

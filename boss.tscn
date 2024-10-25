@@ -24,7 +24,8 @@ radius = 113.018
 [sub_resource type="CircleShape2D" id="CircleShape2D_524jr"]
 radius = 301.841
 
-[node name="boss" type="CharacterBody2D"]
+[node name="boss" type="CharacterBody2D" groups=["danger"]]
+collision_mask = 12
 script = ExtResource("1_k2pdl")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -199,6 +200,8 @@ wait_time = 10.0
 [node name="missleCooldown" type="Timer" parent="Timers"]
 wait_time = 2.0
 autostart = true
+
+[node name="bombCooldown" type="Timer" parent="Timers"]
 
 [node name="rapidfire" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_u6cgh")

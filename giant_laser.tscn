@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1s0xu8cjnlfe"]
+[gd_scene load_steps=5 format=3 uid="uid://b1s0xu8cjnlfe"]
 
 [ext_resource type="Texture2D" uid="uid://is1gjovog0f3" path="res://textures/biglazer.png" id="1_hcuje"]
 [ext_resource type="Script" path="res://giant_laser.gd" id="1_pta6d"]
 [ext_resource type="AudioStream" uid="uid://dfjgsnbiakt0" path="res://audio/laserconstant.mp3" id="2_lbu00"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbltq"]
+size = Vector2(24, 2500)
 
 [node name="giant_laser" type="Node2D"]
 script = ExtResource("1_pta6d")
@@ -14,12 +17,20 @@ texture = ExtResource("1_hcuje")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_lbu00")
-volume_db = -13.867
+volume_db = -3.962
 pitch_scale = 0.7
 autoplay = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
+
+[node name="Area2D" type="CharacterBody2D" parent="." groups=["danger"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1250)
+shape = SubResource("RectangleShape2D_gbltq")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

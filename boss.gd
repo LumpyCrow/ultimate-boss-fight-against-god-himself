@@ -7,15 +7,29 @@ var missle = load("res://follower.tscn")
 
 const SPEED = 40.0
 const SPEED2 = 100
+const SPEEDLIMIT = 1000
 var player = null
 var player_chase = 0
 
 var minilazerready = true
 var giantLaserReady = false
 var missleready = true
+var clusterbombready = true
 
 func _physics_process(delta: float) -> void:
 	print(player_chase)
+	print(velocity.x)
+	
+	if velocity.x > SPEEDLIMIT:
+		velocity.x = velocity.x - 200
+	if velocity.x < -SPEEDLIMIT:
+		velocity.x = velocity.x + 200
+		
+	if velocity.y > SPEEDLIMIT:
+		velocity.y = velocity.y - 200
+	if velocity.y < -SPEEDLIMIT:
+		velocity.y = velocity.y + 200
+	
 	$lazergunPivot.rotation = $lazergunPivot.rotation + 0.05
 	$biglazerpivot.rotation = $biglazerpivot.rotation - 0.02
 	$Bossbody.rotation = velocity.x *0.0005
@@ -102,6 +116,7 @@ func _physics_process(delta: float) -> void:
 	if player_chase == 4:
 		velocity.y = 0
 		velocity.x = 0
+		player2.camerashaking = true
 		if giantLaserReady == true:
 			$bassdrop.play()
 			
@@ -135,11 +150,13 @@ func _physics_process(delta: float) -> void:
 			giantLaserReady = false
 			
 	if player_chase == 5:
+		player2.camerashaking = false
 		velocity += (player.position - position)/SPEED
 	
-	if player_chase >= 6:
+	if player_chase == 6:
 		position += (player.position - position)/40
 		if missleready == true:
+			$bassdrop.play()
 			print("missle created!")
 			var new_missle = missle.instantiate()
 			add_sibling(new_missle)
@@ -167,7 +184,12 @@ func _physics_process(delta: float) -> void:
 			new_missle4.position.x = $biglazerpivot/Launcher4.global_position.x
 			new_missle4.rotation = $lazergunPivot.rotation + 270
 			missleready = false
+	
+	if player_chase == 7:
+		velocity += (player.position - position)/SPEED
 		
+	if player_chase >= 8:
+		velocity += (player.position - position)/SPEED
 	move_and_slide()
 
 

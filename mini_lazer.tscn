@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3na3"]
 size = Vector2(9, 50)
 
-[node name="miniLazer" type="CharacterBody2D"]
+[node name="miniLazer" type="CharacterBody2D" groups=["danger"]]
 collision_mask = 0
 script = ExtResource("1_pxl7x")
 
