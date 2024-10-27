@@ -202,6 +202,7 @@ wait_time = 2.0
 autostart = true
 
 [node name="bombCooldown" type="Timer" parent="Timers"]
+wait_time = 0.3
 autostart = true
 
 [node name="rapidfire" type="AudioStreamPlayer2D" parent="."]
@@ -214,6 +215,7 @@ pitch_scale = 0.22
 
 [node name="bassdrop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_pxxhe")
+volume_db = 8.914
 pitch_scale = 3.0
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]

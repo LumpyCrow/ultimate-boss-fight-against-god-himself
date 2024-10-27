@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	
 	$lazergunPivot.rotation = $lazergunPivot.rotation + 0.05
 	$biglazerpivot.rotation = $biglazerpivot.rotation - 0.02
-	$Bossbody.rotation = velocity.x *0.0005
+	$Bossbody.rotation = velocity.x *0.0009
 	
 	$arms/topleftarm/HandPivot.look_at(player2.position)
 	$arms/toprightarm/Handpivot.look_at(player2.position)
@@ -42,6 +42,7 @@ func _physics_process(delta: float) -> void:
 	
 	if player_chase == 1:
 		velocity += (player.position - position)/SPEED
+		player2.camerashaking = false
 	if player_chase == 2:
 		position += (player.position - position)/40
 		if not $rapidfire.is_playing():
@@ -191,7 +192,9 @@ func _physics_process(delta: float) -> void:
 		
 	if player_chase == 8:
 		velocity += (player.position - position)/SPEED
+		player2.camerashaking = true
 		if clusterbombready == true:
+			$bassdrop.play()
 			var new_Clusterbomb =  Clusterbomb.instantiate()
 			add_sibling(new_Clusterbomb)
 			new_Clusterbomb.position.y = $biglazerpivot/Launcher.global_position.y

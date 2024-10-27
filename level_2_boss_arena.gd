@@ -8,9 +8,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	$placeholdbackroundj.position.x = $player.position.x
+	$placeholdbackroundj.position.y = $player.position.y
+	
 	if songplaying == true:
 		if not $AthTheSpeedOfLight.is_playing():
 			$AthTheSpeedOfLight.play()
+	
 
 func _on_battlebegin_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):

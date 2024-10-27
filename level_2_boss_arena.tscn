@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://p74ir71ry238"]
+[gd_scene load_steps=25 format=3 uid="uid://p74ir71ry238"]
 
 [ext_resource type="Script" path="res://level_2_boss_arena.gd" id="1_lblhy"]
 [ext_resource type="PackedScene" uid="uid://be3xkbl84anxw" path="res://player.tscn" id="1_qjm0x"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b0wi7gvybt3n2" path="res://fake_boss.tscn" id="12_ajslr"]
 [ext_resource type="AudioStream" uid="uid://de065vk2ysoe7" path="res://audio/concrete-scrape-loop-made-with-Voicemod-technology.mp3" id="13_6pc6d"]
 [ext_resource type="AudioStream" uid="uid://ch0qp7pu1kr1a" path="res://audio/godzilla-minus-one-roar.mp3" id="14_vygq2"]
+[ext_resource type="Texture2D" uid="uid://cpsgd2ft4niql" path="res://textures/backroundj.png" id="15_o1ax8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ka8wa"]
 size = Vector2(6019.5, 20)
@@ -566,6 +567,12 @@ volume_db = 1.53
 position = Vector2(5874, -1276)
 stream = ExtResource("14_vygq2")
 volume_db = 24.0
+
+[node name="placeholdbackroundj" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(5500, -1084)
+scale = Vector2(2, 2)
+texture = ExtResource("15_o1ax8")
 
 [connection signal="body_entered" from="battlebegin" to="." method="_on_battlebegin_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
