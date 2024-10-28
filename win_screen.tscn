@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://df1r8pk0ntx3g"]
+[gd_scene load_steps=19 format=3 uid="uid://df1r8pk0ntx3g"]
 
 [ext_resource type="Script" path="res://win_screen.gd" id="1_3utbi"]
 [ext_resource type="PackedScene" uid="uid://be3xkbl84anxw" path="res://player.tscn" id="1_6a7wy"]
+[ext_resource type="Texture2D" uid="uid://cpsgd2ft4niql" path="res://textures/backroundj.png" id="2_64r6q"]
 [ext_resource type="Texture2D" uid="uid://bk0sx07d0o0g3" path="res://textures/boss/bottomleftarm.png" id="2_c2wi7"]
 [ext_resource type="Texture2D" uid="uid://bod73wtog7jem" path="res://textures/boss/bottomrightarm.png" id="3_nybfn"]
 [ext_resource type="Texture2D" uid="uid://dhamutvov6scc" path="res://textures/boss/topleftarm.png" id="4_r215j"]
@@ -10,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://be8np8da8diuf" path="res://textures/even angrier guy.png" id="7_5dufq"]
 [ext_resource type="Texture2D" uid="uid://bddjcxy5jaefy" path="res://textures/Explosion.png" id="8_1uuck"]
 [ext_resource type="Texture2D" uid="uid://dkyqd36axa3ds" path="res://textures/Shocked Guy.png" id="9_wu16i"]
+[ext_resource type="AudioStream" uid="uid://fcehi1rm1so4" path="res://textures/explosion/explosion-42132.mp3" id="12_qqq6t"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_nm6bm"]
 a = Vector2(-41, -125)
@@ -276,6 +278,18 @@ tracks/20/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0.326667, 0.326667), Vector2(1.084, 0.848803)]
 }
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(6.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_hkvrk"]
 length = 0.001
@@ -531,6 +545,18 @@ tracks/20/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oouoj"]
 _data = {
@@ -550,6 +576,11 @@ offset_bottom = 9.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3utbi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(469, 512)
+scale = Vector2(2.30278, 3.13333)
+texture = ExtResource("2_64r6q")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(493, 474)
@@ -638,5 +669,10 @@ libraries = {
 "": SubResource("AnimationLibrary_oouoj")
 }
 autoplay = "Boss_Death"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_qqq6t")
+volume_db = 24.0
+pitch_scale = 2.0
 
 [connection signal="animation_finished" from="boss death" to="." method="_on_boss_death_animation_finished"]
