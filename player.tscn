@@ -120,7 +120,7 @@ script = ExtResource("1_m8axc")
 
 [node name="Health" type="Sprite2D" parent="HUD"]
 position = Vector2(-240, -250)
-scale = Vector2(2, 2)
+scale = Vector2(1.95, 2.4)
 texture = ExtResource("13_1472h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
