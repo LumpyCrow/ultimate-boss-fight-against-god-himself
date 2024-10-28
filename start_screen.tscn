@@ -299,7 +299,7 @@ autoplay = "button"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(365, 247)
-zoom = Vector2(1, 1.45)
+zoom = Vector2(1, 2.175)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 

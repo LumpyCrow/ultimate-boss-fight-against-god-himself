@@ -172,7 +172,6 @@ scale = Vector2(1.05, 1.5)
 texture = ExtResource("2_sqy1f")
 
 [node name="animator" type="AnimatedSprite2D" parent="."]
-visible = false
 sprite_frames = SubResource("SpriteFrames_qpfyo")
 animation = &"Walkingright"
 autoplay = "default"
