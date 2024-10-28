@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://df1r8pk0ntx3g"]
+
+[ext_resource type="PackedScene" uid="uid://be3xkbl84anxw" path="res://player.tscn" id="1_6a7wy"]
+[ext_resource type="Texture2D" uid="uid://bk0sx07d0o0g3" path="res://textures/boss/bottomleftarm.png" id="2_c2wi7"]
+[ext_resource type="Texture2D" uid="uid://bod73wtog7jem" path="res://textures/boss/bottomrightarm.png" id="3_nybfn"]
+[ext_resource type="Texture2D" uid="uid://dhamutvov6scc" path="res://textures/boss/topleftarm.png" id="4_r215j"]
+[ext_resource type="Texture2D" uid="uid://ldokvrkegpj6" path="res://textures/boss/toprightarm.png" id="5_41sux"]
+[ext_resource type="Texture2D" uid="uid://8y1wubwrffbe" path="res://textures/bossbody.png" id="6_bj5dj"]
+
+[node name="Win Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="player" parent="." instance=ExtResource("1_6a7wy")]
+position = Vector2(378, 477)
+
+[node name="Dead_boss" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="Dead_boss"]
+position = Vector2(242, 368)
+texture = ExtResource("2_c2wi7")
+
+[node name="Arm4" type="Sprite2D" parent="Dead_boss"]
+position = Vector2(533, 378)
+texture = ExtResource("3_nybfn")
+
+[node name="Arm2" type="Sprite2D" parent="Dead_boss"]
+position = Vector2(236, 158)
+texture = ExtResource("4_r215j")
+
+[node name="Arm3" type="Sprite2D" parent="Dead_boss"]
+position = Vector2(538, 147)
+texture = ExtResource("5_41sux")
+
+[node name="Arm1" type="Sprite2D" parent="Dead_boss"]
+position = Vector2(391, 262)
+texture = ExtResource("6_bj5dj")
+
+[node name="Pulsar1" type="Sprite2D" parent="Dead_boss"]
+
+[node name="Pulsar2" type="Sprite2D" parent="Dead_boss"]
+
+[node name="Pulsar3" type="Sprite2D" parent="Dead_boss"]
+
+[node name="Pulsar4" type="Sprite2D" parent="Dead_boss"]
+
+[node name="Cannon1" type="Sprite2D" parent="Dead_boss"]
+
+[node name="Cannon2" type="Sprite2D" parent="Dead_boss"]
+
+[node name="Cannon3" type="Sprite2D" parent="Dead_boss"]
+
+[node name="Cannon4" type="Sprite2D" parent="Dead_boss"]
