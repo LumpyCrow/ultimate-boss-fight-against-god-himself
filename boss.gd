@@ -18,6 +18,8 @@ var giantLaserReady = false
 var missleready = true
 var clusterbombready = true
 
+var health = 200
+
 func _physics_process(delta: float) -> void:
 	print(player_chase)
 	
@@ -249,3 +251,8 @@ func _on_missle_cooldown_timeout() -> void:
 
 func _on_bomb_cooldown_timeout() -> void:
 	clusterbombready = true
+
+func _on_damagezone_body_entered(body: Node2D) -> void:
+	if body.is_in_group("cannonball"):
+		health = health - 1
+		$damage.play()

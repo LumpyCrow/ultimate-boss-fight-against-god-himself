@@ -148,7 +148,6 @@ func _physics_process(delta: float) -> void:
 		$HUD/Health.texture = load("res://textures/health/health1.png")
 	if health == 0:
 		$HUD/Health.texture = load("res://textures/health/health0.png")
-	
 	if health <= 0:
 		get_tree().change_scene_to_file("res://death.tscn")
 	

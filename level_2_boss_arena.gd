@@ -2,6 +2,8 @@ extends Node2D
 
 var boss = load("res://boss.tscn")
 var songplaying = false
+var battling = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -9,8 +11,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	$placeholdbackroundj.position.x = $player.position.x
-	$placeholdbackroundj.position.y = $player.position.y
+	if battling == true:
+		$player/Bossbar/ProgressBar.value = $boss.health
 	
 	if songplaying == true:
 		if not $AthTheSpeedOfLight.is_playing():
@@ -31,7 +33,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	new_boss.position.x = $fakeBoss.position.x
 	$fakeBoss.queue_free()
 	$battlebegin.queue_free()
-
+	battling = true
 
 func _on_roar_finished() -> void:
 	$player.camerashaking = false
