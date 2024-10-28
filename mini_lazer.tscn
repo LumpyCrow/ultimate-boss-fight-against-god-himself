@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3na3"]
 size = Vector2(9, 50)
 
-[node name="miniLazer" type="CharacterBody2D"]
+[node name="miniLazer" type="CharacterBody2D" groups=["danger"]]
 collision_mask = 0
 script = ExtResource("1_pxl7x")
 
@@ -18,3 +18,9 @@ texture = ExtResource("1_kmduw")
 position = Vector2(0.5, 0)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_j3na3")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

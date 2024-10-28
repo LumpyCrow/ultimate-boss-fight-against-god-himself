@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b4g4elufxyvlo"]
+[gd_scene load_steps=25 format=3 uid="uid://p74ir71ry238"]
 
 [ext_resource type="Script" path="res://level_2_boss_arena.gd" id="1_lblhy"]
 [ext_resource type="PackedScene" uid="uid://be3xkbl84anxw" path="res://player.tscn" id="1_qjm0x"]
@@ -8,9 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://dco0b8aykmlrx" path="res://textures/bars.png" id="7_wrv0c"]
 [ext_resource type="Texture2D" uid="uid://bqkhaxftlk2cf" path="res://textures/tree.png" id="7_xpyu6"]
 [ext_resource type="Texture2D" uid="uid://iwoje7ukcyh5" path="res://textures/controlpad.png" id="8_ssqbg"]
-[ext_resource type="PackedScene" path="res://cloud.tscn" id="8_ucqig"]
-[ext_resource type="PackedScene" path="res://boss.tscn" id="10_4coqm"]
-[ext_resource type="AudioStream" uid="uid://bt72rkqiwrjnc" path="res://audio/music/At_the_Speed_Of_Light.mp3" id="10_ttyu6"]
+[ext_resource type="PackedScene" uid="uid://cyxbaveo4t0vj" path="res://cloud.tscn" id="8_ucqig"]
+[ext_resource type="AudioStream" uid="uid://bgx2ivcx05c8n" path="res://audio/music/colective concieness.mp3" id="10_2bsqd"]
+[ext_resource type="AudioStream" uid="uid://csf512jps6fby" path="res://audio/Falling Rock.wav" id="12_2afhx"]
+[ext_resource type="PackedScene" uid="uid://b0wi7gvybt3n2" path="res://fake_boss.tscn" id="12_ajslr"]
+[ext_resource type="AudioStream" uid="uid://de065vk2ysoe7" path="res://audio/concrete-scrape-loop-made-with-Voicemod-technology.mp3" id="13_6pc6d"]
+[ext_resource type="AudioStream" uid="uid://ch0qp7pu1kr1a" path="res://audio/godzilla-minus-one-roar.mp3" id="14_vygq2"]
+[ext_resource type="Texture2D" uid="uid://cpsgd2ft4niql" path="res://textures/backroundj.png" id="15_o1ax8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ka8wa"]
 size = Vector2(6019.5, 20)
@@ -27,6 +31,238 @@ size = Vector2(1285.5, 28)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvn8o"]
 size = Vector2(88.875, 149)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0kh7y"]
+size = Vector2(6, 10)
+
+[sub_resource type="Animation" id="Animation_ll3p0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fakeBoss/arms/toprightarm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fakeBoss/arms/topleftarm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("fakeBoss:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5872, -731)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("fakeBoss/arms/bottomleftarm:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("fakeBoss/arms/bottomrightarm:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("player:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5500, -1082)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Concrete:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("FallingRock:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("roar:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_vct6l"]
+resource_name = "battleBegin"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fakeBoss/arms/toprightarm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.98023e-08, 0.433333, 3.66667, 5.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.785398, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fakeBoss/arms/topleftarm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.98023e-08, 0.433333, 3.66667, 5.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -0.785398, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("fakeBoss:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.98023e-08, 0.433333, 3.66667, 5.16667, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(5872, -750), Vector2(5872, -800), Vector2(5872, -1000), Vector2(5872, -1100), Vector2(5872, -1400)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("fakeBoss/arms/bottomleftarm:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.98023e-08, 5.16667, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.959931, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("fakeBoss/arms/bottomrightarm:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.98023e-08, 5.16667, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.959931, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("player:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5855, -1082), Vector2(5855, -1082)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Concrete:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 3.36667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("FallingRock:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 4.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("roar:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(3.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uw55s"]
+_data = {
+"RESET": SubResource("Animation_ll3p0"),
+"battleBegin": SubResource("Animation_vct6l")
+}
+
 [node name="level_2_boss_arena" type="Node2D"]
 script = ExtResource("1_lblhy")
 
@@ -39,7 +275,7 @@ texture = ExtResource("7_xpyu6")
 
 [node name="Tree14" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(7492, -1164)
+position = Vector2(7510, -1155)
 texture = ExtResource("7_xpyu6")
 
 [node name="Tree15" type="Sprite2D" parent="decoration"]
@@ -230,9 +466,14 @@ texture = ExtResource("2_3prbl")
 position = Vector2(964, -482)
 texture = ExtResource("2_3prbl")
 
+[node name="Controlpad8" type="Sprite2D" parent="decoration"]
+position = Vector2(6031, -718)
+scale = Vector2(5.89444, 1)
+texture = ExtResource("8_ssqbg")
+
 [node name="player" parent="." instance=ExtResource("1_qjm0x")]
 top_level = true
-position = Vector2(4367, -1095)
+position = Vector2(5500, -1082)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-973, -144)
@@ -293,9 +534,48 @@ autoplay = true
 panning_strength = 0.0
 
 [node name="AthTheSpeedOfLight" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_ttyu6")
+stream = ExtResource("10_2bsqd")
 volume_db = -8.432
-autoplay = true
 
-[node name="boss" parent="." instance=ExtResource("10_4coqm")]
-position = Vector2(4884, -1550)
+[node name="battlebegin" type="Area2D" parent="."]
+position = Vector2(5868, -1074)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="battlebegin"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_0kh7y")
+
+[node name="fakeBoss" parent="." instance=ExtResource("12_ajslr")]
+position = Vector2(5872, -731)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uw55s")
+}
+
+[node name="FallingRock" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(5858, -994)
+stream = ExtResource("12_2afhx")
+volume_db = 24.0
+pitch_scale = 0.62
+
+[node name="Concrete" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(5859, -1030)
+stream = ExtResource("13_6pc6d")
+volume_db = 1.53
+
+[node name="roar" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(5874, -1276)
+stream = ExtResource("14_vygq2")
+volume_db = 24.0
+
+[node name="placeholdbackroundj" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(5500, -1084)
+scale = Vector2(2, 2)
+texture = ExtResource("15_o1ax8")
+
+[connection signal="body_entered" from="battlebegin" to="." method="_on_battlebegin_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="finished" from="roar" to="." method="_on_roar_finished"]
+
+[editable path="fakeBoss"]

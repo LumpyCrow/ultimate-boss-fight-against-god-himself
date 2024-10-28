@@ -1,7 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://jq0vmo2dyieh"]
+[gd_scene load_steps=15 format=3 uid="uid://jq0vmo2dyieh"]
 
+[ext_resource type="Script" path="res://death_screen.gd" id="1_e6vq8"]
 [ext_resource type="Texture2D" uid="uid://cpsgd2ft4niql" path="res://textures/backroundj.png" id="1_piqvy"]
 [ext_resource type="Texture2D" uid="uid://q8xnyf8lai5v" path="res://textures/duck/right.png" id="2_8em88"]
+[ext_resource type="Texture2D" uid="uid://b74drvrnl34k1" path="res://textures/pixil-frame-0 (3).png" id="3_bry0e"]
+[ext_resource type="Texture2D" uid="uid://crtwmq7kvbh8v" path="res://textures/remade smaller better doo.png" id="5_vt27n"]
 
 [sub_resource type="Animation" id="Animation_btgf2"]
 length = 0.001
@@ -66,6 +69,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("background2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(376, 2500)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("background2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_tnkjv"]
 resource_name = "backgroundthing"
@@ -78,10 +105,10 @@ tracks/0/path = NodePath("background1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(376, 1377), Vector2(376, -700)]
+"values": [Vector2(376, 1377), Vector2(376, -1500), Vector2(376, 2529)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -90,16 +117,78 @@ tracks/1/path = NodePath("background1:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("background2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 0.633333, 0.666667, 0.7, 0.733333, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(376, 2528), Vector2(376, 2434), Vector2(376, 2339), Vector2(376, 2242), Vector2(376, 2145), Vector2(376, 1380), Vector2(376, -1499)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("background2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hij8s"]
 _data = {
 "RESET": SubResource("Animation_i4lft"),
 "backgroundthing": SubResource("Animation_tnkjv")
+}
+
+[sub_resource type="Animation" id="Animation_k7d54"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("retry:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(231, 125)]
+}
+
+[sub_resource type="Animation" id="Animation_ibxqg"]
+resource_name = "button retry"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("retry:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(231, 125), Vector2(201, 108)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ovp1l"]
+_data = {
+"RESET": SubResource("Animation_k7d54"),
+"button retry": SubResource("Animation_ibxqg")
 }
 
 [node name="Death screen" type="Control"]
@@ -109,6 +198,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_e6vq8")
 
 [node name="background1" type="Sprite2D" parent="."]
 visible = false
@@ -117,13 +207,14 @@ scale = Vector2(2, 6)
 texture = ExtResource("1_piqvy")
 
 [node name="background2" type="Sprite2D" parent="."]
-position = Vector2(403, 2139)
+visible = false
+position = Vector2(376, 2500)
 rotation = -3.14159
 scale = Vector2(2, 6)
 texture = ExtResource("1_piqvy")
 
 [node name="duck" type="Sprite2D" parent="."]
-position = Vector2(355, 362)
+position = Vector2(352, 566)
 texture = ExtResource("2_8em88")
 
 [node name="duckspin" type="AnimationPlayer" parent="."]
@@ -132,8 +223,38 @@ libraries = {
 }
 autoplay = "duckspin"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="background" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_hij8s")
 }
 autoplay = "backgroundthing"
+
+[node name="retry" type="Button" parent="."]
+top_level = true
+layout_mode = 0
+offset_left = 233.0
+offset_top = 730.0
+offset_right = 464.0
+offset_bottom = 855.0
+icon = ExtResource("3_bry0e")
+flat = true
+expand_icon = true
+
+[node name="button anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ovp1l")
+}
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 641.0
+offset_top = -2.0
+offset_right = 720.0
+offset_bottom = 75.0
+icon = ExtResource("5_vt27n")
+flat = true
+expand_icon = true
+
+[connection signal="button_down" from="retry" to="." method="_on_button_button_down"]
+[connection signal="mouse_entered" from="retry" to="." method="_on_button_mouse_entered"]
+[connection signal="button_down" from="exit" to="." method="_on_exit_button_down"]

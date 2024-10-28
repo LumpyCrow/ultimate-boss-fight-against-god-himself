@@ -10,6 +10,7 @@ radius = 4.0
 radius = 6.0
 
 [node name="cannonball" type="CharacterBody2D" groups=["cannonball"]]
+scale = Vector2(2, 2)
 collision_layer = 10
 collision_mask = 2
 script = ExtResource("1_wlxa8")
