@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://du22hpbt2jn78"]
+
+[ext_resource type="PackedScene" uid="uid://bwpqipcc8aq2a" path="res://start_screen.tscn" id="1_n54bp"]
+
+[node name="Post Anim Win Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start Screen" parent="." instance=ExtResource("1_n54bp")]
+layout_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 138.0
+offset_right = 467.0
+offset_bottom = 161.0
+text = "YOU KILLED [insert guys name]
+"
+
+[node name="Label" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = -30.0
+offset_top = 35.0
+offset_right = 209.0
+offset_bottom = 58.0

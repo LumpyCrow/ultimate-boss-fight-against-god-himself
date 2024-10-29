@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://p74ir71ry238"]
+[gd_scene load_steps=27 format=3 uid="uid://p74ir71ry238"]
 
 [ext_resource type="Script" path="res://level_2_boss_arena.gd" id="1_lblhy"]
 [ext_resource type="PackedScene" uid="uid://be3xkbl84anxw" path="res://player.tscn" id="1_qjm0x"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://bo1nlvblnxmi2" path="res://audio/music/A Conversation with Saul (Rough Demo.mp3" id="6_moy8p"]
 [ext_resource type="Texture2D" uid="uid://dco0b8aykmlrx" path="res://textures/bars.png" id="7_wrv0c"]
 [ext_resource type="Texture2D" uid="uid://bqkhaxftlk2cf" path="res://textures/tree.png" id="7_xpyu6"]
+[ext_resource type="Texture2D" uid="uid://dwn4liylso171" path="res://textures/boss/bossbar.png" id="8_no168"]
 [ext_resource type="Texture2D" uid="uid://iwoje7ukcyh5" path="res://textures/controlpad.png" id="8_ssqbg"]
 [ext_resource type="PackedScene" path="res://cloud.tscn" id="8_ucqig"]
 [ext_resource type="AudioStream" uid="uid://bgx2ivcx05c8n" path="res://audio/music/colective concieness.mp3" id="10_2bsqd"]
@@ -14,10 +15,15 @@
 [ext_resource type="PackedScene" path="res://fake_boss.tscn" id="12_ajslr"]
 [ext_resource type="AudioStream" uid="uid://de065vk2ysoe7" path="res://audio/concrete-scrape-loop-made-with-Voicemod-technology.mp3" id="13_6pc6d"]
 [ext_resource type="AudioStream" uid="uid://ch0qp7pu1kr1a" path="res://audio/godzilla-minus-one-roar.mp3" id="14_vygq2"]
-[ext_resource type="Texture2D" uid="uid://cpsgd2ft4niql" path="res://textures/backroundj.png" id="15_o1ax8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oee23"]
+bg_color = Color(0.24893, 2.63215e-07, 5.41471e-08, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0q5j"]
+bg_color = Color(0.996078, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ka8wa"]
-size = Vector2(6019.5, 20)
+size = Vector2(6015.75, 112)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3a0ux"]
 size = Vector2(24, 5137.75)
@@ -144,6 +150,18 @@ tracks/8/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("player/Bossbar:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 233)]
+}
 
 [sub_resource type="Animation" id="Animation_vct6l"]
 resource_name = "battleBegin"
@@ -255,6 +273,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("player/Bossbar:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 233), Vector2(0, 153)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uw55s"]
@@ -379,26 +409,31 @@ position = Vector2(3831, -1228)
 texture = ExtResource("7_wrv0c")
 
 [node name="Controlpad" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
 position = Vector2(-143, 514)
 scale = Vector2(1.85833, 1)
 texture = ExtResource("8_ssqbg")
 
 [node name="Controlpad2" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
 position = Vector2(-595, 126)
 scale = Vector2(1.85833, 1)
 texture = ExtResource("8_ssqbg")
 
 [node name="Controlpad3" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
 position = Vector2(3663, -950)
 scale = Vector2(0.738889, 1)
 texture = ExtResource("8_ssqbg")
 
 [node name="Controlpad4" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
 position = Vector2(6051, -950)
 scale = Vector2(5.89444, 1)
 texture = ExtResource("8_ssqbg")
 
 [node name="Controlpad5" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
 position = Vector2(5822, -5133)
 scale = Vector2(6.65556, 1)
 texture = ExtResource("8_ssqbg")
@@ -475,6 +510,27 @@ texture = ExtResource("8_ssqbg")
 top_level = true
 position = Vector2(5500, -1082)
 
+[node name="Controlpad" parent="player" index="18"]
+z_index = 101
+
+[node name="Bossbar" type="Sprite2D" parent="player"]
+z_index = 100
+position = Vector2(0, 233)
+scale = Vector2(2.7, 2.7)
+texture = ExtResource("8_no168")
+
+[node name="ProgressBar" type="ProgressBar" parent="player/Bossbar"]
+show_behind_parent = true
+offset_left = -117.0
+offset_top = 56.0
+offset_right = 117.0
+offset_bottom = 65.0
+theme_override_styles/background = SubResource("StyleBoxFlat_oee23")
+theme_override_styles/fill = SubResource("StyleBoxFlat_a0q5j")
+max_value = 400.0
+value = 400.0
+show_percentage = false
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-973, -144)
 
@@ -487,7 +543,7 @@ position = Vector2(7667, -4878)
 shape = SubResource("RectangleShape2D_ka8wa")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(7379.25, -916)
+position = Vector2(7377.88, -870)
 shape = SubResource("RectangleShape2D_ka8wa")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
@@ -568,14 +624,14 @@ position = Vector2(5874, -1276)
 stream = ExtResource("14_vygq2")
 volume_db = 24.0
 
-[node name="placeholdbackroundj" type="Sprite2D" parent="."]
-show_behind_parent = true
-position = Vector2(5500, -1084)
-scale = Vector2(2, 2)
-texture = ExtResource("15_o1ax8")
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -128
 
 [connection signal="body_entered" from="battlebegin" to="." method="_on_battlebegin_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="finished" from="roar" to="." method="_on_roar_finished"]
 
+[editable path="player"]
 [editable path="fakeBoss"]

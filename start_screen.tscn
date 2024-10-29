@@ -164,10 +164,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.33333, 2.5),
+"times": PackedFloat32Array(0, 1.2, 2.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(297, 386), Vector2(296, 400), Vector2(297, 386)]
+"values": [Vector2(240, 929), Vector2(240, 878), Vector2(240, 929)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_27k5g"]
@@ -191,15 +191,15 @@ script = ExtResource("1_41j1r")
 
 [node name="background sprite" type="Sprite2D" parent="."]
 position = Vector2(316, 243)
-scale = Vector2(1.25278, 1.31458)
+scale = Vector2(1.25278, 5.05729)
 texture = ExtResource("2_x753r")
 
 [node name="Start" type="Button" parent="."]
 layout_mode = 0
 offset_left = 297.0
 offset_top = 386.0
-offset_right = 425.0
-offset_bottom = 461.0
+offset_right = 519.0
+offset_bottom = 533.0
 icon = SubResource("CompressedTexture2D_4p1cf")
 flat = true
 expand_icon = true
@@ -298,8 +298,7 @@ libraries = {
 autoplay = "button"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(365, 247)
-zoom = Vector2(1, 2.175)
+position = Vector2(365, 539)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 

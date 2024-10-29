@@ -9,13 +9,14 @@ var touchscreenrotateleft = false
 var touchscreenshoot = false
 var touchscreenrotateright = false
 
-const SPEED = 15
+var SPEED = 30
+var MAXSPEED = 300
 const JUMP_VELOCITY = -30.0
 var facingright = true
 var camerashaking = false
 
 var invincible = false
-var health = 10
+var health = 9
 var death = preload("res://death.tscn")
 
 var cannonball = preload("res://cannonball.tscn")
@@ -34,7 +35,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	else:
 		if Input.is_action_pressed("Down"):
-			if not is_on_floor() and velocity.y < 500:
+			if not is_on_floor() and velocity.y < MAXSPEED:
 				velocity += get_gravity() * delta
 		if not Input.is_action_pressed("Down"):
 			if not is_on_floor() and velocity.y > 150:
@@ -44,7 +45,7 @@ func _physics_process(delta: float) -> void:
 		
 	# Handle jump. (+animation)
 	if Input.is_action_pressed("ui_accept") or touchscreenfly == true:
-		if velocity.y > -500:
+		if velocity.y > -MAXSPEED:
 			velocity.y = velocity.y + JUMP_VELOCITY
 		if invincible == false:
 			$animator.visible = true
@@ -67,12 +68,12 @@ func _physics_process(delta: float) -> void:
 	#else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
-	if Input.is_action_pressed("Left") and velocity.x > -500 or touchscreenleft == true and velocity.x > -500:
+	if Input.is_action_pressed("Left") and velocity.x > -MAXSPEED or touchscreenleft == true and velocity.x > -MAXSPEED:
 		velocity.x = velocity.x - SPEED
 	else:
 		if velocity.x < 0:
 			velocity.x = velocity.x + SPEED
-	if Input.is_action_pressed("Right") and velocity.x < 500 or touchscreenright == true and velocity.x < 500:
+	if Input.is_action_pressed("Right") and velocity.x < MAXSPEED or touchscreenright == true and velocity.x < MAXSPEED:
 		velocity.x = velocity.x + SPEED
 	else:
 		if velocity.x > 0:
@@ -148,7 +149,6 @@ func _physics_process(delta: float) -> void:
 		$HUD/Health.texture = load("res://textures/health/health1.png")
 	if health == 0:
 		$HUD/Health.texture = load("res://textures/health/health0.png")
-	
 	if health <= 0:
 		get_tree().change_scene_to_file("res://death.tscn")
 	
