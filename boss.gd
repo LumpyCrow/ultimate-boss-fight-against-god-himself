@@ -18,7 +18,7 @@ var giantLaserReady = false
 var missleready = true
 var clusterbombready = true
 
-var health = 200
+var health = 400
 
 func _physics_process(delta: float) -> void:
 	print(player_chase)
