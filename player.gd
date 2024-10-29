@@ -16,7 +16,7 @@ var facingright = true
 var camerashaking = false
 
 var invincible = false
-var health = 9
+var health = 10
 var death = preload("res://death.tscn")
 
 var cannonball = preload("res://cannonball.tscn")
@@ -125,7 +125,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	#for the hud. it's self explanitory
-	if health >= 10:
+	if health > 10:
 		$HUD/Health.texture = load("res://textures/health/healthmore.png")
 	if health == 10:
 		$HUD/Health.texture = load("res://textures/health/health10.png")
