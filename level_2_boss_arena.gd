@@ -34,6 +34,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	$fakeBoss.queue_free()
 	$battlebegin.queue_free()
 	battling = true
+	$player.MAXSPEED = 700
 
 func _on_roar_finished() -> void:
 	$player.camerashaking = false
