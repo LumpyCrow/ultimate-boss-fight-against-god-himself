@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fu5xbldrq47m"
-path="res://.godot/imported/7.png-fdec341c68f311989b5d2c1c7f0b305d.ctex"
+uid="uid://biptcmhs44id2"
+path="res://.godot/imported/3.png-65c9bf3cabdfc3d9591eae09c9633bb6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://background/The Dawn/Layers/7.png"
-dest_files=["res://.godot/imported/7.png-fdec341c68f311989b5d2c1c7f0b305d.ctex"]
+source_file="res://background/3.png"
+dest_files=["res://.godot/imported/3.png-65c9bf3cabdfc3d9591eae09c9633bb6.ctex"]
 
 [params]
 
