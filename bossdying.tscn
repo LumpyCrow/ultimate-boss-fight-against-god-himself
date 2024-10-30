@@ -1,0 +1,216 @@
+[gd_scene load_steps=15 format=3 uid="uid://cd1fs2x24mmdp"]
+
+[ext_resource type="Script" path="res://bossdying.gd" id="1_8pf2q"]
+[ext_resource type="Texture2D" uid="uid://8y1wubwrffbe" path="res://textures/bossbody.png" id="2_gf0ip"]
+[ext_resource type="Texture2D" uid="uid://c655yhvej3757" path="res://textures/boss/righttop.png" id="3_5rid1"]
+[ext_resource type="Texture2D" uid="uid://bu06h4r340ang" path="res://textures/boss/lasershooter.png" id="4_7gqrn"]
+[ext_resource type="Texture2D" uid="uid://bm8loby5whjl4" path="res://textures/boss/rightbottom.png" id="5_pgch5"]
+[ext_resource type="Texture2D" uid="uid://5l34j5gpc3kp" path="res://textures/boss/Sucker.png" id="6_l62wc"]
+[ext_resource type="Texture2D" uid="uid://c2aq17q7vyeu6" path="res://textures/boss/lefttop.png" id="7_wd77a"]
+[ext_resource type="Texture2D" uid="uid://cheele6hs6r1v" path="res://textures/boss/enemyLauncher.png" id="8_enivw"]
+[ext_resource type="Texture2D" uid="uid://2qyy56xmsbuy" path="res://textures/boss/leftbottom.png" id="9_uqa2m"]
+[ext_resource type="AudioStream" uid="uid://b5tf71c6dce4w" path="res://audio/metal-gates-creaking-the-murmur.mp3" id="10_uio2t"]
+[ext_resource type="AudioStream" uid="uid://ch0qp7pu1kr1a" path="res://audio/godzilla-minus-one-roar.mp3" id="11_550x7"]
+
+[sub_resource type="Animation" id="Animation_h16n6"]
+resource_name = "death"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(300, -300)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Metalcreaking:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.33333, 5.13333, 6.5, 7.5, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.349066, -3.14159, -6.28319, -8.37758, -11.8682]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("deathroar:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_jrcff"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Metalcreaking:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("deathroar:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dgtuq"]
+_data = {
+"RESET": SubResource("Animation_jrcff"),
+"death": SubResource("Animation_h16n6")
+}
+
+[node name="bossdying" type="Node2D"]
+script = ExtResource("1_8pf2q")
+
+[node name="Bossbody" type="Sprite2D" parent="."]
+rotation = -3.14159
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_gf0ip")
+
+[node name="arms" type="Node2D" parent="."]
+show_behind_parent = true
+
+[node name="toprightarm" type="Node2D" parent="arms"]
+position = Vector2(90, -66)
+
+[node name="Righttop" type="Sprite2D" parent="arms/toprightarm"]
+position = Vector2(82, -68)
+texture = ExtResource("3_5rid1")
+
+[node name="Handpivot" type="Node2D" parent="arms/toprightarm"]
+position = Vector2(182, -215)
+
+[node name="Lasershooter" type="Sprite2D" parent="arms/toprightarm/Handpivot"]
+position = Vector2(47, 8)
+rotation = 2.0944
+scale = Vector2(2, 2)
+texture = ExtResource("4_7gqrn")
+
+[node name="bottomrightarm" type="Node2D" parent="arms"]
+position = Vector2(90, 66)
+
+[node name="Rightbottom" type="Sprite2D" parent="arms/bottomrightarm"]
+position = Vector2(82, 68)
+texture = ExtResource("5_pgch5")
+
+[node name="HandPivot" type="Node2D" parent="arms/bottomrightarm"]
+position = Vector2(182, 210)
+
+[node name="Sucker" type="Sprite2D" parent="arms/bottomrightarm/HandPivot"]
+position = Vector2(47, 7)
+rotation = 2.0944
+scale = Vector2(2, 2)
+texture = ExtResource("6_l62wc")
+
+[node name="topleftarm" type="Node2D" parent="arms"]
+position = Vector2(-90, -66)
+
+[node name="Lefttop" type="Sprite2D" parent="arms/topleftarm"]
+position = Vector2(-86, -68)
+texture = ExtResource("7_wd77a")
+
+[node name="HandPivot" type="Node2D" parent="arms/topleftarm"]
+position = Vector2(-177, -203)
+
+[node name="EnemyLauncher" type="Sprite2D" parent="arms/topleftarm/HandPivot"]
+position = Vector2(43, -4)
+rotation = 2.0944
+scale = Vector2(2, 2)
+texture = ExtResource("8_enivw")
+
+[node name="bottomleftarm" type="Node2D" parent="arms"]
+position = Vector2(-90, 66)
+
+[node name="Leftbottom" type="Sprite2D" parent="arms/bottomleftarm"]
+position = Vector2(-83, 68)
+texture = ExtResource("9_uqa2m")
+
+[node name="Handpivot" type="Node2D" parent="arms/bottomleftarm"]
+position = Vector2(-186, 213)
+
+[node name="Lasershooter" type="Sprite2D" parent="arms/bottomleftarm/Handpivot"]
+position = Vector2(47, 7)
+rotation = 2.0944
+scale = Vector2(2, 2)
+texture = ExtResource("4_7gqrn")
+
+[node name="deathanimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dgtuq")
+}
+autoplay = "death"
+
+[node name="Metalcreaking" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_uio2t")
+volume_db = 24.0
+pitch_scale = 0.54
+
+[node name="deathroar" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-166, -11)
+stream = ExtResource("11_550x7")
+volume_db = 18.909
+pitch_scale = 0.54
+
+[connection signal="animation_finished" from="deathanimation" to="." method="_on_deathanimation_animation_finished"]

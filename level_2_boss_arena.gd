@@ -18,6 +18,10 @@ func _process(delta: float) -> void:
 		if not $AthTheSpeedOfLight.is_playing():
 			$AthTheSpeedOfLight.play()
 	
+	if battling == true:
+		if $boss.health == 0:
+			battling = false
+			songplaying = false
 
 func _on_battlebegin_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):

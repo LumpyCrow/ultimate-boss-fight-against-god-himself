@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs07hi8gue1ew"]
+
+[ext_resource type="Texture2D" uid="uid://bddjcxy5jaefy" path="res://textures/Explosion.png" id="1_dw1tm"]
+[ext_resource type="AudioStream" uid="uid://ci3b7mvwiloio" path="res://audio/singualer explosion.mp3" id="2_tepht"]
+
+[node name="massiveExplosion" type="Node2D"]
+
+[node name="Explosion" type="Sprite2D" parent="."]
+position = Vector2(42, -142)
+texture = ExtResource("1_dw1tm")
+
+[node name="SingualerExplosion" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-20, -11)
+stream = ExtResource("2_tepht")
+volume_db = 24.0
+pitch_scale = 0.62
+autoplay = true

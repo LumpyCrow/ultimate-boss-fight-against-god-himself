@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://p74ir71ry238"]
+[gd_scene load_steps=29 format=3 uid="uid://p74ir71ry238"]
 
 [ext_resource type="Script" path="res://level_2_boss_arena.gd" id="1_lblhy"]
 [ext_resource type="PackedScene" uid="uid://be3xkbl84anxw" path="res://player.tscn" id="1_qjm0x"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://b0wi7gvybt3n2" path="res://fake_boss.tscn" id="12_ajslr"]
 [ext_resource type="AudioStream" uid="uid://de065vk2ysoe7" path="res://audio/concrete-scrape-loop-made-with-Voicemod-technology.mp3" id="13_6pc6d"]
 [ext_resource type="AudioStream" uid="uid://ch0qp7pu1kr1a" path="res://audio/godzilla-minus-one-roar.mp3" id="14_vygq2"]
+[ext_resource type="Texture2D" uid="uid://c0u8ci5f0c33g" path="res://textures/rock2.png" id="20_r37n1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oee23"]
 bg_color = Color(0.24893, 2.63215e-07, 5.41471e-08, 1)
@@ -604,6 +605,12 @@ volume_db = 24.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -128
+
+[node name="Rock2" type="Sprite2D" parent="."]
+position = Vector2(2386, -1353)
+rotation = 4.71239
+scale = Vector2(5, 5)
+texture = ExtResource("20_r37n1")
 
 [connection signal="body_entered" from="battlebegin" to="." method="_on_battlebegin_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

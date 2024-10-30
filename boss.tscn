@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c8wvqkkkfr6h6"]
+[gd_scene load_steps=26 format=3 uid="uid://c8wvqkkkfr6h6"]
 
 [ext_resource type="Script" path="res://boss.gd" id="1_k2pdl"]
 [ext_resource type="Texture2D" uid="uid://8y1wubwrffbe" path="res://textures/bossbody.png" id="2_71omb"]
@@ -18,6 +18,8 @@
 [ext_resource type="AudioStream" uid="uid://bjv6rcnctkmln" path="res://audio/synth-bass-drop-impact-14706.mp3" id="14_pxxhe"]
 [ext_resource type="AudioStream" uid="uid://cvxdge8bw4607" path="res://audio/cbar_hit1.wav" id="15_q2csi"]
 [ext_resource type="AudioStream" uid="uid://c3rsaw4u7clhn" path="res://audio/Player - Charged Shot 1.wav" id="16_cii80"]
+[ext_resource type="AudioStream" uid="uid://b5tf71c6dce4w" path="res://audio/metal-gates-creaking-the-murmur.mp3" id="19_wge75"]
+[ext_resource type="AudioStream" uid="uid://ch0qp7pu1kr1a" path="res://audio/godzilla-minus-one-roar.mp3" id="20_xl6js"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xf4kl"]
 radius = 32.0156
@@ -136,6 +138,9 @@ rotation = 2.0944
 scale = Vector2(2, 2)
 texture = ExtResource("7_jfpdy")
 
+[node name="Node2D" type="Node2D" parent="arms/topleftarm/HandPivot"]
+position = Vector2(109, 13)
+
 [node name="bottomleftarm" type="Node2D" parent="arms"]
 position = Vector2(-90, 66)
 
@@ -253,6 +258,10 @@ autostart = true
 wait_time = 2.0
 autostart = true
 
+[node name="armlauncherCooldown" type="Timer" parent="Timers"]
+wait_time = 5.2
+autostart = true
+
 [node name="rapidfire" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_u6cgh")
 
@@ -273,6 +282,17 @@ volume_db = 4.952
 [node name="singleShot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_cii80")
 pitch_scale = 2.0
+
+[node name="Metalcreaking" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_wge75")
+volume_db = 24.0
+pitch_scale = 0.54
+
+[node name="deathroar" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-166, -11)
+stream = ExtResource("20_xl6js")
+volume_db = 18.909
+pitch_scale = 0.54
 
 [node name="damagezone" type="Area2D" parent="."]
 collision_mask = 255
@@ -305,5 +325,6 @@ shape = SubResource("CircleShape2D_ci7u2")
 [connection signal="timeout" from="Timers/missleCooldown" to="." method="_on_missle_cooldown_timeout"]
 [connection signal="timeout" from="Timers/bombCooldown" to="." method="_on_bomb_cooldown_timeout"]
 [connection signal="timeout" from="Timers/armlazerCooldown" to="." method="_on_armlazer_cooldown_timeout"]
+[connection signal="timeout" from="Timers/armlauncherCooldown" to="." method="_on_armlauncher_cooldown_timeout"]
 [connection signal="finished" from="warmup" to="." method="_on_warmup_finished"]
 [connection signal="body_entered" from="damagezone" to="." method="_on_damagezone_body_entered"]
