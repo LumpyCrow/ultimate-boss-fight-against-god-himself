@@ -1,18 +1,22 @@
-[gd_scene load_steps=27 format=3 uid="uid://p74ir71ry238"]
+[gd_scene load_steps=28 format=3 uid="uid://p74ir71ry238"]
 
 [ext_resource type="Script" path="res://level_2_boss_arena.gd" id="1_lblhy"]
 [ext_resource type="PackedScene" uid="uid://be3xkbl84anxw" path="res://player.tscn" id="1_qjm0x"]
 [ext_resource type="Texture2D" uid="uid://dvvabax26e86l" path="res://textures/staircase.png" id="2_3prbl"]
 [ext_resource type="AudioStream" uid="uid://c1xac0wvleyy7" path="res://audio/music/Iwan Gabovitch - Dark Ambience Loop.ogg" id="4_dij4j"]
 [ext_resource type="AudioStream" uid="uid://bo1nlvblnxmi2" path="res://audio/music/A Conversation with Saul (Rough Demo.mp3" id="6_moy8p"]
+[ext_resource type="Texture2D" uid="uid://dkmoxy8h8j7xg" path="res://textures/arena.png" id="7_2xf22"]
 [ext_resource type="Texture2D" uid="uid://dco0b8aykmlrx" path="res://textures/bars.png" id="7_wrv0c"]
 [ext_resource type="Texture2D" uid="uid://bqkhaxftlk2cf" path="res://textures/tree.png" id="7_xpyu6"]
+[ext_resource type="Texture2D" uid="uid://dgtin6ppts5nq" path="res://textures/gray.png" id="8_757b0"]
 [ext_resource type="Texture2D" uid="uid://dwn4liylso171" path="res://textures/boss/bossbar.png" id="8_no168"]
 [ext_resource type="Texture2D" uid="uid://iwoje7ukcyh5" path="res://textures/controlpad.png" id="8_ssqbg"]
-[ext_resource type="PackedScene" path="res://cloud.tscn" id="8_ucqig"]
+[ext_resource type="PackedScene" uid="uid://cyxbaveo4t0vj" path="res://cloud.tscn" id="8_ucqig"]
+[ext_resource type="Texture2D" uid="uid://clr5r8yh0s22c" path="res://textures/darkgray.png" id="9_dfa8v"]
 [ext_resource type="AudioStream" uid="uid://bgx2ivcx05c8n" path="res://audio/music/colective concieness.mp3" id="10_2bsqd"]
+[ext_resource type="Texture2D" uid="uid://dmmsw81a6cjt2" path="res://textures/darkergray.png" id="10_cr2y7"]
 [ext_resource type="AudioStream" uid="uid://csf512jps6fby" path="res://audio/Falling Rock.wav" id="12_2afhx"]
-[ext_resource type="PackedScene" path="res://fake_boss.tscn" id="12_ajslr"]
+[ext_resource type="PackedScene" uid="uid://b0wi7gvybt3n2" path="res://fake_boss.tscn" id="12_ajslr"]
 [ext_resource type="AudioStream" uid="uid://de065vk2ysoe7" path="res://audio/concrete-scrape-loop-made-with-Voicemod-technology.mp3" id="13_6pc6d"]
 [ext_resource type="AudioStream" uid="uid://ch0qp7pu1kr1a" path="res://audio/godzilla-minus-one-roar.mp3" id="14_vygq2"]
 
@@ -21,15 +25,6 @@ bg_color = Color(0.24893, 2.63215e-07, 5.41471e-08, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0q5j"]
 bg_color = Color(0.996078, 0, 0, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ka8wa"]
-size = Vector2(6015.75, 112)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3a0ux"]
-size = Vector2(24, 5137.75)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3trxk"]
-size = Vector2(523, 102)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tsogp"]
 size = Vector2(1285.5, 28)
@@ -300,196 +295,168 @@ script = ExtResource("1_lblhy")
 
 [node name="Tree13" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(5450, -1157)
+position = Vector2(4647, -1056)
 texture = ExtResource("7_xpyu6")
 
 [node name="Tree14" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(7510, -1155)
+position = Vector2(6740, -899)
 texture = ExtResource("7_xpyu6")
 
 [node name="Tree15" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(7196, -1115)
-scale = Vector2(0.5, 0.5)
+position = Vector2(6390, -1098)
+scale = Vector2(0.5, 0.775001)
 texture = ExtResource("7_xpyu6")
 
 [node name="Tree16" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(7731, -1112)
+position = Vector2(6961, -856)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_xpyu6")
 
 [node name="Tree" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(4139, -1155)
+position = Vector2(3342, -891)
 texture = ExtResource("7_xpyu6")
 
 [node name="Tree2" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(4254, -1111)
+position = Vector2(3493, -866)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_xpyu6")
 
 [node name="Tree3" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(4529, -1153)
+position = Vector2(3805, -946)
 rotation = -0.120428
 texture = ExtResource("7_xpyu6")
 
 [node name="Tree4" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(4660, -1155)
+position = Vector2(3963, -1024)
 texture = ExtResource("7_xpyu6")
 
 [node name="Tree5" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(6318, -1155.71)
+position = Vector2(5548, -899.71)
 texture = ExtResource("7_xpyu6")
 
 [node name="Tree6" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(6433, -1111.71)
+position = Vector2(5663, -855.71)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_xpyu6")
 
 [node name="Tree7" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(6708, -1153.71)
+position = Vector2(5938, -897.71)
 rotation = -0.120428
 texture = ExtResource("7_xpyu6")
 
 [node name="Tree8" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(6839, -1155.71)
+position = Vector2(6069, -899.71)
 texture = ExtResource("7_xpyu6")
 
 [node name="Tree10" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(5110, -1115)
+position = Vector2(4340, -859)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_xpyu6")
 
 [node name="Tree12" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(5364, -1117)
+position = Vector2(4594, -861)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_xpyu6")
 
 [node name="Tree17" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(4402, -1325)
+position = Vector2(3678, -1111)
 scale = Vector2(3, 3)
 texture = ExtResource("7_xpyu6")
 
 [node name="Tree19" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(7360, -1323)
+position = Vector2(6590, -1067)
 scale = Vector2(3, 3)
 texture = ExtResource("7_xpyu6")
 
 [node name="Tree20" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(6582, -1239)
+position = Vector2(5145, -1189)
 scale = Vector2(2, 2)
 texture = ExtResource("7_xpyu6")
 
 [node name="Tree22" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(5033, -1239)
+position = Vector2(4235, -1143)
 scale = Vector2(2, 2)
 texture = ExtResource("7_xpyu6")
 
 [node name="Bars" type="Sprite2D" parent="decoration"]
-position = Vector2(-733, 287)
+position = Vector2(-1503, 543)
 texture = ExtResource("7_wrv0c")
 
 [node name="Bars2" type="Sprite2D" parent="decoration"]
-position = Vector2(3831, -1228)
+position = Vector2(2877, -953)
 texture = ExtResource("7_wrv0c")
 
 [node name="Controlpad" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(-143, 514)
+position = Vector2(-913.001, 770)
 scale = Vector2(1.85833, 1)
 texture = ExtResource("8_ssqbg")
 
 [node name="Controlpad2" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(-595, 126)
+position = Vector2(-1365, 382)
 scale = Vector2(1.85833, 1)
 texture = ExtResource("8_ssqbg")
 
-[node name="Controlpad3" type="Sprite2D" parent="decoration"]
-show_behind_parent = true
-position = Vector2(3663, -950)
-scale = Vector2(0.738889, 1)
-texture = ExtResource("8_ssqbg")
-
-[node name="Controlpad4" type="Sprite2D" parent="decoration"]
-show_behind_parent = true
-position = Vector2(6051, -950)
-scale = Vector2(5.89444, 1)
-texture = ExtResource("8_ssqbg")
-
-[node name="Controlpad5" type="Sprite2D" parent="decoration"]
-show_behind_parent = true
-position = Vector2(5822, -5133)
-scale = Vector2(6.65556, 1)
-texture = ExtResource("8_ssqbg")
-
-[node name="Controlpad6" type="Sprite2D" parent="decoration"]
-position = Vector2(8032, -2971)
-scale = Vector2(0.406249, 17.5167)
-texture = ExtResource("8_ssqbg")
-
-[node name="Controlpad7" type="Sprite2D" parent="decoration"]
-position = Vector2(3666.13, -3144)
-scale = Vector2(0.73368, 16.175)
-texture = ExtResource("8_ssqbg")
-
 [node name="cloud" parent="decoration" instance=ExtResource("8_ucqig")]
-position = Vector2(4611, -1920)
+position = Vector2(3841, -1664)
 scale = Vector2(5, 5)
 
 [node name="cloud2" parent="decoration" instance=ExtResource("8_ucqig")]
-position = Vector2(4332, -2456)
+position = Vector2(3562, -2200)
 scale = Vector2(5, 5)
 
 [node name="cloud3" parent="decoration" instance=ExtResource("8_ucqig")]
-position = Vector2(7058, -1708)
+position = Vector2(6288, -1452)
 scale = Vector2(5, 5)
 
 [node name="cloud4" parent="decoration" instance=ExtResource("8_ucqig")]
-position = Vector2(6431, -2199)
+position = Vector2(5661, -1943)
 scale = Vector2(5, 5)
 
 [node name="cloud5" parent="decoration" instance=ExtResource("8_ucqig")]
-position = Vector2(7284, -2818)
+position = Vector2(7604, -2405)
 scale = Vector2(5, 5)
 
 [node name="cloud6" parent="decoration" instance=ExtResource("8_ucqig")]
-position = Vector2(5608, -2946)
+position = Vector2(7019, -3182)
 scale = Vector2(5, 5)
 
 [node name="cloud7" parent="decoration" instance=ExtResource("8_ucqig")]
-position = Vector2(4785, -3150)
+position = Vector2(4015, -2894)
 scale = Vector2(5, 5)
 
 [node name="cloud8" parent="decoration" instance=ExtResource("8_ucqig")]
-position = Vector2(6514, -3830)
+position = Vector2(5744, -3574)
 scale = Vector2(5, 5)
 
 [node name="cloud9" parent="decoration" instance=ExtResource("8_ucqig")]
-position = Vector2(7420, -4298)
+position = Vector2(6650, -4042)
 scale = Vector2(5, 5)
 
 [node name="cloud10" parent="decoration" instance=ExtResource("8_ucqig")]
-position = Vector2(4332, -4343)
+position = Vector2(3562, -4087)
 scale = Vector2(5, 5)
 
 [node name="Staircase" type="Sprite2D" parent="decoration"]
-position = Vector2(971, 144)
+position = Vector2(200.999, 400)
 scale = Vector2(2, 2)
 texture = ExtResource("2_3prbl")
 
@@ -501,10 +468,32 @@ texture = ExtResource("2_3prbl")
 position = Vector2(964, -482)
 texture = ExtResource("2_3prbl")
 
-[node name="Controlpad8" type="Sprite2D" parent="decoration"]
-position = Vector2(6031, -718)
-scale = Vector2(5.89444, 1)
-texture = ExtResource("8_ssqbg")
+[node name="Arena" type="Sprite2D" parent="decoration"]
+position = Vector2(5630, -2531)
+scale = Vector2(6, 6)
+texture = ExtResource("7_2xf22")
+
+[node name="Gray" type="Sprite2D" parent="decoration"]
+position = Vector2(138, -3755)
+scale = Vector2(100, 100)
+texture = ExtResource("8_757b0")
+
+[node name="Gray" type="Sprite2D" parent="decoration/Gray"]
+position = Vector2(10.04, -30.66)
+texture = ExtResource("8_757b0")
+
+[node name="Darkgray" type="Sprite2D" parent="decoration/Gray"]
+position = Vector2(48.15, -30.65)
+texture = ExtResource("9_dfa8v")
+
+[node name="Darkergray" type="Sprite2D" parent="decoration"]
+position = Vector2(11123, -3640)
+scale = Vector2(100, 100)
+texture = ExtResource("10_cr2y7")
+
+[node name="Darkergray" type="Sprite2D" parent="decoration/Darkergray"]
+position = Vector2(-11.76, -31.83)
+texture = ExtResource("10_cr2y7")
 
 [node name="player" parent="." instance=ExtResource("1_qjm0x")]
 top_level = true
@@ -535,45 +524,32 @@ show_percentage = false
 position = Vector2(-973, -144)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-768.4, 257.4)
 scale = Vector2(2, 2)
 polygon = PackedVector2Array(2184.5, -458.5, 1792.39, -264.196, 726, 269, 738, 269, 2192, -437.5)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(7667, -4878)
-shape = SubResource("RectangleShape2D_ka8wa")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(7377.88, -870)
-shape = SubResource("RectangleShape2D_ka8wa")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(8872, -3436)
-shape = SubResource("RectangleShape2D_3a0ux")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(4890, -3626.88)
-shape = SubResource("RectangleShape2D_3a0ux")
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(4636, -1109)
-shape = SubResource("RectangleShape2D_3trxk")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(834.75, 552)
+position = Vector2(66.3501, 809.4)
 shape = SubResource("RectangleShape2D_tsogp")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(402, 377)
+position = Vector2(-366.4, 634.4)
 shape = SubResource("RectangleShape2D_tsogp")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(239.563, 430.5)
+position = Vector2(-528.837, 687.9)
 shape = SubResource("RectangleShape2D_nvn8o")
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(-430, -150)
+position = Vector2(-1198.4, 107.4)
 scale = Vector2(2, 2)
-polygon = PackedVector2Array(2652, -785, 1792.39, -264.196, 726, 269, 738, 269, 2438.5, -502)
+polygon = PackedVector2Array(2406.7, -619.2, 1792.39, -264.196, 726, 269, 738, 269, 2416.2, -511.2)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(3603, -670, 4449, -671, 4482, -687, 4587, -713, 4685, -760, 4743, -775, 4861, -793, 4980, -795, 5028, -813, 5100, -827, 5188, -832, 5538, -832, 5610, -838, 5778, -833, 5869, -836, 5912, -849, 6031, -866, 6115, -890, 6226, -918, 6638, -918, 6790, -924, 6897, -916, 7055, -922, 7500, -916, 7624, -873, 7697, -852, 7748, -853, 7794, -829, 7896, -822, 8075, -808, 8602, -804, 8806, -778, 9032, -764, 9173, -745, 9333, -737, 9601, -710, 9597, -442, 3594, -532)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(3810, -1077, 3999, -1023, 4053, -954, 4029, -889, 3887, -862, 3704, -856, 3604, -920, 3595, -4208, 9600, -4178, 9600, -1001, 9581, -979, 9378, -969, 9334, -1008, 9331, -1106, 9436, -1146, 9465, -1222, 9477, -1305, 9479, -1397, 9458, -1469, 9440, -1561, 9440, -1671, 9428, -1777, 9430, -1979, 9476, -2213, 9473, -2363, 9434, -2615, 9430, -2897, 9492, -3162, 9496, -3293, 9498, -3409, 9420, -3587, 9264, -3782, 9033, -3883, 8749, -3940, 8465, -4007, 8303, -4046, 8092, -4077, 7886, -4082, 7743, -4041, 7576, -4025, 7027, -4035, 6915, -4046, 6770, -4098, 6219, -4098, 6151, -4078, 6089, -4043, 6009, -4022, 5717, -4015, 5549, -3995, 5368, -3943, 5267, -3926, 5180, -3886, 5094, -3854, 5048, -3854, 5026, -3834, 4893, -3816, 4863, -3800, 4850, -3802, 4798, -3759, 4785, -3739, 4647, -3642, 4540, -3616, 4319, -3584, 4114, -3563, 3823, -3489, 3724, -3380, 3693, -3278, 3690, -2954, 3687, -2829, 3740, -2759, 3796, -2659, 3803, -2622, 3816, -2605, 3833, -2480, 3814, -2402, 3818, -2136, 3800, -2059, 3765, -1948, 3706, -1754, 3694, -1624, 3723, -1508, 3746, -1347, 3769, -1178)
 
 [node name="suspense" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(3414, -1154)

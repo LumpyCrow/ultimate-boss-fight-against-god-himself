@@ -7,9 +7,9 @@ var Clusterbomb = load("res://clusterbomb.tscn")
 
 @onready var player2 = get_parent().get_node("player")
 
-const SPEED = 40.0
-const SPEED2 = 100
-const SPEEDLIMIT = 1000
+var SPEED = 40.0
+var SPEED2 = 100
+var SPEEDLIMIT = 1000
 var player = null
 var player_chase = 0
 
@@ -17,11 +17,17 @@ var minilazerready = true
 var giantLaserReady = false
 var missleready = true
 var clusterbombready = true
+var armlazerReady = true
 
-var health = 400
+var health = 40
 
 func _physics_process(delta: float) -> void:
 	print(player_chase)
+	
+	if health < 20:
+		$Timers/minilazerCooldown.wait_time = 0.05
+		$Timers/missleCooldown.wait_time = 0.5
+		$Timers/bombCooldown.wait_time = 0.15
 	
 	if velocity.x > SPEEDLIMIT:
 		velocity.x = velocity.x - 200
@@ -32,11 +38,35 @@ func _physics_process(delta: float) -> void:
 		velocity.y = velocity.y - 200
 	if velocity.y < -SPEEDLIMIT:
 		velocity.y = velocity.y + 200
+		
+	if armlazerReady == true:
+		$singleShot.play()
+		var new_LittleArmLazer = LittleLazer.instantiate()
+		add_sibling(new_LittleArmLazer)
+		new_LittleArmLazer.position.y = $arms/toprightarm/Handpivot/Node2D.global_position.y
+		new_LittleArmLazer.position.x = $arms/toprightarm/Handpivot/Node2D.global_position.x
+		new_LittleArmLazer.rotation = $arms/toprightarm/Handpivot.rotation + 1.5708
+		armlazerReady = false
+		
+		var new_LittleArmLazer2 = LittleLazer.instantiate()
+		add_sibling(new_LittleArmLazer2)
+		new_LittleArmLazer2.position.y = $arms/bottomleftarm/Handpivot/Node2D.global_position.y
+		new_LittleArmLazer2.position.x = $arms/bottomleftarm/Handpivot/Node2D.global_position.x
+		new_LittleArmLazer2.rotation = $arms/bottomleftarm/Handpivot.rotation + 1.5708
+		armlazerReady = false
 	
-	$lazergunPivot.rotation = $lazergunPivot.rotation + 0.05
-	$biglazerpivot.rotation = $biglazerpivot.rotation - 0.02
+	
+	if health >= 20:
+		$lazergunPivot.rotation = $lazergunPivot.rotation + 0.05
+		$biglazerpivot.rotation = $biglazerpivot.rotation - 0.02
+	if health < 20:
+		$lazergunPivot.rotation = $lazergunPivot.rotation + 0.1
+		$biglazerpivot.rotation = $biglazerpivot.rotation - 0.035
+	
+	
 	$Bossbody.rotation = velocity.x *0.0009
 	
+	$MinigunBase/MinigunPivot.look_at(player2.position)
 	$arms/topleftarm/HandPivot.look_at(player2.position)
 	$arms/toprightarm/Handpivot.look_at(player2.position)
 	$arms/bottomleftarm/Handpivot.look_at(player2.position)
@@ -256,3 +286,6 @@ func _on_damagezone_body_entered(body: Node2D) -> void:
 	if body.is_in_group("cannonball"):
 		health = health - 1
 		$damage.play()
+		
+func _on_armlazer_cooldown_timeout() -> void:
+	armlazerReady = true

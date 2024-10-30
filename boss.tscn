@@ -1,9 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://c8wvqkkkfr6h6"]
+[gd_scene load_steps=24 format=3 uid="uid://c8wvqkkkfr6h6"]
 
 [ext_resource type="Script" path="res://boss.gd" id="1_k2pdl"]
 [ext_resource type="Texture2D" uid="uid://8y1wubwrffbe" path="res://textures/bossbody.png" id="2_71omb"]
 [ext_resource type="Texture2D" uid="uid://c655yhvej3757" path="res://textures/boss/righttop.png" id="2_cxfwr"]
+[ext_resource type="Texture2D" uid="uid://iwoje7ukcyh5" path="res://textures/controlpad.png" id="2_lvjin"]
 [ext_resource type="Texture2D" uid="uid://bu06h4r340ang" path="res://textures/boss/lasershooter.png" id="3_x3kc6"]
+[ext_resource type="Texture2D" uid="uid://d4jqa8m7k7mkg" path="res://textures/minigun.png" id="3_ypow5"]
 [ext_resource type="Texture2D" uid="uid://bm8loby5whjl4" path="res://textures/boss/rightbottom.png" id="4_qx61j"]
 [ext_resource type="Texture2D" uid="uid://5l34j5gpc3kp" path="res://textures/boss/Sucker.png" id="5_5jt6r"]
 [ext_resource type="Texture2D" uid="uid://c2aq17q7vyeu6" path="res://textures/boss/lefttop.png" id="6_y375v"]
@@ -15,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://ck1kgd21qwhnu" path="res://audio/giant_laser_warmup.mp3" id="10_4trog"]
 [ext_resource type="AudioStream" uid="uid://bjv6rcnctkmln" path="res://audio/synth-bass-drop-impact-14706.mp3" id="14_pxxhe"]
 [ext_resource type="AudioStream" uid="uid://cvxdge8bw4607" path="res://audio/cbar_hit1.wav" id="15_q2csi"]
+[ext_resource type="AudioStream" uid="uid://c3rsaw4u7clhn" path="res://audio/Player - Charged Shot 1.wav" id="16_cii80"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xf4kl"]
 radius = 32.0156
@@ -34,6 +37,34 @@ radius = 34.0147
 [node name="boss" type="CharacterBody2D" groups=["danger"]]
 collision_mask = 64
 script = ExtResource("1_k2pdl")
+
+[node name="MinigunBase" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-2.84217e-14, -175)
+rotation = 1.5708
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_lvjin")
+
+[node name="MinigunPivot" type="Node2D" parent="MinigunBase"]
+position = Vector2(-350, 1.4782e-05)
+
+[node name="Minigun" type="Sprite2D" parent="MinigunBase/MinigunPivot"]
+position = Vector2(375, 40)
+rotation = 3.14159
+scale = Vector2(7.5, 7.5)
+texture = ExtResource("3_ypow5")
+
+[node name="Node2D" type="Node2D" parent="MinigunBase/MinigunPivot/Minigun"]
+position = Vector2(-66, 5.33334)
+
+[node name="Node2D2" type="Node2D" parent="MinigunBase/MinigunPivot/Minigun"]
+position = Vector2(-66, -0.666658)
+
+[node name="Node2D3" type="Node2D" parent="MinigunBase/MinigunPivot/Minigun"]
+position = Vector2(-66, -6.66666)
+
+[node name="Node2D4" type="Node2D" parent="MinigunBase/MinigunPivot/Minigun"]
+position = Vector2(-66, 11.3333)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(-267, -269)
@@ -69,6 +100,9 @@ position = Vector2(47, 8)
 rotation = 2.0944
 scale = Vector2(2, 2)
 texture = ExtResource("3_x3kc6")
+
+[node name="Node2D" type="Node2D" parent="arms/toprightarm/Handpivot"]
+position = Vector2(123, 17)
 
 [node name="bottomrightarm" type="Node2D" parent="arms"]
 position = Vector2(90, 66)
@@ -117,6 +151,9 @@ position = Vector2(47, 7)
 rotation = 2.0944
 scale = Vector2(2, 2)
 texture = ExtResource("3_x3kc6")
+
+[node name="Node2D" type="Node2D" parent="arms/bottomleftarm/Handpivot"]
+position = Vector2(123, 15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_anfww")
@@ -212,6 +249,10 @@ autostart = true
 wait_time = 0.3
 autostart = true
 
+[node name="armlazerCooldown" type="Timer" parent="Timers"]
+wait_time = 2.0
+autostart = true
+
 [node name="rapidfire" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_u6cgh")
 
@@ -228,6 +269,10 @@ pitch_scale = 3.0
 [node name="damage" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_q2csi")
 volume_db = 4.952
+
+[node name="singleShot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_cii80")
+pitch_scale = 2.0
 
 [node name="damagezone" type="Area2D" parent="."]
 collision_mask = 255
@@ -254,12 +299,11 @@ shape = SubResource("CircleShape2D_ci7u2")
 position = Vector2(271, 275)
 shape = SubResource("CircleShape2D_ci7u2")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="timeout" from="Timers/minilazerCooldown" to="." method="_on_minilazer_cooldown_timeout"]
 [connection signal="timeout" from="Timers/Followtimer" to="." method="_on_followtimer_timeout"]
 [connection signal="timeout" from="Timers/missleCooldown" to="." method="_on_missle_cooldown_timeout"]
 [connection signal="timeout" from="Timers/bombCooldown" to="." method="_on_bomb_cooldown_timeout"]
+[connection signal="timeout" from="Timers/armlazerCooldown" to="." method="_on_armlazer_cooldown_timeout"]
 [connection signal="finished" from="warmup" to="." method="_on_warmup_finished"]
 [connection signal="body_entered" from="damagezone" to="." method="_on_damagezone_body_entered"]
