@@ -28,11 +28,6 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	if healthkitchance == 5:
-			var new_healthkit = healthkit.instantiate()
-			add_sibling(new_healthkit)
-			new_healthkit.position.y = position.y
-			new_healthkit.position.x = position.x
 	
 	var new_explosion = explosion.instantiate()
 	add_sibling(new_explosion)

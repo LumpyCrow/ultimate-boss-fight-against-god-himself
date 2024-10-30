@@ -16,7 +16,7 @@ var facingright = true
 var camerashaking = false
 
 var invincible = false
-var health = 10
+var health = 100
 var death = preload("res://death.tscn")
 
 var cannonball = preload("res://cannonball.tscn")
