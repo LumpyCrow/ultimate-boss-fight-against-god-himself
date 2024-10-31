@@ -17,6 +17,9 @@ func _process(delta: float) -> void:
 	if songplaying == true:
 		if not $AthTheSpeedOfLight.is_playing():
 			$AthTheSpeedOfLight.play()
+	if songplaying == false:
+		if $AthTheSpeedOfLight.is_playing():
+			$AthTheSpeedOfLight.stop()
 	
 	if battling == true:
 		if $boss.health == 0:

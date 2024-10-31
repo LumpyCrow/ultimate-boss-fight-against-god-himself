@@ -21,7 +21,6 @@ func _physics_process(delta: float) -> void:
 	if healthkitchance >= 6:
 		healthkitchance = 1
 		
-	print(healthkitchance)
 	if not $Alarm.is_playing():
 		$Alarm.play()
 	move_and_slide()

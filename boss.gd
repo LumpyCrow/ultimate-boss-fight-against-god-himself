@@ -21,17 +21,18 @@ var clusterbombready = true
 var armlazerReady = true
 var armlauncherReady = true
 
-var health = 40
+var health = 400
 
 func _physics_process(delta: float) -> void:
+	
+	print(player_chase)
 	
 	if health == 0:
 		velocity.y = 0
 	
 	
-	print(player_chase)
-	
-	if health < 20:
+	if health < 100:
+		
 		$Timers/minilazerCooldown.wait_time = 0.05
 		$Timers/missleCooldown.wait_time = 0.5
 		$Timers/bombCooldown.wait_time = 0.15
@@ -310,10 +311,28 @@ func _on_damagezone_body_entered(body: Node2D) -> void:
 			
 			var new_death = death.instantiate()
 			add_sibling(new_death)
-			new_death.position.y = position.y
-			new_death.position.x = position.x
+			new_death.position.y = $Bossbody.global_position.y
+			new_death.position.x = $Bossbody.global_position.x
+			position.y = 10000000000000
+		
 			
-			position.y = 10000000000
+		if health == 326:
+			$AnimationPlayer.play("topRightArmFallOff")
+			$RodGearDown.play()
+			
+		if health == 251:
+			$AnimationPlayer2.play("topLeftArmFallOff")
+			$RodGearDown.play()
+			
+		if health == 176:
+			$AnimationPlayer3.play("bottomRightArmFallOff")
+			$RodGearDown.play()
+		
+		if health == 101:
+			$AnimationPlayer4.play("bottomLeftArmFallOff")
+			$RodGearDown.play()
+			$deathroar.play()
+			$Bossbody.texture = load("res://textures/angrybossbody.png")
 		
 func _on_armlazer_cooldown_timeout() -> void:
 	armlazerReady = true
