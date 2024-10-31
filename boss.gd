@@ -4,7 +4,8 @@ var LittleLazer = load("res://mini_lazer.tscn")
 var BigLazer = load("res://giant_laser.tscn")
 var missle = load("res://follower.tscn")
 var Clusterbomb = load("res://clusterbomb.tscn")
-
+var explosion = load("res://explosion.tscn")
+var death = load("res://bossdying.tscn")
 @onready var player2 = get_parent().get_node("player")
 
 var SPEED = 40.0
@@ -18,13 +19,20 @@ var giantLaserReady = false
 var missleready = true
 var clusterbombready = true
 var armlazerReady = true
+var armlauncherReady = true
 
-var health = 40
+var health = 400
 
 func _physics_process(delta: float) -> void:
+	
 	print(player_chase)
 	
-	if health < 20:
+	if health == 0:
+		velocity.y = 0
+	
+	
+	if health < 100:
+		
 		$Timers/minilazerCooldown.wait_time = 0.05
 		$Timers/missleCooldown.wait_time = 0.5
 		$Timers/bombCooldown.wait_time = 0.15
@@ -38,6 +46,8 @@ func _physics_process(delta: float) -> void:
 		velocity.y = velocity.y - 200
 	if velocity.y < -SPEEDLIMIT:
 		velocity.y = velocity.y + 200
+		
+	
 		
 	if armlazerReady == true:
 		$singleShot.play()
@@ -55,7 +65,15 @@ func _physics_process(delta: float) -> void:
 		new_LittleArmLazer2.rotation = $arms/bottomleftarm/Handpivot.rotation + 1.5708
 		armlazerReady = false
 	
-	
+	if armlauncherReady == true:
+		$bassdrop.play()
+		var new_arm_missle = missle.instantiate()
+		add_sibling(new_arm_missle)
+		new_arm_missle.position.y = $arms/topleftarm/HandPivot/Node2D.global_position.y
+		new_arm_missle.position.x = $arms/topleftarm/HandPivot/Node2D.global_position.x
+		new_arm_missle.rotation = $arms/topleftarm/HandPivot.rotation
+		armlauncherReady = false
+		
 	if health >= 20:
 		$lazergunPivot.rotation = $lazergunPivot.rotation + 0.05
 		$biglazerpivot.rotation = $biglazerpivot.rotation - 0.02
@@ -286,6 +304,40 @@ func _on_damagezone_body_entered(body: Node2D) -> void:
 	if body.is_in_group("cannonball"):
 		health = health - 1
 		$damage.play()
+		if health == 1:
+			player_chase = -10000
+			health = health - 1
+			$damage.play()
+			
+			var new_death = death.instantiate()
+			add_sibling(new_death)
+			new_death.position.y = $Bossbody.global_position.y
+			new_death.position.x = $Bossbody.global_position.x
+			position.y = 10000000000000
+		
+			
+		if health == 326:
+			$AnimationPlayer.play("topRightArmFallOff")
+			$RodGearDown.play()
+			
+		if health == 251:
+			$AnimationPlayer2.play("topLeftArmFallOff")
+			$RodGearDown.play()
+			
+		if health == 176:
+			$AnimationPlayer3.play("bottomRightArmFallOff")
+			$RodGearDown.play()
+		
+		if health == 101:
+			$AnimationPlayer4.play("bottomLeftArmFallOff")
+			$RodGearDown.play()
+			$deathroar.play()
+			$Bossbody.texture = load("res://textures/angrybossbody.png")
 		
 func _on_armlazer_cooldown_timeout() -> void:
 	armlazerReady = true
+
+func _on_armlauncher_cooldown_timeout() -> void:
+	armlauncherReady = true
+
+	
