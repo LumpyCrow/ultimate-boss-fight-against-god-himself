@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://be3xkbl84anxw"]
+[gd_scene load_steps=39 format=3 uid="uid://be3xkbl84anxw"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_m8axc"]
 [ext_resource type="Texture2D" uid="uid://q8xnyf8lai5v" path="res://textures/duck/right.png" id="2_17gb2"]
@@ -15,8 +15,19 @@
 [ext_resource type="AudioStream" uid="uid://bk1jfg5dx10qd" path="res://audio/glauncher.wav" id="11_8og24"]
 [ext_resource type="AudioStream" uid="uid://by58n75u3e2e7" path="res://audio/single-quack-from-a-duck-14494.mp3" id="12_0unir"]
 [ext_resource type="Texture2D" uid="uid://bvok05hwus3p4" path="res://textures/health/health5.png" id="13_1472h"]
+[ext_resource type="AudioStream" uid="uid://d2sh51qf1ebi4" path="res://audio/c1a0_sci_catscream.wav" id="16_oqs4j"]
 [ext_resource type="AudioStream" uid="uid://dw2qv7g3hyhl2" path="res://audio/smallmedkit1.wav" id="16_t0pkm"]
 [ext_resource type="Texture2D" uid="uid://iwoje7ukcyh5" path="res://textures/controlpad.png" id="17_2wnhh"]
+[ext_resource type="Texture2D" uid="uid://c23j5l45htagp" path="res://textures/health/dematerialization/vaporizeleft1.png" id="19_1sc0y"]
+[ext_resource type="Texture2D" uid="uid://q5d1y740gxus" path="res://textures/health/dematerialization/vaporizeleft2.png" id="20_fxqv8"]
+[ext_resource type="Texture2D" uid="uid://beceyl3v33e41" path="res://textures/health/dematerialization/vaporizeleft3.png" id="21_jsab1"]
+[ext_resource type="Texture2D" uid="uid://cba5b8g62m4nh" path="res://textures/health/dematerialization/vaporizeleft4.png" id="22_whbk3"]
+[ext_resource type="Texture2D" uid="uid://dj6quw37dywx2" path="res://textures/health/dematerialization/vaporizeright1.png" id="23_h6nd8"]
+[ext_resource type="Texture2D" uid="uid://bssn6f5hmlbkb" path="res://textures/health/dematerialization/vaporizeright2.png" id="24_q2jsr"]
+[ext_resource type="Texture2D" uid="uid://bjxqrsnk3ebhv" path="res://textures/health/dematerialization/vaporizeright3.png" id="25_1ybe5"]
+[ext_resource type="Texture2D" uid="uid://cih6q7wdj857s" path="res://textures/health/dematerialization/vaporizeright4.png" id="26_r8g2e"]
+[ext_resource type="Texture2D" uid="uid://dew4lqkftfkwv" path="res://textures/nothing.png" id="27_q7ab7"]
+[ext_resource type="Texture2D" uid="uid://dvg7jek2io10q" path="res://textures/gameoverscreen.png" id="28_qan1n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v5r0w"]
 
@@ -149,10 +160,61 @@ _data = {
 "cameraShake": SubResource("Animation_qmilm")
 }
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_jh5ly"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_1sc0y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_fxqv8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_jsab1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_whbk3")
+}],
+"loop": true,
+"name": &"Vaporizeleft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_h6nd8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_q2jsr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_1ybe5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_r8g2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_q7ab7")
+}],
+"loop": false,
+"name": &"Vaporizeright",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 3
 collision_mask = 5
 script = ExtResource("1_m8axc")
+
+[node name="Gameoverscreen" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(3, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("28_qan1n")
 
 [node name="HUD" type="Node2D" parent="."]
 
@@ -231,6 +293,9 @@ stream = ExtResource("12_0unir")
 volume_db = 24.0
 pitch_scale = 1.19
 
+[node name="deathScream" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_oqs4j")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_8c0ib")
@@ -252,7 +317,14 @@ position = Vector2(0, 519.75)
 scale = Vector2(1, 1.50208)
 texture = ExtResource("17_2wnhh")
 
+[node name="death" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_jh5ly")
+animation = &"Vaporizeleft"
+frame_progress = 0.891994
+
 [connection signal="body_entered" from="damagezone" to="." method="_on_damagezone_body_entered"]
 [connection signal="timeout" from="splitsecond" to="." method="_on_splitsecond_timeout"]
 [connection signal="timeout" from="invincibilitytime" to="." method="_on_invincibilitytime_timeout"]
 [connection signal="timeout" from="cannoncooldown" to="." method="_on_cannoncooldown_timeout"]
+[connection signal="animation_finished" from="death" to="." method="_on_death_animation_finished"]

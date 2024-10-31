@@ -16,8 +16,9 @@ var facingright = true
 var camerashaking = false
 
 var invincible = false
-var health = 100
+var health = 1
 var death = preload("res://death.tscn")
+var deathdone = false
 
 var cannonball = preload("res://cannonball.tscn")
 var fireable = true
@@ -44,83 +45,75 @@ func _physics_process(delta: float) -> void:
 		
 		
 	# Handle jump. (+animation)
-	if Input.is_action_pressed("ui_accept") or touchscreenfly == true:
-		if velocity.y > -MAXSPEED:
-			velocity.y = velocity.y + JUMP_VELOCITY
-		if invincible == false:
+	if health > 0:
+		
+		if Input.is_action_pressed("ui_accept") or touchscreenfly == true:
+			if velocity.y > -MAXSPEED:
+				velocity.y = velocity.y + JUMP_VELOCITY
+			if invincible == false:
+				$animator.visible = true
+				$sprite.visible = false
+			
+		# smooth rotation of the cannon
+		if Input.is_action_pressed("Rotateleft") or touchscreenrotateleft == true:
+			$pivot.rotation = $pivot.rotation -0.05
+		if Input.is_action_pressed("Rotateright") or touchscreenrotateright == true:
+			$pivot.rotation = $pivot.rotation +0.05
+	
+	
+		if Input.is_action_pressed("Left") and velocity.x > -MAXSPEED or touchscreenleft == true and velocity.x > -MAXSPEED:
+			velocity.x = velocity.x - SPEED
+		else:
+			if velocity.x < 0:
+				velocity.x = velocity.x + SPEED
+		if Input.is_action_pressed("Right") and velocity.x < MAXSPEED or touchscreenright == true and velocity.x < MAXSPEED:
+			velocity.x = velocity.x + SPEED
+		else:
+			if velocity.x > 0:
+				velocity.x = velocity.x - SPEED
+		
+		
+		#purely for controlling when each animation plays
+		if Input.is_action_pressed("Left") and invincible == false or touchscreenleft == true and invincible == false:
+			facingright = false
 			$animator.visible = true
 			$sprite.visible = false
-		
-	# smooth rotation of the cannon
-	if Input.is_action_pressed("Rotateleft") or touchscreenrotateleft == true:
-		$pivot.rotation = $pivot.rotation -0.05
-	if Input.is_action_pressed("Rotateright") or touchscreenrotateright == true:
-		$pivot.rotation = $pivot.rotation +0.05
-	
-		
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	
-	#var direction := Input.get_axis("Left", "Right")
-	#if direction:
-	#	if velocity.x < 300 and velocity.x > -300:
-		#	velocity.x = velocity.x + direction * SPEED
-	#else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-	
-	if Input.is_action_pressed("Left") and velocity.x > -MAXSPEED or touchscreenleft == true and velocity.x > -MAXSPEED:
-		velocity.x = velocity.x - SPEED
-	else:
-		if velocity.x < 0:
-			velocity.x = velocity.x + SPEED
-	if Input.is_action_pressed("Right") and velocity.x < MAXSPEED or touchscreenright == true and velocity.x < MAXSPEED:
-		velocity.x = velocity.x + SPEED
-	else:
-		if velocity.x > 0:
-			velocity.x = velocity.x - SPEED
-	
-	
-	#purely for controlling when each animation plays
-	if Input.is_action_pressed("Left") and invincible == false or touchscreenleft == true and invincible == false:
-		facingright = false
-		$animator.visible = true
-		$sprite.visible = false
-		$sprite.texture = load("res://textures/duck/left.png")
-		if is_on_floor() == false:
+			$sprite.texture = load("res://textures/duck/left.png")
+			if is_on_floor() == false:
+				$animator.play("Flyingleft")
+			if is_on_floor() == true:
+				$animator.play("Walkingleft")
+				if not $walkingsound.is_playing():
+					$walkingsound.play()
+					
+		#also purely for controlling when each animation plays
+		if Input.is_action_pressed("Right") and invincible == false or touchscreenright == true and invincible == false:
+			facingright = true
+			$animator.visible = true
+			$sprite.visible = false
+			$sprite.texture = load("res://textures/duck/right.png")
+			if is_on_floor() == false:
+				$animator.play("Flyingright")
+			if is_on_floor() == true:
+				$animator.play("Walkingright")
+				if not $walkingsound.is_playing():
+					$walkingsound.play()
+					
+			#this is for animations for if the play isn't touching any of the controls (i think. i kinda forgot what this does)
+		elif not Input.is_action_pressed("Left") or Input.is_action_pressed("Right") and invincible == false:
+			if is_on_floor():
+				$animator.visible = false
+				$sprite.visible = true
+				
+		#more animation?!? skibidi toilet
+		if facingright == false and is_on_floor() == false:
 			$animator.play("Flyingleft")
-		if is_on_floor() == true:
-			$animator.play("Walkingleft")
-			if not $walkingsound.is_playing():
-				$walkingsound.play()
-				
-	#also purely for controlling when each animation plays
-	if Input.is_action_pressed("Right") and invincible == false or touchscreenright == true and invincible == false:
-		facingright = true
-		$animator.visible = true
-		$sprite.visible = false
-		$sprite.texture = load("res://textures/duck/right.png")
-		if is_on_floor() == false:
+		if facingright == true and is_on_floor() == false:
 			$animator.play("Flyingright")
-		if is_on_floor() == true:
+		if facingright == false and is_on_floor() == true:
+			$animator.play("Walkingleft")
+		if facingright == true and is_on_floor() == true:
 			$animator.play("Walkingright")
-			if not $walkingsound.is_playing():
-				$walkingsound.play()
-				
-		#this is for animations for if the play isn't touching any of the controls (i think. i kinda forgot what this does)
-	elif not Input.is_action_pressed("Left") or Input.is_action_pressed("Right") and invincible == false:
-		if is_on_floor():
-			$animator.visible = false
-			$sprite.visible = true
-			
-	#more animation?!? skibidi toilet
-	if facingright == false and is_on_floor() == false:
-		$animator.play("Flyingleft")
-	if facingright == true and is_on_floor() == false:
-		$animator.play("Flyingright")
-	if facingright == false and is_on_floor() == true:
-		$animator.play("Walkingleft")
-	if facingright == true and is_on_floor() == true:
-		$animator.play("Walkingright")
 		
 	move_and_slide()
 	
@@ -147,22 +140,29 @@ func _physics_process(delta: float) -> void:
 		$HUD/Health.texture = load("res://textures/health/health2.png")
 	if health == 1:
 		$HUD/Health.texture = load("res://textures/health/health1.png")
-	if health == 0:
-		$HUD/Health.texture = load("res://textures/health/health0.png")
 	if health <= 0:
-		get_tree().change_scene_to_file("res://death.tscn")
+		$death.visible = true
+		$animator.visible = false
+		$sprite.visible = false
+		if deathdone == false:
+			$HUD/Health.texture = load("res://textures/health/health0.png")
+			$damagezone.monitoring = false
+			if facingright == true:
+				$death.play("Vaporizeright")
+			elif facingright == false:
+				$death.play("Vaporizeleft")
 	
-	
-	if Input.is_action_just_pressed("Fire") and fireable == true or touchscreenshoot == true and fireable == true:
-		fireable = false
-		$cannoncooldown.start()
-		$cannonsound.play()
-		var new_cannon_ball = cannonball.instantiate()
-		add_sibling(new_cannon_ball)
-		new_cannon_ball.position.y = $pivot/cannon/firezone.global_position.y
-		new_cannon_ball.position.x = $pivot/cannon/firezone.global_position.x
-		new_cannon_ball.rotation = $pivot.rotation
-		new_cannon_ball.velocity.y = -100
+	if health > 0:
+		if Input.is_action_just_pressed("Fire") and fireable == true or touchscreenshoot == true and fireable == true:
+			fireable = false
+			$cannoncooldown.start()
+			$cannonsound.play()
+			var new_cannon_ball = cannonball.instantiate()
+			add_sibling(new_cannon_ball)
+			new_cannon_ball.position.y = $pivot/cannon/firezone.global_position.y
+			new_cannon_ball.position.x = $pivot/cannon/firezone.global_position.x
+			new_cannon_ball.rotation = $pivot.rotation
+			new_cannon_ball.velocity.y = -100
 		
 func _on_damagezone_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Heals") and health < 10:
@@ -207,3 +207,8 @@ func _on_splitsecond_timeout() -> void:
 		new_death.position.y = position.y
 		new_death.position.x = position.x
 		position.x = 10000
+
+
+func _on_death_animation_finished() -> void:
+	$death.visible = false
+	$Gameoverscreen.visible = true

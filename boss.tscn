@@ -37,6 +37,57 @@ radius = 115.07
 [sub_resource type="CircleShape2D" id="CircleShape2D_ci7u2"]
 radius = 34.0147
 
+[sub_resource type="Animation" id="Animation_pu652"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("arms/toprightarm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(90, -66)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("arms/toprightarm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(272, -280)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("damagezone/CollisionShape2D2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(271, -280)]
+}
+
 [sub_resource type="Animation" id="Animation_0bcyx"]
 resource_name = "topRightArmFallOff"
 length = 4.0
@@ -89,24 +140,30 @@ tracks/3/keys = {
 "values": [Vector2(271, -280), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_pu652"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k27td"]
+_data = {
+"RESET": SubResource("Animation_pu652"),
+"topRightArmFallOff": SubResource("Animation_0bcyx")
+}
+
+[sub_resource type="Animation" id="Animation_0c357"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("arms/toprightarm:position")
+tracks/0/path = NodePath("arms/topleftarm:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(90, -66)]
+"values": [Vector2(-90, -66)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("arms/toprightarm:rotation")
+tracks/1/path = NodePath("arms/topleftarm:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -118,32 +175,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape2D3:position")
+tracks/2/path = NodePath("CollisionShape2D2:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(272, -280)]
+"values": [Vector2(-267, -269)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("damagezone/CollisionShape2D2:position")
+tracks/3/path = NodePath("damagezone/CollisionShape2D4:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(271, -280)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_k27td"]
-_data = {
-"RESET": SubResource("Animation_pu652"),
-"topRightArmFallOff": SubResource("Animation_0bcyx")
+"values": [Vector2(-267, -269)]
 }
 
 [sub_resource type="Animation" id="Animation_40pkv"]
@@ -198,24 +249,30 @@ tracks/3/keys = {
 "values": [Vector2(-267, -269), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_0c357"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iv3vt"]
+_data = {
+"RESET": SubResource("Animation_0c357"),
+"topLeftArmFallOff": SubResource("Animation_40pkv")
+}
+
+[sub_resource type="Animation" id="Animation_kq077"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("arms/topleftarm:position")
+tracks/0/path = NodePath("arms/bottomrightarm:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-90, -66)]
+"values": [Vector2(90, 66)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("arms/topleftarm:rotation")
+tracks/1/path = NodePath("arms/bottomrightarm:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -227,32 +284,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape2D2:position")
+tracks/2/path = NodePath("CollisionShape2D4:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-267, -269)]
+"values": [Vector2(271, 275)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("damagezone/CollisionShape2D4:position")
+tracks/3/path = NodePath("damagezone/CollisionShape2D6:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-267, -269)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_iv3vt"]
-_data = {
-"RESET": SubResource("Animation_0c357"),
-"topLeftArmFallOff": SubResource("Animation_40pkv")
+"values": [Vector2(271, 275)]
 }
 
 [sub_resource type="Animation" id="Animation_o57ak"]
@@ -307,24 +358,30 @@ tracks/3/keys = {
 "values": [Vector2(271, 275), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_kq077"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6xrg0"]
+_data = {
+"RESET": SubResource("Animation_kq077"),
+"bottomRightArmFallOff": SubResource("Animation_o57ak")
+}
+
+[sub_resource type="Animation" id="Animation_mae7r"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("arms/bottomrightarm:position")
+tracks/0/path = NodePath("arms/bottomleftarm:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(90, 66)]
+"values": [Vector2(-90, 66)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("arms/bottomrightarm:rotation")
+tracks/1/path = NodePath("arms/bottomleftarm:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -336,32 +393,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape2D4:position")
+tracks/2/path = NodePath("damagezone/CollisionShape2D5:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(271, 275)]
+"values": [Vector2(-277, 278)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("damagezone/CollisionShape2D6:position")
+tracks/3/path = NodePath("CollisionShape2D5:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(271, 275)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6xrg0"]
-_data = {
-"RESET": SubResource("Animation_kq077"),
-"bottomRightArmFallOff": SubResource("Animation_o57ak")
+"values": [Vector2(-277, 279)]
 }
 
 [sub_resource type="Animation" id="Animation_44ui3"]
@@ -414,57 +465,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-277, 279), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_mae7r"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("arms/bottomleftarm:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-90, 66)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("arms/bottomleftarm:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("damagezone/CollisionShape2D5:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-277, 278)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape2D5:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-277, 279)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lhfq8"]
