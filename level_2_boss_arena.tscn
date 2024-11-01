@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://p74ir71ry238"]
+[gd_scene load_steps=32 format=3 uid="uid://p74ir71ry238"]
 
 [ext_resource type="Script" path="res://level_2_boss_arena.gd" id="1_lblhy"]
 [ext_resource type="PackedScene" uid="uid://be3xkbl84anxw" path="res://player.tscn" id="1_qjm0x"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://clr5r8yh0s22c" path="res://textures/darkgray.png" id="9_dfa8v"]
 [ext_resource type="AudioStream" uid="uid://bgx2ivcx05c8n" path="res://audio/music/colective concieness.mp3" id="10_2bsqd"]
 [ext_resource type="Texture2D" uid="uid://dmmsw81a6cjt2" path="res://textures/darkergray.png" id="10_cr2y7"]
+[ext_resource type="Texture2D" uid="uid://bx1fl1xpch6tp" path="res://textures/rock1.png" id="11_7eo2i"]
 [ext_resource type="AudioStream" uid="uid://csf512jps6fby" path="res://audio/Falling Rock.wav" id="12_2afhx"]
 [ext_resource type="PackedScene" path="res://fake_boss.tscn" id="12_ajslr"]
 [ext_resource type="AudioStream" uid="uid://de065vk2ysoe7" path="res://audio/concrete-scrape-loop-made-with-Voicemod-technology.mp3" id="13_6pc6d"]
@@ -32,6 +33,12 @@ size = Vector2(1285.5, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvn8o"]
 size = Vector2(88.875, 149)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nrgrj"]
+size = Vector2(89, 162.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2rpm"]
+size = Vector2(89, 253)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0kh7y"]
 size = Vector2(6, 10)
@@ -294,6 +301,28 @@ script = ExtResource("1_lblhy")
 
 [node name="decoration" type="Node" parent="."]
 
+[node name="Bars3" type="Sprite2D" parent="decoration"]
+position = Vector2(8552, -990)
+scale = Vector2(1, 1.93333)
+texture = ExtResource("7_wrv0c")
+
+[node name="Tree18" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
+position = Vector2(3678, -1111)
+scale = Vector2(3, 3)
+texture = ExtResource("7_xpyu6")
+
+[node name="Tree11" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
+position = Vector2(7461, -1035)
+texture = ExtResource("7_xpyu6")
+
+[node name="Tree9" type="Sprite2D" parent="decoration"]
+show_behind_parent = true
+position = Vector2(7064, -1042)
+rotation = -0.120428
+texture = ExtResource("7_xpyu6")
+
 [node name="Tree13" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
 position = Vector2(4647, -1056)
@@ -306,8 +335,8 @@ texture = ExtResource("7_xpyu6")
 
 [node name="Tree15" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(6390, -1098)
-scale = Vector2(0.5, 0.775001)
+position = Vector2(6391, -1102.75)
+scale = Vector2(0.5, 0.5425)
 texture = ExtResource("7_xpyu6")
 
 [node name="Tree16" type="Sprite2D" parent="decoration"]
@@ -329,7 +358,7 @@ texture = ExtResource("7_xpyu6")
 
 [node name="Tree3" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(3805, -946)
+position = Vector2(4436, -1056)
 rotation = -0.120428
 texture = ExtResource("7_xpyu6")
 
@@ -374,13 +403,13 @@ texture = ExtResource("7_xpyu6")
 
 [node name="Tree17" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(3678, -1111)
+position = Vector2(8043, -1161)
 scale = Vector2(3, 3)
 texture = ExtResource("7_xpyu6")
 
 [node name="Tree19" type="Sprite2D" parent="decoration"]
 show_behind_parent = true
-position = Vector2(6590, -1067)
+position = Vector2(6675, -1268)
 scale = Vector2(3, 3)
 texture = ExtResource("7_xpyu6")
 
@@ -401,7 +430,8 @@ position = Vector2(-1503, 543)
 texture = ExtResource("7_wrv0c")
 
 [node name="Bars2" type="Sprite2D" parent="decoration"]
-position = Vector2(2877, -953)
+position = Vector2(2877, -939)
+scale = Vector2(1, 1.2)
 texture = ExtResource("7_wrv0c")
 
 [node name="Controlpad" type="Sprite2D" parent="decoration"]
@@ -475,8 +505,8 @@ scale = Vector2(6, 6)
 texture = ExtResource("7_2xf22")
 
 [node name="Gray" type="Sprite2D" parent="decoration"]
-position = Vector2(138, -3755)
-scale = Vector2(100, 100)
+position = Vector2(138, -3919)
+scale = Vector2(100, 93.44)
 texture = ExtResource("8_757b0")
 
 [node name="Gray" type="Sprite2D" parent="decoration/Gray"]
@@ -496,11 +526,27 @@ texture = ExtResource("10_cr2y7")
 position = Vector2(-11.76, -31.83)
 texture = ExtResource("10_cr2y7")
 
+[node name="Rock3" type="Sprite2D" parent="decoration/Darkergray/Darkergray"]
+position = Vector2(-74.19, 64.64)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("11_7eo2i")
+
+[node name="Rock2" type="Sprite2D" parent="decoration/Darkergray/Darkergray"]
+position = Vector2(-73.68, 63.45)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("11_7eo2i")
+
+[node name="Rock2" type="Sprite2D" parent="decoration"]
+position = Vector2(2386, -1353)
+rotation = -1.5708
+scale = Vector2(5, 5)
+texture = ExtResource("20_r37n1")
+
 [node name="player" parent="." instance=ExtResource("1_qjm0x")]
 top_level = true
 position = Vector2(5500, -1082)
 
-[node name="Controlpad" parent="player" index="18"]
+[node name="Controlpad" parent="player" index="20"]
 z_index = 101
 
 [node name="Bossbar" type="Sprite2D" parent="player"]
@@ -523,6 +569,7 @@ show_percentage = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-973, -144)
+collision_layer = 65
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(-768.4, 257.4)
@@ -551,6 +598,14 @@ polygon = PackedVector2Array(3603, -670, 4449, -671, 4482, -687, 4587, -713, 468
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(3810, -1077, 3999, -1023, 4053, -954, 4029, -889, 3887, -862, 3704, -856, 3604, -920, 3595, -4208, 9600, -4178, 9600, -1001, 9581, -979, 9378, -969, 9334, -1008, 9331, -1106, 9436, -1146, 9465, -1222, 9477, -1305, 9479, -1397, 9458, -1469, 9440, -1561, 9440, -1671, 9428, -1777, 9430, -1979, 9476, -2213, 9473, -2363, 9434, -2615, 9430, -2897, 9492, -3162, 9496, -3293, 9498, -3409, 9420, -3587, 9264, -3782, 9033, -3883, 8749, -3940, 8465, -4007, 8303, -4046, 8092, -4077, 7886, -4082, 7743, -4041, 7576, -4025, 7027, -4035, 6915, -4046, 6770, -4098, 6219, -4098, 6151, -4078, 6089, -4043, 6009, -4022, 5717, -4015, 5549, -3995, 5368, -3943, 5267, -3926, 5180, -3886, 5094, -3854, 5048, -3854, 5026, -3834, 4893, -3816, 4863, -3800, 4850, -3802, 4798, -3759, 4785, -3739, 4647, -3642, 4540, -3616, 4319, -3584, 4114, -3563, 3823, -3489, 3724, -3380, 3693, -3278, 3690, -2954, 3687, -2829, 3740, -2759, 3796, -2659, 3803, -2622, 3816, -2605, 3833, -2480, 3814, -2402, 3818, -2136, 3800, -2059, 3765, -1948, 3706, -1754, 3694, -1624, 3723, -1508, 3746, -1347, 3769, -1178)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3851, -786.75)
+shape = SubResource("RectangleShape2D_nrgrj")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(9525, -848)
+shape = SubResource("RectangleShape2D_j2rpm")
 
 [node name="suspense" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(3414, -1154)
@@ -606,11 +661,11 @@ volume_db = 24.0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -128
 
-[node name="Rock2" type="Sprite2D" parent="."]
-position = Vector2(2386, -1353)
-rotation = 4.71239
-scale = Vector2(5, 5)
-texture = ExtResource("20_r37n1")
+[node name="Rock1" type="Sprite2D" parent="."]
+z_index = 4096
+position = Vector2(2655, -677)
+scale = Vector2(4, 4)
+texture = ExtResource("11_7eo2i")
 
 [connection signal="body_entered" from="battlebegin" to="." method="_on_battlebegin_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
