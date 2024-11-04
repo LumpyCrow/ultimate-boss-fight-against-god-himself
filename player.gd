@@ -24,7 +24,7 @@ var cannonball = preload("res://cannonball.tscn")
 var fireable = true
 
 func _physics_process(delta: float) -> void:
-	
+	#if $Controlpad/Controlpad/CannonLeft or $Controlpad/Controlpad/CannonRight or $Controlpad/Controlpad/Down
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 	
