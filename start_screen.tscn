@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bwpqipcc8aq2a"]
+[gd_scene load_steps=22 format=3 uid="uid://bwpqipcc8aq2a"]
 
 [ext_resource type="Script" path="res://start_screen.gd" id="1_41j1r"]
 [ext_resource type="Texture2D" uid="uid://cpsgd2ft4niql" path="res://textures/backroundj.png" id="2_x753r"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cbryhkapremv5" path="res://textures/cloud.png" id="7_o53ti"]
 [ext_resource type="Texture2D" uid="uid://77r875bgs0wg" path="res://textures/duck/walkright.png" id="8_nm07x"]
 [ext_resource type="Texture2D" uid="uid://crtwmq7kvbh8v" path="res://textures/remade smaller better doo.png" id="10_c7iiu"]
+[ext_resource type="AudioStream" uid="uid://btvddqd2fpcoy" path="res://audio/music/Maggie's Nights [ ezmp3.cc ].mp3" id="11_wb82g"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4p1cf"]
 load_path = "res://.godot/imported/start button.png-c5c1118fbf699f093031482ed30800bd.ctex"
@@ -301,6 +302,10 @@ autoplay = "button"
 position = Vector2(365, 539)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_wb82g")
+autoplay = true
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

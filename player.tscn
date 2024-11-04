@@ -1,10 +1,11 @@
-[gd_scene load_steps=39 format=3 uid="uid://be3xkbl84anxw"]
+[gd_scene load_steps=40 format=3 uid="uid://be3xkbl84anxw"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_m8axc"]
 [ext_resource type="Texture2D" uid="uid://q8xnyf8lai5v" path="res://textures/duck/right.png" id="2_17gb2"]
 [ext_resource type="Texture2D" uid="uid://0co383qji8wk" path="res://textures/duck/thingy.png" id="2_sqy1f"]
 [ext_resource type="Texture2D" uid="uid://6e6cwa5l7uqi" path="res://textures/duck/flyleft.png" id="3_a2124"]
 [ext_resource type="Texture2D" uid="uid://rd54yxrt5ucc" path="res://textures/duck/cannon.png" id="3_dgd70"]
+[ext_resource type="FontFile" uid="uid://d4mpuv0l5xxa4" path="res://Press_Start_2P/PressStart2P-Regular.ttf" id="3_ki6lt"]
 [ext_resource type="Texture2D" uid="uid://77r875bgs0wg" path="res://textures/duck/walkright.png" id="3_li58c"]
 [ext_resource type="Texture2D" uid="uid://dv4w6u38yj8me" path="res://textures/duck/walkleft.png" id="4_pc8ne"]
 [ext_resource type="Texture2D" uid="uid://c62oradgij1te" path="res://textures/duck/flyright.png" id="5_ak63i"]
@@ -175,7 +176,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("22_whbk3")
 }],
-"loop": true,
+"loop": false,
 "name": &"Vaporizeleft",
 "speed": 5.0
 }, {
@@ -212,9 +213,19 @@ script = ExtResource("1_m8axc")
 
 [node name="Gameoverscreen" type="Sprite2D" parent="."]
 visible = false
+z_index = 1000
 position = Vector2(3, 32)
 scale = Vector2(2, 2)
 texture = ExtResource("28_qan1n")
+
+[node name="Button" type="Button" parent="Gameoverscreen"]
+z_index = 1000
+offset_left = -45.5
+offset_top = 31.0
+offset_right = 42.5
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("3_ki6lt")
+text = "Retry"
 
 [node name="HUD" type="Node2D" parent="."]
 
@@ -234,6 +245,7 @@ scale = Vector2(1.05, 1.5)
 texture = ExtResource("2_sqy1f")
 
 [node name="animator" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_qpfyo")
 animation = &"Walkingright"
 autoplay = "default"
@@ -273,7 +285,7 @@ wait_time = 0.05
 wait_time = 0.4
 
 [node name="cannoncooldown" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.2
 
 [node name="walkingsound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_5ofp1")
@@ -295,6 +307,7 @@ pitch_scale = 1.19
 
 [node name="deathScream" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_oqs4j")
+volume_db = 9.905
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -313,6 +326,7 @@ stream = ExtResource("16_t0pkm")
 position = Vector2(0, 160)
 
 [node name="Controlpad" type="Sprite2D" parent="."]
+z_index = 4096
 position = Vector2(0, 519.75)
 scale = Vector2(1, 1.50208)
 texture = ExtResource("17_2wnhh")
@@ -320,9 +334,9 @@ texture = ExtResource("17_2wnhh")
 [node name="death" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = SubResource("SpriteFrames_jh5ly")
-animation = &"Vaporizeleft"
-frame_progress = 0.891994
+animation = &"Vaporizeright"
 
+[connection signal="button_up" from="Gameoverscreen/Button" to="." method="_on_button_button_up"]
 [connection signal="body_entered" from="damagezone" to="." method="_on_damagezone_body_entered"]
 [connection signal="timeout" from="splitsecond" to="." method="_on_splitsecond_timeout"]
 [connection signal="timeout" from="invincibilitytime" to="." method="_on_invincibilitytime_timeout"]

@@ -16,7 +16,7 @@ var facingright = true
 var camerashaking = false
 
 var invincible = false
-var health = 1
+var health = 10
 var death = preload("res://death.tscn")
 var deathdone = false
 
@@ -24,6 +24,7 @@ var cannonball = preload("res://cannonball.tscn")
 var fireable = true
 
 func _physics_process(delta: float) -> void:
+	
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 	
@@ -31,22 +32,18 @@ func _physics_process(delta: float) -> void:
 		$Camerashaker.play("cameraShake")
 	else:
 		$Camerashaker.stop()
-
-	if not is_on_floor() and velocity.y < 150:
-		velocity += get_gravity() * delta
-	else:
-		if Input.is_action_pressed("Down"):
-			if not is_on_floor() and velocity.y < MAXSPEED:
-				velocity += get_gravity() * delta
-		if not Input.is_action_pressed("Down"):
-			if not is_on_floor() and velocity.y > 150:
-				velocity -= get_gravity() * delta
-	
-		
+	if health > 0:
+		if not is_on_floor() and velocity.y < 150:
+			velocity += get_gravity() * delta
+		else:
+			if Input.is_action_pressed("Down"):
+				if not is_on_floor() and velocity.y < MAXSPEED:
+					velocity += get_gravity() * delta
+			if not Input.is_action_pressed("Down"):
+				if not is_on_floor() and velocity.y > 150:
+					velocity -= get_gravity() * delta
 		
 	# Handle jump. (+animation)
-	if health > 0:
-		
 		if Input.is_action_pressed("ui_accept") or touchscreenfly == true:
 			if velocity.y > -MAXSPEED:
 				velocity.y = velocity.y + JUMP_VELOCITY
@@ -71,7 +68,6 @@ func _physics_process(delta: float) -> void:
 		else:
 			if velocity.x > 0:
 				velocity.x = velocity.x - SPEED
-		
 		
 		#purely for controlling when each animation plays
 		if Input.is_action_pressed("Left") and invincible == false or touchscreenleft == true and invincible == false:
@@ -141,17 +137,22 @@ func _physics_process(delta: float) -> void:
 	if health == 1:
 		$HUD/Health.texture = load("res://textures/health/health1.png")
 	if health <= 0:
-		$death.visible = true
+		$HUD/Health.texture = load("res://textures/health/health0.png")
 		$animator.visible = false
-		$sprite.visible = false
+		$sprite.visible = false 
 		if deathdone == false:
-			$HUD/Health.texture = load("res://textures/health/health0.png")
+			$death.visible = true  
 			$damagezone.monitoring = false
+			$CollisionShape2D.disabled = true
+			if not $deathScream.is_playing():
+				$deathScream.play()
 			if facingright == true:
 				$death.play("Vaporizeright")
 			elif facingright == false:
 				$death.play("Vaporizeleft")
-	
+		if deathdone == true:
+			$death.visible = false
+		
 	if health > 0:
 		if Input.is_action_just_pressed("Fire") and fireable == true or touchscreenshoot == true and fireable == true:
 			fireable = false
@@ -187,6 +188,7 @@ func _on_damagezone_body_entered(body: Node2D) -> void:
 			$animator.visible = false
 			$sprite.visible = true
 			$sprite.texture = load("res://textures/duck/damageleft.png")
+			
 	
 func _on_invincibilitytime_timeout() -> void:
 	$animator.visible = true
@@ -201,14 +203,17 @@ func _on_cannoncooldown_timeout() -> void:
 	fireable = true
 
 func _on_splitsecond_timeout() -> void:
-	if health == 0:
-		var new_death = death.instantiate()
-		add_sibling(new_death)
-		new_death.position.y = position.y
-		new_death.position.x = position.x
-		position.x = 10000
+	pass
 
 
 func _on_death_animation_finished() -> void:
-	$death.visible = false
 	$Gameoverscreen.visible = true
+	deathdone = true
+	$cannonbase.visible = false
+	$pivot/cannon.visible = false
+	$death.position.x = 10000000000
+	$animator.position.x = 1000000000
+	$sprite.position.x = 10000000000
+
+func _on_button_button_up() -> void:
+	get_tree().reload_current_scene()

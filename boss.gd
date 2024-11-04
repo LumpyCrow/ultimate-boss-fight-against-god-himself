@@ -25,8 +25,6 @@ var health = 400
 
 func _physics_process(delta: float) -> void:
 	
-	print(player_chase)
-	
 	if health == 0:
 		velocity.y = 0
 	
@@ -74,10 +72,10 @@ func _physics_process(delta: float) -> void:
 		new_arm_missle.rotation = $arms/topleftarm/HandPivot.rotation
 		armlauncherReady = false
 		
-	if health >= 20:
+	if health >= 101:
 		$lazergunPivot.rotation = $lazergunPivot.rotation + 0.05
 		$biglazerpivot.rotation = $biglazerpivot.rotation - 0.02
-	if health < 20:
+	if health < 100:
 		$lazergunPivot.rotation = $lazergunPivot.rotation + 0.1
 		$biglazerpivot.rotation = $biglazerpivot.rotation - 0.035
 	
@@ -308,6 +306,7 @@ func _on_damagezone_body_entered(body: Node2D) -> void:
 			player_chase = -10000
 			health = health - 1
 			$damage.play()
+			player2.MAXSPEED = 300
 			
 			var new_death = death.instantiate()
 			add_sibling(new_death)
