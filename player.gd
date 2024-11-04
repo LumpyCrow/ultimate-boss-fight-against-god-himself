@@ -16,7 +16,7 @@ var facingright = true
 var camerashaking = false
 
 var invincible = false
-var health = 1
+var health = 10
 var death = preload("res://death.tscn")
 var deathdone = false
 
@@ -69,6 +69,8 @@ func _physics_process(delta: float) -> void:
 		else:
 			if velocity.x > 0:
 				velocity.x = velocity.x - SPEED
+		
+		print(velocity.x)
 		
 		
 		#purely for controlling when each animation plays
@@ -146,7 +148,8 @@ func _physics_process(delta: float) -> void:
 			$death.visible = true  
 			$damagezone.monitoring = false
 			$CollisionShape2D.disabled = true
-			$deathScream.play()
+			if not $deathScream.is_playing():
+				$deathScream.play()
 			if facingright == true:
 				$death.play("Vaporizeright")
 			elif facingright == false:
@@ -217,3 +220,6 @@ func _on_death_animation_finished() -> void:
 	$death.position.x = 10000000000
 	$animator.position.x = 1000000000
 	$sprite.position.x = 10000000000
+
+func _on_button_button_up() -> void:
+	get_tree().reload_current_scene()

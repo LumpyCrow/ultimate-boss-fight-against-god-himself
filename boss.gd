@@ -21,7 +21,7 @@ var clusterbombready = true
 var armlazerReady = true
 var armlauncherReady = true
 
-var health = 400
+var health = 10
 
 func _physics_process(delta: float) -> void:
 	
@@ -308,6 +308,7 @@ func _on_damagezone_body_entered(body: Node2D) -> void:
 			player_chase = -10000
 			health = health - 1
 			$damage.play()
+			player2.MAXSPEED = 300
 			
 			var new_death = death.instantiate()
 			add_sibling(new_death)
