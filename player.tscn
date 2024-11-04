@@ -228,10 +228,11 @@ theme_override_fonts/font = ExtResource("3_ki6lt")
 text = "Retry"
 
 [node name="HUD" type="Node2D" parent="."]
+position = Vector2(24, -3)
 
 [node name="Health" type="Sprite2D" parent="HUD"]
 position = Vector2(-240, -250)
-scale = Vector2(1.95, 2.4)
+scale = Vector2(2.4, 2.4)
 texture = ExtResource("13_1472h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -327,8 +328,8 @@ position = Vector2(0, 160)
 
 [node name="Controlpad" type="Sprite2D" parent="."]
 z_index = 4096
-position = Vector2(0, 519.75)
-scale = Vector2(1, 1.50208)
+position = Vector2(0, 526)
+scale = Vector2(1.015, 1.525)
 texture = ExtResource("17_2wnhh")
 
 [node name="death" type="AnimatedSprite2D" parent="."]

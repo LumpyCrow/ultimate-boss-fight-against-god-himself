@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://p74ir71ry238"]
+[gd_scene load_steps=49 format=3 uid="uid://p74ir71ry238"]
 
 [ext_resource type="Script" path="res://level_2_boss_arena.gd" id="1_lblhy"]
 [ext_resource type="PackedScene" uid="uid://be3xkbl84anxw" path="res://player.tscn" id="1_qjm0x"]
@@ -29,6 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://vteuppgbotat" path="res://audio/yt1s_gssZtvA.mp3" id="27_4acix"]
 [ext_resource type="Texture2D" uid="uid://dd7hp43pci28l" path="res://textures/roc.png" id="28_hphd6"]
 [ext_resource type="Texture2D" uid="uid://o3kar0u2fdyy" path="res://textures/blackwithhole.png" id="28_s1jy7"]
+[ext_resource type="PackedScene" uid="uid://d4hcdrky0uvt8" path="res://healthkit.tscn" id="30_g26rc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oee23"]
 bg_color = Color(0.24893, 2.63215e-07, 5.41471e-08, 1)
@@ -692,9 +693,9 @@ position = Vector2(-973, -144)
 collision_layer = 65
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(-768.4, 257.4)
+position = Vector2(-778, 257)
 scale = Vector2(2, 2)
-polygon = PackedVector2Array(2184.5, -458.5, 1792.39, -264.196, 726, 269, 738, 269, 2192, -437.5)
+polygon = PackedVector2Array(2197.2, -465.7, 1792.39, -264.196, 726, 269, 738, 269, 2192, -437.5)
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-366.4, 634.4)
@@ -818,8 +819,8 @@ scale = Vector2(4, 4)
 texture = ExtResource("11_7eo2i")
 
 [node name="Rock4" type="Sprite2D" parent="Rock1"]
-z_index = 10
-position = Vector2(-23.5, 75.75)
+z_index = -1
+position = Vector2(-27.75, 58.25)
 texture = ExtResource("11_7eo2i")
 
 [node name="Room" type="Sprite2D" parent="."]
@@ -833,7 +834,7 @@ rotation = -3.14159
 texture = ExtResource("22_pxdlw")
 
 [node name="Rock2" type="Sprite2D" parent="."]
-position = Vector2(9495, -145)
+position = Vector2(9505, -149)
 rotation = -1.5708
 scale = Vector2(15, 15)
 texture = ExtResource("11_7eo2i")
@@ -873,17 +874,21 @@ texture = ExtResource("25_hgawe")
 
 [node name="Label" type="Label" parent="."]
 visible = false
-offset_left = 12257.0
-offset_top = -1104.0
-offset_right = 12790.0
-offset_bottom = -974.0
+offset_left = 12262.0
+offset_top = -1137.0
+offset_right = 12795.0
+offset_bottom = -893.0
 theme_override_fonts/font = ExtResource("26_6ro0t")
+theme_override_font_sizes/font_size = 14
 text = "
-the duck walked into a 
-bar, and ordered a drink. 
+The duck walked 
+into a bar, and ordered 
+a drink. 
 
 The duck told the 
-bartender “put it on 
+bartender 
+
+“put it on 
 my bill.”"
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -957,6 +962,18 @@ texture = ExtResource("23_4univ")
 position = Vector2(111.4, 196.2)
 rotation = -1.5708
 texture = ExtResource("11_7eo2i")
+
+[node name="healthkit" parent="." instance=ExtResource("30_g26rc")]
+position = Vector2(6298, -1514)
+
+[node name="healthkit2" parent="." instance=ExtResource("30_g26rc")]
+position = Vector2(7026, -3245)
+
+[node name="healthkit3" parent="." instance=ExtResource("30_g26rc")]
+position = Vector2(5753, -3640)
+
+[node name="healthkit4" parent="." instance=ExtResource("30_g26rc")]
+position = Vector2(7609, -2463)
 
 [connection signal="body_entered" from="battlebegin" to="." method="_on_battlebegin_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
