@@ -24,7 +24,6 @@ var cannonball = preload("res://cannonball.tscn")
 var fireable = true
 
 func _physics_process(delta: float) -> void:
-	print(deathdone)
 	
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
@@ -69,9 +68,6 @@ func _physics_process(delta: float) -> void:
 		else:
 			if velocity.x > 0:
 				velocity.x = velocity.x - SPEED
-		
-		print(velocity.x)
-		
 		
 		#purely for controlling when each animation plays
 		if Input.is_action_pressed("Left") and invincible == false or touchscreenleft == true and invincible == false:
@@ -192,8 +188,6 @@ func _on_damagezone_body_entered(body: Node2D) -> void:
 			$animator.visible = false
 			$sprite.visible = true
 			$sprite.texture = load("res://textures/duck/damageleft.png")
-		if health == 1:
-			$deathScream.play()
 			
 	
 func _on_invincibilitytime_timeout() -> void:

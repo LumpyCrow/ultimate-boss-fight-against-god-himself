@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://p74ir71ry238"]
+[gd_scene load_steps=48 format=3 uid="uid://p74ir71ry238"]
 
 [ext_resource type="Script" path="res://level_2_boss_arena.gd" id="1_lblhy"]
 [ext_resource type="PackedScene" uid="uid://be3xkbl84anxw" path="res://player.tscn" id="1_qjm0x"]
@@ -56,6 +56,9 @@ size = Vector2(561, 862)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13gju"]
 size = Vector2(3738.59, 3890.78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_usg2n"]
+size = Vector2(2016.87, 2203.42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0kh7y"]
 size = Vector2(6, 10)
@@ -666,9 +669,6 @@ texture = ExtResource("8_6i568")
 top_level = true
 position = Vector2(-1434, 638)
 
-[node name="Controlpad" parent="player" index="20"]
-z_index = 101
-
 [node name="Bossbar" type="Sprite2D" parent="player"]
 z_index = 100
 position = Vector2(0, 233)
@@ -740,11 +740,15 @@ polygon = PackedVector2Array(9452, -976, 9575, -977, 9607, -995, 9631, -987, 983
 [node name="bosstriangle" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(6895.19, -3646.61)
 rotation = 0.785398
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_13gju")
 
 [node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(681, 792, 576, 797, 510, 789, 423, 838, 376, 794, 330, 785, 266, 790, 228, 814, 177, 793, 95, 791, 15, 813, -53, 784, -139, 784, -166, 790, -961, 793, -982, 762, -1100, 757, -1158, 768, -1218, 818, -1297, 1024, -1376, 1283, -1261, 1558, 391, 1714, 836, 1537)
+
+[node name="bosstriangle2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(13590, -2244.1)
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_usg2n")
 
 [node name="suspense" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(3414, -1154)

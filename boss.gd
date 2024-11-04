@@ -21,11 +21,9 @@ var clusterbombready = true
 var armlazerReady = true
 var armlauncherReady = true
 
-var health = 10
+var health = 400
 
 func _physics_process(delta: float) -> void:
-	
-	print(player_chase)
 	
 	if health == 0:
 		velocity.y = 0
@@ -74,10 +72,10 @@ func _physics_process(delta: float) -> void:
 		new_arm_missle.rotation = $arms/topleftarm/HandPivot.rotation
 		armlauncherReady = false
 		
-	if health >= 20:
+	if health >= 101:
 		$lazergunPivot.rotation = $lazergunPivot.rotation + 0.05
 		$biglazerpivot.rotation = $biglazerpivot.rotation - 0.02
-	if health < 20:
+	if health < 100:
 		$lazergunPivot.rotation = $lazergunPivot.rotation + 0.1
 		$biglazerpivot.rotation = $biglazerpivot.rotation - 0.035
 	

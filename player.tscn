@@ -285,7 +285,7 @@ wait_time = 0.05
 wait_time = 0.4
 
 [node name="cannoncooldown" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.2
 
 [node name="walkingsound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_5ofp1")
@@ -326,7 +326,7 @@ stream = ExtResource("16_t0pkm")
 position = Vector2(0, 160)
 
 [node name="Controlpad" type="Sprite2D" parent="."]
-z_index = 1000
+z_index = 4096
 position = Vector2(0, 519.75)
 scale = Vector2(1, 1.50208)
 texture = ExtResource("17_2wnhh")

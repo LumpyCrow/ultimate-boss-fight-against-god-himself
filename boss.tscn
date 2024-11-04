@@ -692,7 +692,7 @@ wait_time = 0.3
 autostart = true
 
 [node name="armlazerCooldown" type="Timer" parent="Timers"]
-wait_time = 2.0
+wait_time = 3.0
 autostart = true
 
 [node name="armlauncherCooldown" type="Timer" parent="Timers"]
