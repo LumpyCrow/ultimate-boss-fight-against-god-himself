@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://p74ir71ry238"]
+[gd_scene load_steps=53 format=3 uid="uid://p74ir71ry238"]
 
 [ext_resource type="Script" path="res://level_2_boss_arena.gd" id="1_lblhy"]
 [ext_resource type="PackedScene" uid="uid://be3xkbl84anxw" path="res://player.tscn" id="1_qjm0x"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://dd7hp43pci28l" path="res://textures/roc.png" id="28_hphd6"]
 [ext_resource type="Texture2D" uid="uid://o3kar0u2fdyy" path="res://textures/blackwithhole.png" id="28_s1jy7"]
 [ext_resource type="PackedScene" uid="uid://d4hcdrky0uvt8" path="res://healthkit.tscn" id="30_g26rc"]
+[ext_resource type="Texture2D" uid="uid://bodkw8dbcs8ti" path="res://textures/backroundRock.png" id="30_qnr1a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oee23"]
 bg_color = Color(0.24893, 2.63215e-07, 5.41471e-08, 1)
@@ -136,7 +137,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-1434, 638)]
+"values": [Vector2(-1424, 635)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -408,7 +409,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-1434, 638)]
+"values": [Vector2(-1424, 635)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -451,6 +452,66 @@ tracks/4/keys = {
 _data = {
 "DuckWalksIntoBar": SubResource("Animation_uh1w8"),
 "RESET": SubResource("Animation_y6mxn")
+}
+
+[sub_resource type="Animation" id="Animation_hc3hf"]
+resource_name = "doorclose"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("decoration/Bars:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-1502, 516), Vector2(-1502, 530), Vector2(-1502, 565)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Concrete-scrape-loop-made-with-voicemod-technology:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_4dh2c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("decoration/Bars:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1502, 516)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Concrete-scrape-loop-made-with-voicemod-technology:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y1123"]
+_data = {
+"RESET": SubResource("Animation_4dh2c"),
+"doorclose": SubResource("Animation_hc3hf")
 }
 
 [node name="level_2_boss_arena" type="Node2D"]
@@ -588,7 +649,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("7_xpyu6")
 
 [node name="Bars" type="Sprite2D" parent="decoration"]
-position = Vector2(-1503, 552)
+position = Vector2(-1502, 516)
 scale = Vector2(1, 1.12)
 texture = ExtResource("7_wrv0c")
 
@@ -668,7 +729,7 @@ texture = ExtResource("8_6i568")
 
 [node name="player" parent="." instance=ExtResource("1_qjm0x")]
 top_level = true
-position = Vector2(-1434, 638)
+position = Vector2(-1424, 635)
 
 [node name="Bossbar" type="Sprite2D" parent="player"]
 z_index = 100
@@ -963,6 +1024,13 @@ position = Vector2(111.4, 196.2)
 rotation = -1.5708
 texture = ExtResource("11_7eo2i")
 
+[node name="BackroundRock" type="Sprite2D" parent="Rock4"]
+z_index = -4096
+position = Vector2(74.2, 73.7999)
+rotation = -1.5708
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("30_qnr1a")
+
 [node name="healthkit" parent="." instance=ExtResource("30_g26rc")]
 position = Vector2(6298, -1514)
 
@@ -974,6 +1042,16 @@ position = Vector2(5753, -3640)
 
 [node name="healthkit4" parent="." instance=ExtResource("30_g26rc")]
 position = Vector2(7609, -2463)
+
+[node name="doorclose" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y1123")
+}
+autoplay = "doorclose"
+
+[node name="Concrete-scrape-loop-made-with-voicemod-technology" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-1505, 571)
+stream = ExtResource("13_6pc6d")
 
 [connection signal="body_entered" from="battlebegin" to="." method="_on_battlebegin_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
