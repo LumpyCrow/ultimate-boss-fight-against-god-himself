@@ -29,13 +29,13 @@
 [ext_resource type="Texture2D" uid="uid://cih6q7wdj857s" path="res://textures/health/dematerialization/vaporizeright4.png" id="26_r8g2e"]
 [ext_resource type="Texture2D" uid="uid://dew4lqkftfkwv" path="res://textures/nothing.png" id="27_q7ab7"]
 [ext_resource type="Texture2D" uid="uid://dvg7jek2io10q" path="res://textures/gameoverscreen.png" id="28_qan1n"]
-[ext_resource type="Script" path="res://controlpad.gd" id="29_y5015"]
 [ext_resource type="Texture2D" uid="uid://dodieerem7bqm" path="res://textures/leftbutton.png" id="30_rjrfu"]
 [ext_resource type="Texture2D" uid="uid://b87p0ilaa5ya4" path="res://textures/rightbutton.png" id="31_v277i"]
 [ext_resource type="Texture2D" uid="uid://bahjq068xqyqj" path="res://textures/upbutton.png" id="32_11edc"]
-[ext_resource type="Texture2D" uid="uid://ceprsnikwwqxs" path="res://textures/pixil-frame-0 (4).png" id="33_1y6o5"]
+[ext_resource type="Texture2D" uid="uid://bou7e7yjkld7i" path="res://textures/Shoot_symbol.png" id="33_jhsd8"]
 [ext_resource type="Texture2D" uid="uid://cmr3x2afrtbuk" path="res://textures/rotaterightbutton.png" id="34_v1q63"]
 [ext_resource type="Texture2D" uid="uid://5vulym3yg831" path="res://textures/rotateleftbutton.png" id="35_wx2ik"]
+[ext_resource type="Texture2D" uid="uid://crtwmq7kvbh8v" path="res://textures/remade smaller better doo.png" id="36_yufxx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v5r0w"]
 
@@ -339,7 +339,6 @@ sprite_frames = SubResource("SpriteFrames_jh5ly")
 animation = &"Vaporizeright"
 
 [node name="Controlpad" type="Node2D" parent="."]
-script = ExtResource("29_y5015")
 
 [node name="Controlpad" type="Sprite2D" parent="Controlpad"]
 z_index = 4096
@@ -348,54 +347,71 @@ scale = Vector2(1.015, 1.525)
 texture = ExtResource("17_2wnhh")
 
 [node name="Left" type="Button" parent="Controlpad/Controlpad"]
-offset_left = -360.0
-offset_top = -52.0
-offset_bottom = 51.0
+offset_left = -358.0
+offset_top = -7.0
+offset_right = -110.0
+offset_bottom = 120.0
 icon = ExtResource("30_rjrfu")
+flat = true
 expand_icon = true
 
 [node name="Right" type="Button" parent="Controlpad/Controlpad"]
-offset_top = -52.0
-offset_right = 360.0
-offset_bottom = 51.0
+offset_left = 110.0
+offset_top = -7.0
+offset_right = 358.0
+offset_bottom = 120.0
 icon = ExtResource("31_v277i")
+flat = true
 icon_alignment = 2
 expand_icon = true
 
 [node name="Up" type="Button" parent="Controlpad/Controlpad"]
-offset_left = -202.0
-offset_top = -120.0
-offset_right = 224.0
-offset_bottom = -52.0
+offset_left = -110.0
+offset_top = -7.0
+offset_right = 110.0
+offset_bottom = 120.0
 icon = ExtResource("32_11edc")
+flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="Down" type="Button" parent="Controlpad/Controlpad"]
-offset_left = -203.0
-offset_top = 51.0
-offset_right = 227.0
-offset_bottom = 119.0
-icon = ExtResource("33_1y6o5")
+[node name="Shoot" type="Button" parent="Controlpad/Controlpad"]
+offset_left = -109.0
+offset_top = -119.0
+offset_right = 110.0
+offset_bottom = -7.0
+icon = ExtResource("33_jhsd8")
+flat = true
 icon_alignment = 1
 expand_icon = true
 
 [node name="CannonLeft" type="Button" parent="Controlpad/Controlpad"]
-offset_left = 225.0
+offset_left = 110.0
 offset_top = -120.0
 offset_right = 359.0
-offset_bottom = -52.0
+offset_bottom = -7.0
 icon = ExtResource("34_v1q63")
+flat = true
 icon_alignment = 1
 expand_icon = true
 
 [node name="CannonRight" type="Button" parent="Controlpad/Controlpad"]
 offset_left = -360.0
 offset_top = -120.0
-offset_right = -202.0
-offset_bottom = -52.0
+offset_right = -109.0
+offset_bottom = -7.0
 icon = ExtResource("35_wx2ik")
+flat = true
 icon_alignment = 1
+expand_icon = true
+
+[node name="Exit" type="Button" parent="Controlpad"]
+offset_left = 288.0
+offset_top = -380.0
+offset_right = 360.0
+offset_bottom = -288.0
+icon = ExtResource("36_yufxx")
+flat = true
 expand_icon = true
 
 [connection signal="button_up" from="Gameoverscreen/Button" to="." method="_on_button_button_up"]
@@ -404,8 +420,22 @@ expand_icon = true
 [connection signal="timeout" from="invincibilitytime" to="." method="_on_invincibilitytime_timeout"]
 [connection signal="timeout" from="cannoncooldown" to="." method="_on_cannoncooldown_timeout"]
 [connection signal="animation_finished" from="death" to="." method="_on_death_animation_finished"]
+[connection signal="button_down" from="Controlpad/Controlpad/Left" to="." method="_on_left_button_down"]
 [connection signal="button_down" from="Controlpad/Controlpad/Left" to="Controlpad" method="_on_left_button_down"]
 [connection signal="button_up" from="Controlpad/Controlpad/Left" to="." method="_on_left_button_up"]
 [connection signal="pressed" from="Controlpad/Controlpad/Left" to="Controlpad" method="_on_left_pressed"]
+[connection signal="button_down" from="Controlpad/Controlpad/Right" to="." method="_on_right_button_down"]
 [connection signal="button_down" from="Controlpad/Controlpad/Right" to="Controlpad" method="_on_right_button_down"]
+[connection signal="button_up" from="Controlpad/Controlpad/Right" to="." method="_on_right_button_up"]
+[connection signal="button_down" from="Controlpad/Controlpad/Up" to="." method="_on_up_button_down"]
 [connection signal="button_down" from="Controlpad/Controlpad/Up" to="Controlpad" method="_on_up_button_down"]
+[connection signal="button_up" from="Controlpad/Controlpad/Up" to="." method="_on_up_button_up"]
+[connection signal="button_down" from="Controlpad/Controlpad/Shoot" to="." method="_on_shoot_button_down"]
+[connection signal="button_down" from="Controlpad/Controlpad/Shoot" to="." method="_on_down_button_down"]
+[connection signal="button_up" from="Controlpad/Controlpad/Shoot" to="." method="_on_shoot_button_up"]
+[connection signal="button_up" from="Controlpad/Controlpad/Shoot" to="." method="_on_down_button_up"]
+[connection signal="button_down" from="Controlpad/Controlpad/CannonLeft" to="." method="_on_cannon_left_button_down"]
+[connection signal="button_up" from="Controlpad/Controlpad/CannonLeft" to="." method="_on_cannon_left_button_up"]
+[connection signal="button_down" from="Controlpad/Controlpad/CannonRight" to="." method="_on_cannon_right_button_down"]
+[connection signal="button_up" from="Controlpad/Controlpad/CannonRight" to="." method="_on_cannon_right_button_up"]
+[connection signal="button_down" from="Controlpad/Exit" to="." method="_on_exit_button_down"]
