@@ -24,7 +24,11 @@ var cannonball = preload("res://cannonball.tscn")
 var fireable = true
 
 func _physics_process(delta: float) -> void:
-	#if $Controlpad/Controlpad/CannonLeft or $Controlpad/Controlpad/CannonRight or $Controlpad/Controlpad/Down
+	
+		
+	
+	
+	
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 	
@@ -217,3 +221,50 @@ func _on_death_animation_finished() -> void:
 
 func _on_button_button_up() -> void:
 	get_tree().reload_current_scene()
+
+
+func _on_left_button_down() -> void:
+	touchscreenleft = true
+
+
+func _on_left_button_up() -> void:
+	touchscreenleft = false
+
+
+func _on_right_button_down() -> void:
+	touchscreenright = true
+
+
+func _on_right_button_up() -> void:
+	touchscreenright = false
+
+
+func _on_up_button_down() -> void:
+	touchscreenfly = true
+
+func _on_up_button_up() -> void:
+	touchscreenfly = false
+
+
+func _on_shoot_button_down() -> void:
+	touchscreenshoot = true
+
+
+func _on_shoot_button_up() -> void:
+	touchscreenshoot = false
+
+
+func _on_cannon_left_button_down() -> void:
+	touchscreenrotateright = true
+
+
+func _on_cannon_left_button_up() -> void:
+	touchscreenrotateright = false
+
+
+func _on_cannon_right_button_down() -> void:
+	touchscreenrotateleft = true
+
+
+func _on_cannon_right_button_up() -> void:
+	touchscreenrotateleft = false
