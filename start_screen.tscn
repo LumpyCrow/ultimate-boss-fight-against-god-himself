@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bwpqipcc8aq2a"]
+[gd_scene load_steps=27 format=3 uid="uid://bwpqipcc8aq2a"]
 
 [ext_resource type="Script" path="res://start_screen.gd" id="1_41j1r"]
 [ext_resource type="Texture2D" uid="uid://cpsgd2ft4niql" path="res://textures/backroundj.png" id="2_x753r"]
@@ -7,10 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://ohrgunn1m46u" path="res://textures/duck/left.png" id="5_cxovh"]
 [ext_resource type="Texture2D" uid="uid://q8xnyf8lai5v" path="res://textures/duck/right.png" id="6_1jtns"]
 [ext_resource type="Texture2D" uid="uid://dv4w6u38yj8me" path="res://textures/duck/walkleft.png" id="7_7igu4"]
-[ext_resource type="Texture2D" uid="uid://cbryhkapremv5" path="res://textures/cloud.png" id="7_o53ti"]
 [ext_resource type="Texture2D" uid="uid://77r875bgs0wg" path="res://textures/duck/walkright.png" id="8_nm07x"]
 [ext_resource type="Texture2D" uid="uid://crtwmq7kvbh8v" path="res://textures/remade smaller better doo.png" id="10_c7iiu"]
 [ext_resource type="AudioStream" uid="uid://btvddqd2fpcoy" path="res://audio/music/Maggie's Nights [ ezmp3.cc ].mp3" id="11_wb82g"]
+[ext_resource type="Texture2D" uid="uid://cbbbd5xsmfjaf" path="res://textures/greem.png" id="12_2agae"]
+[ext_resource type="Texture2D" uid="uid://iwoje7ukcyh5" path="res://textures/controlpad.png" id="12_wp64a"]
+[ext_resource type="Texture2D" uid="uid://bqkhaxftlk2cf" path="res://textures/tree.png" id="13_42wqf"]
+[ext_resource type="Texture2D" uid="uid://c0u8ci5f0c33g" path="res://textures/rock2.png" id="14_8bahe"]
+[ext_resource type="Texture2D" uid="uid://d0t0u4cu6mrov" path="res://textures/rock3.png" id="15_6r5h8"]
+[ext_resource type="Texture2D" uid="uid://bx1fl1xpch6tp" path="res://textures/rock1.png" id="16_alrvx"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4p1cf"]
 load_path = "res://.godot/imported/start button.png-c5c1118fbf699f093031482ed30800bd.ctex"
@@ -168,7 +173,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.2, 2.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(240, 929), Vector2(240, 878), Vector2(240, 929)]
+"values": [Vector2(130, 350), Vector2(130, 450), Vector2(130, 350)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_27k5g"]
@@ -191,16 +196,18 @@ grow_vertical = 2
 script = ExtResource("1_41j1r")
 
 [node name="background sprite" type="Sprite2D" parent="."]
+z_index = -2
 position = Vector2(316, 243)
 scale = Vector2(1.25278, 5.05729)
 texture = ExtResource("2_x753r")
 
 [node name="Start" type="Button" parent="."]
+z_index = 4096
 layout_mode = 0
-offset_left = 297.0
-offset_top = 386.0
-offset_right = 519.0
-offset_bottom = 533.0
+offset_left = 130.0
+offset_top = 350.0
+offset_right = 566.0
+offset_bottom = 696.0
 icon = SubResource("CompressedTexture2D_4p1cf")
 flat = true
 expand_icon = true
@@ -227,54 +234,6 @@ libraries = {
 "": SubResource("AnimationLibrary_0f4bj")
 }
 autoplay = "Ducks"
-
-[node name="platform" type="Sprite2D" parent="."]
-position = Vector2(32, 377)
-texture = ExtResource("7_o53ti")
-
-[node name="platform" type="Sprite2D" parent="platform"]
-position = Vector2(65, 2)
-texture = ExtResource("7_o53ti")
-
-[node name="platform" type="Sprite2D" parent="platform/platform"]
-position = Vector2(58, 0)
-texture = ExtResource("7_o53ti")
-
-[node name="platform" type="Sprite2D" parent="platform/platform/platform"]
-position = Vector2(60, 1)
-texture = ExtResource("7_o53ti")
-
-[node name="platform" type="Sprite2D" parent="platform/platform/platform/platform"]
-position = Vector2(60, 1)
-texture = ExtResource("7_o53ti")
-
-[node name="platform" type="Sprite2D" parent="platform/platform/platform/platform/platform"]
-position = Vector2(63, 0)
-texture = ExtResource("7_o53ti")
-
-[node name="platform" type="Sprite2D" parent="platform/platform/platform/platform/platform/platform"]
-position = Vector2(63, -1)
-texture = ExtResource("7_o53ti")
-
-[node name="platform" type="Sprite2D" parent="platform/platform/platform/platform/platform/platform/platform"]
-position = Vector2(63, -1)
-texture = ExtResource("7_o53ti")
-
-[node name="platform" type="Sprite2D" parent="platform/platform/platform/platform/platform/platform/platform/platform"]
-position = Vector2(63, -1)
-texture = ExtResource("7_o53ti")
-
-[node name="platform" type="Sprite2D" parent="platform/platform/platform/platform/platform/platform/platform/platform/platform"]
-position = Vector2(63, -1)
-texture = ExtResource("7_o53ti")
-
-[node name="platform" type="Sprite2D" parent="platform/platform/platform/platform/platform/platform/platform/platform/platform/platform"]
-position = Vector2(63, -1)
-texture = ExtResource("7_o53ti")
-
-[node name="platform" type="Sprite2D" parent="platform/platform/platform/platform/platform/platform/platform/platform/platform/platform/platform"]
-position = Vector2(63, -1)
-texture = ExtResource("7_o53ti")
 
 [node name="Exit" type="Button" parent="."]
 layout_mode = 0
@@ -306,6 +265,50 @@ rotation_smoothing_enabled = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_wb82g")
 autoplay = true
+
+[node name="Controlpad" type="Sprite2D" parent="."]
+z_index = 4096
+position = Vector2(364, 904)
+scale = Vector2(1.015, 1.525)
+texture = ExtResource("12_wp64a")
+
+[node name="Greem" type="Sprite2D" parent="."]
+position = Vector2(330, 674)
+rotation = 1.5708
+scale = Vector2(0.606905, 1.63416)
+texture = ExtResource("12_2agae")
+
+[node name="Tree" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(28, 290)
+rotation = -0.164061
+texture = ExtResource("13_42wqf")
+
+[node name="Tree2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(247, 303)
+texture = ExtResource("13_42wqf")
+
+[node name="Tree3" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(550, 290)
+rotation = -0.162316
+texture = ExtResource("13_42wqf")
+
+[node name="Rock2" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(-24, 342)
+texture = ExtResource("14_8bahe")
+
+[node name="Rock3" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(699, 342)
+texture = ExtResource("15_6r5h8")
+
+[node name="Rock1" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(567, 344)
+texture = ExtResource("16_alrvx")
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

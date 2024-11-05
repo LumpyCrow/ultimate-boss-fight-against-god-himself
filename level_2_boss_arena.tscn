@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://p74ir71ry238"]
+[gd_scene load_steps=53 format=3 uid="uid://p74ir71ry238"]
 
 [ext_resource type="Script" path="res://level_2_boss_arena.gd" id="1_lblhy"]
 [ext_resource type="PackedScene" uid="uid://be3xkbl84anxw" path="res://player.tscn" id="1_qjm0x"]
@@ -40,6 +40,8 @@
 [ext_resource type="Texture2D" uid="uid://dnghn6upt4360" path="res://Layers/6.png" id="38_7gagw"]
 [ext_resource type="Texture2D" uid="uid://degkl7valcxgf" path="res://Layers/7.png" id="39_tk7s0"]
 [ext_resource type="Texture2D" uid="uid://dqbpqbj8x0j2m" path="res://Layers/8.png" id="40_eepe2"]
+[ext_resource type="PackedScene" uid="uid://d4hcdrky0uvt8" path="res://healthkit.tscn" id="30_g26rc"]
+[ext_resource type="Texture2D" uid="uid://bodkw8dbcs8ti" path="res://textures/backroundRock.png" id="30_qnr1a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oee23"]
 bg_color = Color(0.24893, 2.63215e-07, 5.41471e-08, 1)
@@ -146,7 +148,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-1434, 638)]
+"values": [Vector2(-1424, 635)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -418,7 +420,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-1434, 638)]
+"values": [Vector2(-1424, 635)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -461,6 +463,66 @@ tracks/4/keys = {
 _data = {
 "DuckWalksIntoBar": SubResource("Animation_uh1w8"),
 "RESET": SubResource("Animation_y6mxn")
+}
+
+[sub_resource type="Animation" id="Animation_hc3hf"]
+resource_name = "doorclose"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("decoration/Bars:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-1502, 516), Vector2(-1502, 530), Vector2(-1502, 565)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Concrete-scrape-loop-made-with-voicemod-technology:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_4dh2c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("decoration/Bars:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1502, 516)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Concrete-scrape-loop-made-with-voicemod-technology:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y1123"]
+_data = {
+"RESET": SubResource("Animation_4dh2c"),
+"doorclose": SubResource("Animation_hc3hf")
 }
 
 [node name="level_2_boss_arena" type="Node2D"]
@@ -598,7 +660,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("7_xpyu6")
 
 [node name="Bars" type="Sprite2D" parent="decoration"]
-position = Vector2(-1503, 552)
+position = Vector2(-1502, 516)
 scale = Vector2(1, 1.12)
 texture = ExtResource("7_wrv0c")
 
@@ -678,7 +740,7 @@ texture = ExtResource("8_6i568")
 
 [node name="player" parent="." instance=ExtResource("1_qjm0x")]
 top_level = true
-position = Vector2(-1434, 638)
+position = Vector2(-1424, 635)
 
 [node name="Bossbar" type="Sprite2D" parent="player"]
 z_index = 100
@@ -703,9 +765,9 @@ position = Vector2(-973, -144)
 collision_layer = 65
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(-768.4, 257.4)
+position = Vector2(-778, 257)
 scale = Vector2(2, 2)
-polygon = PackedVector2Array(2184.5, -458.5, 1792.39, -264.196, 726, 269, 738, 269, 2192, -437.5)
+polygon = PackedVector2Array(2197.2, -465.7, 1792.39, -264.196, 726, 269, 738, 269, 2192, -437.5)
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-366.4, 634.4)
@@ -829,8 +891,8 @@ scale = Vector2(4, 4)
 texture = ExtResource("11_7eo2i")
 
 [node name="Rock4" type="Sprite2D" parent="Rock1"]
-z_index = 10
-position = Vector2(-23.5, 75.75)
+z_index = -1
+position = Vector2(-27.75, 58.25)
 texture = ExtResource("11_7eo2i")
 
 [node name="Room" type="Sprite2D" parent="."]
@@ -844,7 +906,7 @@ rotation = -3.14159
 texture = ExtResource("22_pxdlw")
 
 [node name="Rock2" type="Sprite2D" parent="."]
-position = Vector2(9495, -145)
+position = Vector2(9505, -149)
 rotation = -1.5708
 scale = Vector2(15, 15)
 texture = ExtResource("11_7eo2i")
@@ -884,17 +946,21 @@ texture = ExtResource("25_hgawe")
 
 [node name="Label" type="Label" parent="."]
 visible = false
-offset_left = 12257.0
-offset_top = -1104.0
-offset_right = 12790.0
-offset_bottom = -974.0
+offset_left = 12262.0
+offset_top = -1137.0
+offset_right = 12795.0
+offset_bottom = -893.0
 theme_override_fonts/font = ExtResource("26_6ro0t")
+theme_override_font_sizes/font_size = 14
 text = "
-the duck walked into a 
-bar, and ordered a drink. 
+The duck walked 
+into a bar, and ordered 
+a drink. 
 
 The duck told the 
-bartender “put it on 
+bartender 
+
+“put it on 
 my bill.”"
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -1078,6 +1144,34 @@ centered = false
 position = Vector2(1980, 0)
 texture = ExtResource("40_eepe2")
 centered = false
+[node name="BackroundRock" type="Sprite2D" parent="Rock4"]
+z_index = -4096
+position = Vector2(74.2, 73.7999)
+rotation = -1.5708
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("30_qnr1a")
+
+[node name="healthkit" parent="." instance=ExtResource("30_g26rc")]
+position = Vector2(6298, -1514)
+
+[node name="healthkit2" parent="." instance=ExtResource("30_g26rc")]
+position = Vector2(7026, -3245)
+
+[node name="healthkit3" parent="." instance=ExtResource("30_g26rc")]
+position = Vector2(5753, -3640)
+
+[node name="healthkit4" parent="." instance=ExtResource("30_g26rc")]
+position = Vector2(7609, -2463)
+
+[node name="doorclose" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y1123")
+}
+autoplay = "doorclose"
+
+[node name="Concrete-scrape-loop-made-with-voicemod-technology" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-1505, 571)
+stream = ExtResource("13_6pc6d")
 
 [connection signal="body_entered" from="battlebegin" to="." method="_on_battlebegin_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
