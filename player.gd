@@ -268,3 +268,7 @@ func _on_cannon_right_button_down() -> void:
 
 func _on_cannon_right_button_up() -> void:
 	touchscreenrotateleft = false
+
+
+func _on_exit_button_down() -> void:
+	get_tree().quit()

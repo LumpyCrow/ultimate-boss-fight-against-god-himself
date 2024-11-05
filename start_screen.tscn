@@ -204,10 +204,10 @@ texture = ExtResource("2_x753r")
 [node name="Start" type="Button" parent="."]
 z_index = 4096
 layout_mode = 0
-offset_left = 130.0
-offset_top = 350.0
-offset_right = 566.0
-offset_bottom = 696.0
+offset_left = 297.0
+offset_top = 386.0
+offset_right = 733.0
+offset_bottom = 732.0
 icon = SubResource("CompressedTexture2D_4p1cf")
 flat = true
 expand_icon = true
