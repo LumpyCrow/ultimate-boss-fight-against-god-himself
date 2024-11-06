@@ -1153,6 +1153,27 @@ position = Vector2(1980, 0)
 texture = ExtResource("40_eepe2")
 centered = false
 
+[node name="BackroundRock2" type="Sprite2D" parent="Rock4"]
+z_index = -4096
+position = Vector2(-268.408, -2261)
+rotation = -1.5708
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("30_qnr1a")
+
+[node name="BackroundRock3" type="Sprite2D" parent="Rock4"]
+z_index = -4096
+position = Vector2(-282.208, -2085.2)
+rotation = -1.5708
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("30_qnr1a")
+
+[node name="BackroundRock4" type="Sprite2D" parent="Rock4"]
+z_index = -4096
+position = Vector2(-173.203, -751.799)
+rotation = -1.5708
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("30_qnr1a")
+
 [node name="healthkit" parent="." instance=ExtResource("30_g26rc")]
 position = Vector2(6298, -1514)
 
