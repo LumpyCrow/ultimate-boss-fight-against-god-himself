@@ -45,12 +45,10 @@ texture = ExtResource("6_jtfnm")
 [node name="Graas" type="Sprite2D" parent="CaveEntrance"]
 position = Vector2(27.2015, 463.6)
 rotation = -1.5708
-scale = Vector2(1, 1)
 texture = ExtResource("7_wvgh2")
 
 [node name="Graas" type="Sprite2D" parent="CaveEntrance/Graas"]
 position = Vector2(-500, 4)
-scale = Vector2(1, 1)
 texture = ExtResource("7_wvgh2")
 
 [node name="Branch" type="Sprite2D" parent="CaveEntrance/Graas"]

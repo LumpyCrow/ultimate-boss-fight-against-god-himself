@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://be3xkbl84anxw"]
+[gd_scene load_steps=54 format=3 uid="uid://be3xkbl84anxw"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_m8axc"]
 [ext_resource type="Texture2D" uid="uid://q8xnyf8lai5v" path="res://textures/duck/right.png" id="2_17gb2"]
@@ -32,10 +32,10 @@
 [ext_resource type="Texture2D" uid="uid://dodieerem7bqm" path="res://textures/leftbutton.png" id="30_rjrfu"]
 [ext_resource type="Texture2D" uid="uid://b87p0ilaa5ya4" path="res://textures/rightbutton.png" id="31_v277i"]
 [ext_resource type="Texture2D" uid="uid://bahjq068xqyqj" path="res://textures/upbutton.png" id="32_11edc"]
-[ext_resource type="Texture2D" uid="uid://bou7e7yjkld7i" path="res://textures/Shoot_symbol.png" id="33_jhsd8"]
+[ext_resource type="Texture2D" uid="uid://0fmx4mptewdm" path="res://textures/firebutton.png" id="34_5ye00"]
 [ext_resource type="Texture2D" uid="uid://cmr3x2afrtbuk" path="res://textures/rotaterightbutton.png" id="34_v1q63"]
 [ext_resource type="Texture2D" uid="uid://5vulym3yg831" path="res://textures/rotateleftbutton.png" id="35_wx2ik"]
-[ext_resource type="Texture2D" uid="uid://crtwmq7kvbh8v" path="res://textures/remade smaller better doo.png" id="36_yufxx"]
+[ext_resource type="Texture2D" uid="uid://d0y7tgrxy1tp3" path="res://textures/downbutton.png" id="36_fet2v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v5r0w"]
 
@@ -213,6 +213,27 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pgto5"]
+size = Vector2(50, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcn2i"]
+size = Vector2(50, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fri4a"]
+size = Vector2(25, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wblbl"]
+size = Vector2(25, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_avx6x"]
+size = Vector2(30, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbwx4"]
+size = Vector2(30, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_skihx"]
+size = Vector2(30, 30)
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 3
 collision_mask = 5
@@ -346,73 +367,71 @@ position = Vector2(0, 526)
 scale = Vector2(1.015, 1.525)
 texture = ExtResource("17_2wnhh")
 
-[node name="Left" type="Button" parent="Controlpad/Controlpad"]
-offset_left = -358.0
-offset_top = -7.0
-offset_right = -110.0
-offset_bottom = 120.0
-icon = ExtResource("30_rjrfu")
-flat = true
-expand_icon = true
+[node name="Left" type="TouchScreenButton" parent="Controlpad"]
+z_index = 4096
+position = Vector2(-335, 493)
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("30_rjrfu")
+shape = SubResource("RectangleShape2D_pgto5")
+passby_press = true
+action = "Left"
 
-[node name="Right" type="Button" parent="Controlpad/Controlpad"]
-offset_left = 110.0
-offset_top = -7.0
-offset_right = 358.0
-offset_bottom = 120.0
-icon = ExtResource("31_v277i")
-flat = true
-icon_alignment = 2
-expand_icon = true
+[node name="Right" type="TouchScreenButton" parent="Controlpad"]
+z_index = 4096
+position = Vector2(-147, 493)
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("31_v277i")
+shape = SubResource("RectangleShape2D_wcn2i")
+passby_press = true
+action = "Right"
 
-[node name="Up" type="Button" parent="Controlpad/Controlpad"]
-offset_left = -110.0
-offset_top = -7.0
-offset_right = 110.0
-offset_bottom = 120.0
-icon = ExtResource("32_11edc")
-flat = true
-icon_alignment = 1
-expand_icon = true
+[node name="Up" type="TouchScreenButton" parent="Controlpad"]
+z_index = 4096
+position = Vector2(-210, 368)
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("32_11edc")
+shape = SubResource("RectangleShape2D_fri4a")
+passby_press = true
+action = "Up"
 
-[node name="Shoot" type="Button" parent="Controlpad/Controlpad"]
-offset_left = -109.0
-offset_top = -119.0
-offset_right = 110.0
-offset_bottom = -7.0
-icon = ExtResource("33_jhsd8")
-flat = true
-icon_alignment = 1
-expand_icon = true
+[node name="Down" type="TouchScreenButton" parent="Controlpad"]
+z_index = 4096
+position = Vector2(-210, 555)
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("36_fet2v")
+shape = SubResource("RectangleShape2D_wblbl")
+passby_press = true
+action = "Down"
 
-[node name="CannonLeft" type="Button" parent="Controlpad/Controlpad"]
-offset_left = 110.0
-offset_top = -120.0
-offset_right = 359.0
-offset_bottom = -7.0
-icon = ExtResource("34_v1q63")
-flat = true
-icon_alignment = 1
-expand_icon = true
+[node name="Shoot" type="TouchScreenButton" parent="Controlpad"]
+z_index = 4096
+position = Vector2(115, 463)
+scale = Vector2(4.06, 4.12817)
+texture_normal = ExtResource("34_5ye00")
+shape = SubResource("RectangleShape2D_avx6x")
+passby_press = true
+action = "Fire"
 
-[node name="CannonRight" type="Button" parent="Controlpad/Controlpad"]
-offset_left = -360.0
-offset_top = -120.0
-offset_right = -109.0
-offset_bottom = -7.0
-icon = ExtResource("35_wx2ik")
-flat = true
-icon_alignment = 1
-expand_icon = true
+[node name="CannonLeft" type="TouchScreenButton" parent="Controlpad"]
+z_index = 4096
+position = Vector2(24, 483)
+scale = Vector2(2.93333, 3.05)
+texture_normal = ExtResource("35_wx2ik")
+shape = SubResource("RectangleShape2D_hbwx4")
+passby_press = true
+action = "Rotateleft"
 
-[node name="Exit" type="Button" parent="Controlpad"]
-offset_left = 288.0
-offset_top = -380.0
-offset_right = 360.0
-offset_bottom = -288.0
-icon = ExtResource("36_yufxx")
-flat = true
-expand_icon = true
+[node name="CannonRight" type="TouchScreenButton" parent="Controlpad"]
+z_index = 4096
+position = Vector2(240, 482)
+scale = Vector2(3.2, 3.05)
+texture_normal = ExtResource("34_v1q63")
+shape = SubResource("RectangleShape2D_skihx")
+passby_press = true
+action = "Rotateright"
+
+[node name="Exit" type="TouchScreenButton" parent="Controlpad"]
+action = "quit"
 
 [connection signal="button_up" from="Gameoverscreen/Button" to="." method="_on_button_button_up"]
 [connection signal="body_entered" from="damagezone" to="." method="_on_damagezone_body_entered"]
@@ -420,22 +439,3 @@ expand_icon = true
 [connection signal="timeout" from="invincibilitytime" to="." method="_on_invincibilitytime_timeout"]
 [connection signal="timeout" from="cannoncooldown" to="." method="_on_cannoncooldown_timeout"]
 [connection signal="animation_finished" from="death" to="." method="_on_death_animation_finished"]
-[connection signal="button_down" from="Controlpad/Controlpad/Left" to="." method="_on_left_button_down"]
-[connection signal="button_down" from="Controlpad/Controlpad/Left" to="Controlpad" method="_on_left_button_down"]
-[connection signal="button_up" from="Controlpad/Controlpad/Left" to="." method="_on_left_button_up"]
-[connection signal="pressed" from="Controlpad/Controlpad/Left" to="Controlpad" method="_on_left_pressed"]
-[connection signal="button_down" from="Controlpad/Controlpad/Right" to="." method="_on_right_button_down"]
-[connection signal="button_down" from="Controlpad/Controlpad/Right" to="Controlpad" method="_on_right_button_down"]
-[connection signal="button_up" from="Controlpad/Controlpad/Right" to="." method="_on_right_button_up"]
-[connection signal="button_down" from="Controlpad/Controlpad/Up" to="." method="_on_up_button_down"]
-[connection signal="button_down" from="Controlpad/Controlpad/Up" to="Controlpad" method="_on_up_button_down"]
-[connection signal="button_up" from="Controlpad/Controlpad/Up" to="." method="_on_up_button_up"]
-[connection signal="button_down" from="Controlpad/Controlpad/Shoot" to="." method="_on_shoot_button_down"]
-[connection signal="button_down" from="Controlpad/Controlpad/Shoot" to="." method="_on_down_button_down"]
-[connection signal="button_up" from="Controlpad/Controlpad/Shoot" to="." method="_on_shoot_button_up"]
-[connection signal="button_up" from="Controlpad/Controlpad/Shoot" to="." method="_on_down_button_up"]
-[connection signal="button_down" from="Controlpad/Controlpad/CannonLeft" to="." method="_on_cannon_left_button_down"]
-[connection signal="button_up" from="Controlpad/Controlpad/CannonLeft" to="." method="_on_cannon_left_button_up"]
-[connection signal="button_down" from="Controlpad/Controlpad/CannonRight" to="." method="_on_cannon_right_button_down"]
-[connection signal="button_up" from="Controlpad/Controlpad/CannonRight" to="." method="_on_cannon_right_button_up"]
-[connection signal="button_down" from="Controlpad/Exit" to="." method="_on_exit_button_down"]
