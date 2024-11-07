@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://p74ir71ry238"]
+[gd_scene load_steps=66 format=3 uid="uid://p74ir71ry238"]
 
 [ext_resource type="Script" path="res://level_2_boss_arena.gd" id="1_lblhy"]
 [ext_resource type="PackedScene" uid="uid://be3xkbl84anxw" path="res://player.tscn" id="1_qjm0x"]
@@ -34,10 +34,12 @@
 [ext_resource type="TileSet" uid="uid://meu4ra5dfr7p" path="res://textures/tileset/new_tile_set.tres" id="30_yuocr"]
 [ext_resource type="Texture2D" uid="uid://dx4gi5tvrtms" path="res://Layers/1.png" id="31_usans"]
 [ext_resource type="Texture2D" uid="uid://d1hoy6d3dn6si" path="res://Layers/2.png" id="32_mg376"]
-[ext_resource type="Texture2D" uid="uid://cnekrhr8021h5" path="res://Layers/3.png" id="33_2573s"]
+[ext_resource type="Texture2D" uid="uid://bwk4em3pd5k76" path="res://Layers/bg1.png" id="32_qhmhc"]
+[ext_resource type="Texture2D" uid="uid://dwdvtjocdrnj2" path="res://Layers/bg2.png" id="34_6dbwv"]
 [ext_resource type="Texture2D" uid="uid://biptcmhs44id2" path="res://background/3.png" id="34_6ubnt"]
 [ext_resource type="Texture2D" uid="uid://baxxp22smndyx" path="res://Layers/4.png" id="35_ba8y1"]
 [ext_resource type="Texture2D" uid="uid://gqifgnvnfx3u" path="res://Layers/5.png" id="36_jgskp"]
+[ext_resource type="Texture2D" uid="uid://cundmfmep1qlh" path="res://Layers/bg3.png" id="36_jyckk"]
 [ext_resource type="Texture2D" uid="uid://jkps1n1xl4ic" path="res://background/5.png" id="37_af5w2"]
 [ext_resource type="Texture2D" uid="uid://dnghn6upt4360" path="res://Layers/6.png" id="38_7gagw"]
 [ext_resource type="Texture2D" uid="uid://degkl7valcxgf" path="res://Layers/7.png" id="39_tk7s0"]
@@ -1042,6 +1044,27 @@ rotation = -1.5708
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("30_qnr1a")
 
+[node name="BackroundRock2" type="Sprite2D" parent="Rock4"]
+z_index = -4096
+position = Vector2(-268.408, -2261)
+rotation = -1.5708
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("30_qnr1a")
+
+[node name="BackroundRock3" type="Sprite2D" parent="Rock4"]
+z_index = -4096
+position = Vector2(-282.208, -2085.2)
+rotation = -1.5708
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("30_qnr1a")
+
+[node name="BackroundRock4" type="Sprite2D" parent="Rock4"]
+z_index = -4096
+position = Vector2(-173.203, -751.799)
+rotation = -1.5708
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("30_qnr1a")
+
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_set = ExtResource("30_yuocr")
 
@@ -1054,10 +1077,11 @@ transform = Transform2D(1, 0, 0, 1, -2443.51, 0)
 motion_mirroring = Vector2(3960, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource("31_usans")
+texture = ExtResource("32_qhmhc")
 centered = false
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+visible = false
 position = Vector2(1980, 0)
 texture = ExtResource("31_usans")
 centered = false
@@ -1067,10 +1091,11 @@ motion_scale = Vector2(0.3, 1)
 motion_mirroring = Vector2(3960, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/MiddlegroundParallaxLayer"]
-texture = ExtResource("32_mg376")
+texture = ExtResource("34_6dbwv")
 centered = false
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/MiddlegroundParallaxLayer"]
+visible = false
 position = Vector2(1980, 0)
 texture = ExtResource("32_mg376")
 centered = false
@@ -1080,15 +1105,17 @@ motion_scale = Vector2(0.4, 1)
 motion_mirroring = Vector2(3960, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/SmallgroundParallax"]
-texture = ExtResource("33_2573s")
+texture = ExtResource("36_jyckk")
 centered = false
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/SmallgroundParallax"]
+visible = false
 position = Vector2(1980, 0)
 texture = ExtResource("34_6ubnt")
 centered = false
 
 [node name="4_parallax" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 motion_scale = Vector2(0.5, 1)
 motion_mirroring = Vector2(3960, 0)
 
@@ -1102,6 +1129,7 @@ texture = ExtResource("35_ba8y1")
 centered = false
 
 [node name="5_parallax" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 motion_scale = Vector2(0.6, 1)
 motion_mirroring = Vector2(3960, 0)
 
@@ -1115,6 +1143,7 @@ texture = ExtResource("37_af5w2")
 centered = false
 
 [node name="6_parallax" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 motion_scale = Vector2(0.7, 1)
 motion_mirroring = Vector2(3960, 0)
 
@@ -1141,6 +1170,7 @@ texture = ExtResource("39_tk7s0")
 centered = false
 
 [node name="8_parallax" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 motion_scale = Vector2(0.9, 1)
 motion_mirroring = Vector2(3960, 0)
 
@@ -1152,27 +1182,6 @@ centered = false
 position = Vector2(1980, 0)
 texture = ExtResource("40_eepe2")
 centered = false
-
-[node name="BackroundRock2" type="Sprite2D" parent="Rock4"]
-z_index = -4096
-position = Vector2(-268.408, -2261)
-rotation = -1.5708
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("30_qnr1a")
-
-[node name="BackroundRock3" type="Sprite2D" parent="Rock4"]
-z_index = -4096
-position = Vector2(-282.208, -2085.2)
-rotation = -1.5708
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("30_qnr1a")
-
-[node name="BackroundRock4" type="Sprite2D" parent="Rock4"]
-z_index = -4096
-position = Vector2(-173.203, -751.799)
-rotation = -1.5708
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("30_qnr1a")
 
 [node name="healthkit" parent="." instance=ExtResource("30_g26rc")]
 position = Vector2(6298, -1514)
