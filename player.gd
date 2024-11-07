@@ -4,6 +4,7 @@ extends CharacterBody2D
 var touchscreenleft = false
 var touchscreenfly = false
 var touchscreenright = false
+var touchscreendown = false
 
 var touchscreenrotateleft = false
 var touchscreenshoot = false
@@ -25,9 +26,8 @@ var fireable = true
 
 func _physics_process(delta: float) -> void:
 	
-		
-	
-	
+	if Input.is_action_just_pressed("quit"):
+		get_tree().quit()
 	
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
@@ -40,15 +40,15 @@ func _physics_process(delta: float) -> void:
 		if not is_on_floor() and velocity.y < 150:
 			velocity += get_gravity() * delta
 		else:
-			if Input.is_action_pressed("Down"):
+			if Input.is_action_pressed("Down") or touchscreendown == true:
 				if not is_on_floor() and velocity.y < MAXSPEED:
 					velocity += get_gravity() * delta
-			if not Input.is_action_pressed("Down"):
+			if not Input.is_action_pressed("Down") or touchscreendown == true:
 				if not is_on_floor() and velocity.y > 150:
 					velocity -= get_gravity() * delta
-		
+			
 	# Handle jump. (+animation)
-		if Input.is_action_pressed("ui_accept") or touchscreenfly == true:
+		if Input.is_action_pressed("Up") or touchscreenfly == true:
 			if velocity.y > -MAXSPEED:
 				velocity.y = velocity.y + JUMP_VELOCITY
 			if invincible == false:
@@ -158,7 +158,7 @@ func _physics_process(delta: float) -> void:
 			$death.visible = false
 		
 	if health > 0:
-		if Input.is_action_just_pressed("Fire") and fireable == true or touchscreenshoot == true and fireable == true:
+		if Input.is_action_pressed("Fire") and fireable == true or touchscreenshoot == true and fireable == true:
 			fireable = false
 			$cannoncooldown.start()
 			$cannonsound.play()
@@ -221,54 +221,3 @@ func _on_death_animation_finished() -> void:
 
 func _on_button_button_up() -> void:
 	get_tree().reload_current_scene()
-
-
-func _on_left_button_down() -> void:
-	touchscreenleft = true
-
-
-func _on_left_button_up() -> void:
-	touchscreenleft = false
-
-
-func _on_right_button_down() -> void:
-	touchscreenright = true
-
-
-func _on_right_button_up() -> void:
-	touchscreenright = false
-
-
-func _on_up_button_down() -> void:
-	touchscreenfly = true
-
-func _on_up_button_up() -> void:
-	touchscreenfly = false
-
-
-func _on_shoot_button_down() -> void:
-	touchscreenshoot = true
-
-
-func _on_shoot_button_up() -> void:
-	touchscreenshoot = false
-
-
-func _on_cannon_left_button_down() -> void:
-	touchscreenrotateright = true
-
-
-func _on_cannon_left_button_up() -> void:
-	touchscreenrotateright = false
-
-
-func _on_cannon_right_button_down() -> void:
-	touchscreenrotateleft = true
-
-
-func _on_cannon_right_button_up() -> void:
-	touchscreenrotateleft = false
-
-
-func _on_exit_button_down() -> void:
-	get_tree().quit()

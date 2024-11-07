@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgmi0fwndkihk"]
+[gd_scene load_steps=5 format=3 uid="uid://dgmi0fwndkihk"]
 
+[ext_resource type="Script" path="res://button.gd" id="1_1c0rf"]
 [ext_resource type="Texture2D" uid="uid://om7lrsixa85h" path="res://textures/buttonUnpressed.png" id="1_n0cwq"]
+[ext_resource type="AudioStream" uid="uid://c5jo5g6n4ymbe" path="res://audio/button3.wav" id="3_2lb0x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qpfld"]
-radius = 21.0
+radius = 8.38153
 
 [node name="Button" type="Area2D"]
+collision_mask = 3
+script = ExtResource("1_1c0rf")
 
 [node name="ButtonUnpressed" type="Sprite2D" parent="."]
 texture = ExtResource("1_n0cwq")
@@ -14,3 +18,9 @@ texture = ExtResource("1_n0cwq")
 position = Vector2(1, -3)
 scale = Vector2(1, 0.4)
 shape = SubResource("CircleShape2D_qpfld")
+
+[node name="sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_2lb0x")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://djvaqjy7j54yy"]
+[gd_scene load_steps=33 format=4 uid="uid://djvaqjy7j54yy"]
 
 [ext_resource type="Script" path="res://levels/level_1.gd" id="1_dbdee"]
 [ext_resource type="PackedScene" uid="uid://8bjcjmqf8e6l" path="res://background/parallax_background.tscn" id="1_tlw3t"]
@@ -15,9 +15,87 @@
 [ext_resource type="Texture2D" uid="uid://bqkhaxftlk2cf" path="res://textures/tree.png" id="9_wf1ay"]
 [ext_resource type="PackedScene" uid="uid://dgmi0fwndkihk" path="res://button.tscn" id="14_m55ih"]
 [ext_resource type="AudioStream" uid="uid://bo1nlvblnxmi2" path="res://audio/music/A Conversation with Saul (Rough Demo.mp3" id="15_f156s"]
+[ext_resource type="PackedScene" uid="uid://dplkb6yb3qswq" path="res://fake_enemy.tscn" id="16_ucurx"]
+[ext_resource type="Texture2D" uid="uid://cakequvk7k6qj" path="res://textures/box.png" id="17_cm3et"]
+[ext_resource type="AudioStream" uid="uid://de065vk2ysoe7" path="res://audio/concrete-scrape-loop-made-with-Voicemod-technology.mp3" id="18_u7loa"]
+[ext_resource type="Texture2D" uid="uid://c62oradgij1te" path="res://textures/duck/flyright.png" id="19_p6ank"]
+[ext_resource type="Texture2D" uid="uid://iwoje7ukcyh5" path="res://textures/controlpad.png" id="20_ek2fb"]
+[ext_resource type="FontFile" uid="uid://d4mpuv0l5xxa4" path="res://Press_Start_2P/PressStart2P-Regular.ttf" id="21_37cqr"]
+[ext_resource type="Texture2D" uid="uid://bahjq068xqyqj" path="res://textures/upbutton.png" id="22_ihl85"]
+[ext_resource type="Texture2D" uid="uid://0fmx4mptewdm" path="res://textures/firebutton.png" id="23_ko77a"]
+[ext_resource type="Texture2D" uid="uid://b87p0ilaa5ya4" path="res://textures/rightbutton.png" id="24_eug8s"]
+[ext_resource type="Texture2D" uid="uid://5vulym3yg831" path="res://textures/rotateleftbutton.png" id="25_ncbyu"]
+[ext_resource type="Texture2D" uid="uid://cmr3x2afrtbuk" path="res://textures/rotaterightbutton.png" id="26_33a63"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j532k"]
 size = Vector2(33, 199)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wb7r1"]
+size = Vector2(24, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayxpd"]
+size = Vector2(89, 168)
+
+[sub_resource type="Animation" id="Animation_3m7c6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flyright:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(385, 834)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("player:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(385, 834)]
+}
+
+[sub_resource type="Animation" id="Animation_m7fya"]
+resource_name = "openinganimation"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flyright:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, 664), Vector2(385, 834)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("player:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(385, 834), Vector2(385, 834)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_381i1"]
+_data = {
+"RESET": SubResource("Animation_3m7c6"),
+"openinganimation": SubResource("Animation_m7fya")
+}
 
 [node name="Level_1" type="Node2D"]
 script = ExtResource("1_dbdee")
@@ -33,8 +111,9 @@ tile_set = ExtResource("4_xjx7c")
 [node name="GUI" parent="." instance=ExtResource("3_6b0h0")]
 
 [node name="player" parent="." instance=ExtResource("2_3jsce")]
+visible = false
 top_level = true
-position = Vector2(407, 790)
+position = Vector2(385, 834)
 
 [node name="CaveEntrance" type="Sprite2D" parent="."]
 position = Vector2(4284, 395.001)
@@ -45,12 +124,10 @@ texture = ExtResource("6_jtfnm")
 [node name="Graas" type="Sprite2D" parent="CaveEntrance"]
 position = Vector2(27.2015, 463.6)
 rotation = -1.5708
-scale = Vector2(1, 1)
 texture = ExtResource("7_wvgh2")
 
 [node name="Graas" type="Sprite2D" parent="CaveEntrance/Graas"]
 position = Vector2(-500, 4)
-scale = Vector2(1, 1)
 texture = ExtResource("7_wvgh2")
 
 [node name="Branch" type="Sprite2D" parent="CaveEntrance/Graas"]
@@ -173,13 +250,6 @@ position = Vector2(68.1426, 95.5718)
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("5_tqmb4")
 
-[node name="Bars" type="Sprite2D" parent="CaveEntrance"]
-show_behind_parent = true
-position = Vector2(64.2, 80.1999)
-rotation = -1.5708
-scale = Vector2(0.2, 0.224)
-texture = ExtResource("8_yju0e")
-
 [node name="BackroundRock" type="Sprite2D" parent="CaveEntrance"]
 z_index = -4096
 position = Vector2(74.2, 73.7999)
@@ -208,7 +278,6 @@ position = Vector2(-32.2998, 43.8001)
 texture = ExtResource("5_tqmb4")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(3199, 833, 3211, 818, 3216, 807, 3230, 798, 3244, 787, 3258, 781, 3279, 777, 3303, 772, 3329, 768, 3404, 767, 3431, 774, 3444, 789, 3452, 788, 3458, 800, 4258, 800, 4292, 1369, 3007, 1331)
@@ -234,10 +303,108 @@ position = Vector2(6.5, 89.5)
 shape = SubResource("RectangleShape2D_j532k")
 
 [node name="Button" parent="." instance=ExtResource("14_m55ih")]
+position = Vector2(3651, 795)
+scale = Vector2(2, 2)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_f156s")
-autoplay = true
 parameters/looping = true
 
+[node name="fakeEnemy" parent="." instance=ExtResource("16_ucurx")]
+position = Vector2(2242, 723)
+rotation = -1.05057
+
+[node name="fakeEnemy2" parent="." instance=ExtResource("16_ucurx")]
+position = Vector2(1851, 622)
+rotation = -2.84482
+
+[node name="fakeEnemy3" parent="." instance=ExtResource("16_ucurx")]
+position = Vector2(1990, 662)
+
+[node name="fakeEnemy4" parent="." instance=ExtResource("16_ucurx")]
+position = Vector2(3118, 665)
+rotation = 1.29819
+
+[node name="box" type="RigidBody2D" parent="." groups=["object"]]
+position = Vector2(2394, 510)
+rotation = -0.735276
+collision_layer = 2
+
+[node name="Box" type="Sprite2D" parent="box"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_cm3et")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="box"]
+shape = SubResource("RectangleShape2D_wb7r1")
+
+[node name="door" type="StaticBody2D" parent="."]
+position = Vector2(3883, 716)
+
+[node name="Bars" type="Sprite2D" parent="door"]
+show_behind_parent = true
+z_index = -100
+position = Vector2(-0.000732422, -0.000488281)
+scale = Vector2(1, 1.12)
+texture = ExtResource("8_yju0e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_ayxpd")
+
+[node name="doorsound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(3884, 716)
+stream = ExtResource("18_u7loa")
+
+[node name="Flyright" type="Sprite2D" parent="."]
+position = Vector2(385, 834)
+texture = ExtResource("19_p6ank")
+
+[node name="Controlpad2" type="Sprite2D" parent="."]
+z_index = 4096
+position = Vector2(385, 1360)
+scale = Vector2(1.015, 1.525)
+texture = ExtResource("20_ek2fb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_381i1")
+}
+autoplay = "openinganimation"
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 435.0
+offset_top = 722.0
+offset_right = 547.0
+offset_bottom = 745.0
+theme_override_fonts/font = ExtResource("21_37cqr")
+text = "Level 1"
+
+[node name="Upbutton" type="Sprite2D" parent="."]
+position = Vector2(2298, 641)
+scale = Vector2(2, 2)
+texture = ExtResource("22_ihl85")
+
+[node name="Firebutton" type="Sprite2D" parent="."]
+position = Vector2(2129, 691)
+scale = Vector2(3, 3)
+texture = ExtResource("23_ko77a")
+
+[node name="Rightbutton" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(624, 743)
+scale = Vector2(2, 2)
+texture = ExtResource("24_eug8s")
+
+[node name="Rotateleftbutton" type="Sprite2D" parent="."]
+position = Vector2(1901, 635)
+scale = Vector2(2, 2)
+texture = ExtResource("25_ncbyu")
+
+[node name="Rotaterightbutton" type="Sprite2D" parent="."]
+position = Vector2(2121, 606)
+scale = Vector2(2, 2)
+texture = ExtResource("26_33a63")
+
 [connection signal="body_entered" from="tranitionToNextLevel" to="." method="_on_tranition_to_next_level_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

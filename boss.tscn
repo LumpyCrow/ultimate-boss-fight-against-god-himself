@@ -606,7 +606,7 @@ shape = SubResource("CircleShape2D_anfww")
 shape = SubResource("CircleShape2D_524jr")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="detection_area"]
-polygon = PackedVector2Array(-322, 452, -221, 457, -6, 149, 163, 445, 271, 449, 111, 79, -109, 69)
+polygon = PackedVector2Array(-322, 452, -57, 448, -6, 149, 52, 446, 271, 449, 111, 79, -109, 69)
 
 [node name="lazergunPivot" type="Node2D" parent="."]
 
