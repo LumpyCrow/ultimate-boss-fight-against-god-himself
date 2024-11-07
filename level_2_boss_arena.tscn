@@ -491,6 +491,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_hc3hf"]
 resource_name = "doorclose"
@@ -517,6 +529,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y1123"]
@@ -728,6 +752,7 @@ scale = Vector2(6, 6)
 texture = ExtResource("7_2xf22")
 
 [node name="Gray" type="Sprite2D" parent="decoration"]
+z_index = 100
 position = Vector2(138, -3919)
 scale = Vector2(100, 93.44)
 texture = ExtResource("8_757b0")
@@ -767,7 +792,7 @@ collision_layer = 65
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(-778, 257)
 scale = Vector2(2, 2)
-polygon = PackedVector2Array(2197.2, -465.7, 1792.39, -264.196, 726, 269, 738, 269, 2192, -437.5)
+polygon = PackedVector2Array(2190.5, -464, 1792.39, -264.196, 726, 269, 738, 269, 2192, -437.5)
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-366.4, 634.4)
@@ -924,18 +949,19 @@ scale = Vector2(6, 6)
 texture = ExtResource("23_4univ")
 
 [node name="Graa" type="Sprite2D" parent="."]
+z_index = 100
 position = Vector2(5630, -6127)
 scale = Vector2(6, 6)
 texture = ExtResource("22_7gi5y")
 
 [node name="Rokroof" type="Sprite2D" parent="."]
-z_index = -1000
+z_index = -1
 position = Vector2(11059, -2430)
 scale = Vector2(5, 5)
 texture = ExtResource("23_xfk6y")
 
 [node name="Rokroof" type="Sprite2D" parent="Rokroof"]
-z_index = -1000
+z_index = 100
 position = Vector2(4.8, -520.2)
 texture = ExtResource("23_xfk6y")
 
@@ -961,7 +987,7 @@ The duck told the
 bartender 
 
 “put it on 
-my bill.”"
+my bill!”"
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(12529, -885)
@@ -1038,6 +1064,27 @@ texture = ExtResource("11_7eo2i")
 [node name="BackroundRock" type="Sprite2D" parent="Rock4"]
 z_index = -4096
 position = Vector2(74.2, 73.7999)
+rotation = -1.5708
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("30_qnr1a")
+
+[node name="BackroundRock2" type="Sprite2D" parent="Rock4"]
+z_index = -4096
+position = Vector2(-268.408, -2261)
+rotation = -1.5708
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("30_qnr1a")
+
+[node name="BackroundRock3" type="Sprite2D" parent="Rock4"]
+z_index = -4096
+position = Vector2(-282.208, -2085.2)
+rotation = -1.5708
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("30_qnr1a")
+
+[node name="BackroundRock4" type="Sprite2D" parent="Rock4"]
+z_index = -4096
+position = Vector2(-173.203, -751.799)
 rotation = -1.5708
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("30_qnr1a")
@@ -1153,27 +1200,6 @@ position = Vector2(1980, 0)
 texture = ExtResource("40_eepe2")
 centered = false
 
-[node name="BackroundRock2" type="Sprite2D" parent="Rock4"]
-z_index = -4096
-position = Vector2(-268.408, -2261)
-rotation = -1.5708
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("30_qnr1a")
-
-[node name="BackroundRock3" type="Sprite2D" parent="Rock4"]
-z_index = -4096
-position = Vector2(-282.208, -2085.2)
-rotation = -1.5708
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("30_qnr1a")
-
-[node name="BackroundRock4" type="Sprite2D" parent="Rock4"]
-z_index = -4096
-position = Vector2(-173.203, -751.799)
-rotation = -1.5708
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("30_qnr1a")
-
 [node name="healthkit" parent="." instance=ExtResource("30_g26rc")]
 position = Vector2(6298, -1514)
 
@@ -1195,6 +1221,15 @@ autoplay = "doorclose"
 [node name="Concrete-scrape-loop-made-with-voicemod-technology" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-1505, 571)
 stream = ExtResource("13_6pc6d")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -1345.0
+offset_top = 554.0
+offset_right = -1233.0
+offset_bottom = 577.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("26_6ro0t")
+text = "Level 2"
 
 [connection signal="body_entered" from="battlebegin" to="." method="_on_battlebegin_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

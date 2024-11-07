@@ -28,6 +28,7 @@ window/stretch/mode="canvas_items"
 player=""
 danger=""
 cannonball=""
+object=""
 
 [input]
 

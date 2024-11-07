@@ -1,6 +1,7 @@
 extends Node2D
 
 var explosion = load("res://massive_explosion.tscn")
+@onready var player2 = get_parent().get_node("player")
 
 func _ready() -> void:
 	print("BOOM!")
@@ -14,3 +15,4 @@ func _on_deathanimation_animation_finished(anim_name: StringName) -> void:
 	new_explosion.position.x = position.x + 300
 	queue_free()
 	print("BOOM!")
+	player2.camerashaking = false
