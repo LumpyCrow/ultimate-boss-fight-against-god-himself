@@ -8,7 +8,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not $AudioStreamPlayer.is_playing():
 		$AudioStreamPlayer.play()
 	
@@ -28,7 +28,7 @@ func _on_tranition_to_next_level_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		get_tree().change_scene_to_file("res://level_2_boss_arena.tscn")
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	$player.visible = true
 	$Flyright.visible = false
 	$Controlpad2.visible = false

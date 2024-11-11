@@ -256,9 +256,11 @@ theme_override_fonts/font = ExtResource("3_ki6lt")
 text = "Retry"
 
 [node name="HUD" type="Node2D" parent="."]
+z_index = 4096
 position = Vector2(24, -3)
 
 [node name="Health" type="Sprite2D" parent="HUD"]
+z_index = 4096
 position = Vector2(-240, -250)
 scale = Vector2(2.4, 2.4)
 texture = ExtResource("13_1472h")
