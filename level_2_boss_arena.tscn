@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://p74ir71ry238"]
+[gd_scene load_steps=67 format=3 uid="uid://p74ir71ry238"]
 
 [ext_resource type="Script" path="res://level_2_boss_arena.gd" id="1_lblhy"]
 [ext_resource type="PackedScene" uid="uid://be3xkbl84anxw" path="res://player.tscn" id="1_qjm0x"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://bodkw8dbcs8ti" path="res://textures/backroundRock.png" id="30_qnr1a"]
 [ext_resource type="TileSet" uid="uid://meu4ra5dfr7p" path="res://textures/tileset/new_tile_set.tres" id="30_yuocr"]
 [ext_resource type="Texture2D" uid="uid://dx4gi5tvrtms" path="res://Layers/1.png" id="31_usans"]
+[ext_resource type="Texture2D" uid="uid://g4uqds6w4lnw" path="res://textures/backround/awesomeCavePixelArt.png" id="32_fps0b"]
 [ext_resource type="Texture2D" uid="uid://d1hoy6d3dn6si" path="res://Layers/2.png" id="32_mg376"]
 [ext_resource type="Texture2D" uid="uid://bwk4em3pd5k76" path="res://Layers/bg1.png" id="32_qhmhc"]
 [ext_resource type="Texture2D" uid="uid://dwdvtjocdrnj2" path="res://Layers/bg2.png" id="34_6dbwv"]
@@ -1100,6 +1101,8 @@ offset = Vector2(-2443.51, 0)
 transform = Transform2D(1, 0, 0, 1, -2443.51, 0)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+position = Vector2(1489.51, 481)
 motion_mirroring = Vector2(3960, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
@@ -1113,6 +1116,8 @@ texture = ExtResource("31_usans")
 centered = false
 
 [node name="MiddlegroundParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+position = Vector2(1489.51, 481)
 motion_scale = Vector2(0.3, 1)
 motion_mirroring = Vector2(3960, 0)
 
@@ -1127,6 +1132,8 @@ texture = ExtResource("32_mg376")
 centered = false
 
 [node name="SmallgroundParallax" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+position = Vector2(1489.51, 481)
 motion_scale = Vector2(0.4, 1)
 motion_mirroring = Vector2(3960, 0)
 
@@ -1142,6 +1149,7 @@ centered = false
 
 [node name="4_parallax" type="ParallaxLayer" parent="ParallaxBackground"]
 visible = false
+position = Vector2(-116.49, -200)
 motion_scale = Vector2(0.5, 1)
 motion_mirroring = Vector2(3960, 0)
 
@@ -1156,6 +1164,7 @@ centered = false
 
 [node name="5_parallax" type="ParallaxLayer" parent="ParallaxBackground"]
 visible = false
+position = Vector2(-116.49, -200)
 motion_scale = Vector2(0.6, 1)
 motion_mirroring = Vector2(3960, 0)
 
@@ -1170,20 +1179,24 @@ centered = false
 
 [node name="6_parallax" type="ParallaxLayer" parent="ParallaxBackground"]
 visible = false
+position = Vector2(-116.49, -200)
 motion_scale = Vector2(0.7, 1)
 motion_mirroring = Vector2(3960, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/6_parallax"]
+position = Vector2(-635, -1194)
+scale = Vector2(2, 2)
 texture = ExtResource("38_7gagw")
 centered = false
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/6_parallax"]
-position = Vector2(1980, 0)
+position = Vector2(1345, -1194)
+scale = Vector2(2, 2)
 texture = ExtResource("38_7gagw")
 centered = false
 
 [node name="7_parallax" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
+position = Vector2(-116.49, -200)
 motion_scale = Vector2(0.8, 1)
 motion_mirroring = Vector2(3960, 0)
 
@@ -1198,6 +1211,7 @@ centered = false
 
 [node name="8_parallax" type="ParallaxLayer" parent="ParallaxBackground"]
 visible = false
+position = Vector2(-116.49, -200)
 motion_scale = Vector2(0.9, 1)
 motion_mirroring = Vector2(3960, 0)
 
@@ -1209,6 +1223,23 @@ centered = false
 position = Vector2(1980, 0)
 texture = ExtResource("40_eepe2")
 centered = false
+
+[node name="AwesomeCavePixelArt" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(3800, 0)
+
+[node name="AwesomeCavePixelArt" type="Sprite2D" parent="ParallaxBackground/AwesomeCavePixelArt"]
+z_index = -4096
+position = Vector2(3324.51, -441)
+scale = Vector2(3, 3)
+texture = ExtResource("32_fps0b")
+
+[node name="AwesomeCavePixelArt2" type="Sprite2D" parent="ParallaxBackground/AwesomeCavePixelArt"]
+z_index = -4096
+position = Vector2(7124.51, 1717)
+rotation = 3.14159
+scale = Vector2(3, 3)
+texture = ExtResource("32_fps0b")
 
 [node name="healthkit" parent="." instance=ExtResource("30_g26rc")]
 position = Vector2(6298, -1514)

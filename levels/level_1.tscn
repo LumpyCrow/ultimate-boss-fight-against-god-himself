@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://djvaqjy7j54yy"]
+[gd_scene load_steps=34 format=4 uid="uid://djvaqjy7j54yy"]
 
 [ext_resource type="Script" path="res://levels/level_1.gd" id="1_dbdee"]
 [ext_resource type="PackedScene" uid="uid://8bjcjmqf8e6l" path="res://background/parallax_background.tscn" id="1_tlw3t"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://b87p0ilaa5ya4" path="res://textures/rightbutton.png" id="24_eug8s"]
 [ext_resource type="Texture2D" uid="uid://5vulym3yg831" path="res://textures/rotateleftbutton.png" id="25_ncbyu"]
 [ext_resource type="Texture2D" uid="uid://cmr3x2afrtbuk" path="res://textures/rotaterightbutton.png" id="26_33a63"]
+[ext_resource type="PackedScene" uid="uid://d4hcdrky0uvt8" path="res://healthkit.tscn" id="27_1ew83"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j532k"]
 size = Vector2(33, 199)
@@ -405,6 +406,9 @@ texture = ExtResource("25_ncbyu")
 position = Vector2(2121, 606)
 scale = Vector2(2, 2)
 texture = ExtResource("26_33a63")
+
+[node name="healthkit" parent="." instance=ExtResource("27_1ew83")]
+position = Vector2(3637, 633)
 
 [connection signal="body_entered" from="tranitionToNextLevel" to="." method="_on_tranition_to_next_level_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
