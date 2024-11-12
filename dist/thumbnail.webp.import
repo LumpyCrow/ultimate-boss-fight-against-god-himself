@@ -2,16 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kecsdulbng6p"
-path="res://.godot/imported/thumbnail.png-3f545d161fd110f6ef4e5b6d4c7c77a7.ctex"
-metadata={
-"vram_texture": false
-}
+uid="uid://ca8qua6764o64"
+valid=false
 
 [deps]
 
-source_file="res://thumbnail.png"
-dest_files=["res://.godot/imported/thumbnail.png-3f545d161fd110f6ef4e5b6d4c7c77a7.ctex"]
+source_file="res://thumbnail.webp"
 
 [params]
 
